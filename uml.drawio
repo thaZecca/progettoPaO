@@ -1,0 +1,180 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15" version="28.0.7">
+  <diagram name="Page-1" id="mE23I3gLv8mQfI3Rtl_m">
+    <mxGraphModel dx="2253" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="C5MePCJxCBqiCufAHBw2-1" value="&lt;i&gt;contenutoMultimediale&lt;/i&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="220" y="40" width="360" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-2" value="- titolo: QString&lt;div&gt;- casaProduttrice: QString&lt;/div&gt;&lt;div&gt;- autori: vector&amp;lt;QString&amp;gt;&lt;/div&gt;&lt;div&gt;- annoDiProduzione: unsigned int&lt;/div&gt;&lt;div&gt;- annoDiPubblicazione: unsigned int&lt;/div&gt;&lt;div&gt;- durataSecondi: unsigned int&lt;/div&gt;&lt;div&gt;- picPath: QString&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-1" vertex="1">
+          <mxGeometry y="26" width="360" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="C5MePCJxCBqiCufAHBw2-1" vertex="1">
+          <mxGeometry y="136" width="360" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-4" value="+ contenutoMultimediale(t:QString, cP:QString, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;a:vector&amp;lt;QString&amp;gt;, aDProd:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;aDPubb:unsigned int, d:unsigned int, pP:QString)&lt;div&gt;&lt;div&gt;+ &lt;i&gt;&lt;b&gt;~contenutoMultimediale()&lt;/b&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;+ getTitolo() const: QString&lt;/div&gt;&lt;div&gt;+ getCasaProduttrice() const: QString&lt;/div&gt;&lt;div&gt;+ getAutori() const: vector&amp;lt;QString&amp;gt;&lt;/div&gt;&lt;div&gt;+ getAnnoDiProduzione() const: unsigned int&lt;/div&gt;&lt;div&gt;+ getAnnoDiPubblicazione() const: unsigned int&lt;/div&gt;&lt;div&gt;+ getDurataSecondi() const: unsigned int&lt;/div&gt;&lt;div&gt;+ getPicPath() const: QString&lt;/div&gt;&lt;div&gt;+ setTitolo(t:const QString&amp;amp;): void&lt;/div&gt;&lt;div&gt;+ setCasaProduttrice(cP:const QString&amp;amp;): void&lt;/div&gt;&lt;div&gt;+ setAutori(a:const vector&amp;lt;QString&amp;gt;&amp;amp;): void&lt;/div&gt;&lt;div&gt;+ setAutore(p:unsigned int, a:const QString&amp;amp;): void&lt;/div&gt;&lt;div&gt;+ setAnnoDiProduzione(aDProd:unsigned int): void&lt;/div&gt;&lt;div&gt;+ setAnnoDiPubblicazione(aDPubb:unsigned int): void&lt;/div&gt;&lt;div&gt;+ setDurataSecondi(d:unsigned int): void&lt;/div&gt;&lt;div&gt;+ setPicPath(p:const QString&amp;amp;): void&lt;/div&gt;&lt;div&gt;+ &lt;i&gt;&lt;b&gt;accept(v:const visitorCMultimediale&amp;amp;): void&lt;/b&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;+ &lt;i&gt;friend operator&amp;lt;&amp;lt;(ostream&amp;amp; os, const &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;contenutoMultimediale&amp;amp; c): ostream&amp;amp;&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-1" vertex="1">
+          <mxGeometry y="144" width="360" height="316" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="C5MePCJxCBqiCufAHBw2-1" source="C5MePCJxCBqiCufAHBw2-4" target="C5MePCJxCBqiCufAHBw2-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-7" value="&lt;i&gt;digitale&lt;/i&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="225" y="610" width="350" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-8" value="- peso: unsigned int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-7" vertex="1">
+          <mxGeometry y="26" width="350" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-9" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="C5MePCJxCBqiCufAHBw2-7" vertex="1">
+          <mxGeometry y="52" width="350" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-10" value="+ digitale(t:QString, cP:QString,&amp;nbsp;a:vector&amp;lt;QString&amp;gt;,&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;aDProd:unsigned int, &lt;/span&gt;aDPubb:unsigned int,&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;d:unsigned int, pP:QString, p:unsigned int)&lt;/div&gt;&lt;div&gt;+ getPeso() const: unsigned int&lt;/div&gt;&lt;div&gt;+ setPeso(unsigned int p)&lt;/div&gt;&lt;div&gt;+ &lt;i&gt;friend operator&amp;lt;&amp;lt;(ostream&amp;amp; os, const digitale&amp;amp; d):&amp;nbsp;&lt;/i&gt;&lt;i&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;ostream&amp;amp;&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-7" vertex="1">
+          <mxGeometry y="60" width="350" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-15" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.501;entryY=1.012;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="C5MePCJxCBqiCufAHBw2-7" target="C5MePCJxCBqiCufAHBw2-4" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="414" y="585" as="sourcePoint" />
+            <mxPoint x="400" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-16" value="musicaD" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-140" y="920" width="380" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-17" value="- frequenzaCampionamento: unsigned int&lt;div&gt;- isStereo: bool&lt;/div&gt;&lt;div&gt;- numeroCanali: unsigned int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-16" vertex="1">
+          <mxGeometry y="26" width="380" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-18" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="C5MePCJxCBqiCufAHBw2-16" vertex="1">
+          <mxGeometry y="80" width="380" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-19" value="+ musicaD(t:QString, cP:QString, a:vector&amp;lt;QString&amp;gt;, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;aDProd:unsigned int, aDPubb:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;d:unsigned int, pP:QString, p:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;fC:unsigned int, isS:bool, nC:unsigned int)&lt;div&gt;+ &lt;i&gt;~musicaD()&lt;/i&gt;&lt;/div&gt;&lt;div&gt;+ getFrequanzaCampionamento() const: unsigned int&lt;/div&gt;&lt;div&gt;+ isStereo() const: bool&lt;/div&gt;&lt;div&gt;+ getNumeroCanali() const: unsigned int&lt;/div&gt;&lt;div&gt;+ setFrequenzaCampionamento(fC:unsigned int)&lt;/div&gt;&lt;div&gt;+ setIsStereo(isS:bool)&lt;/div&gt;&lt;div&gt;+ setNumeroCanali(nC:unsigned int)&lt;/div&gt;&lt;div&gt;+ &lt;i&gt;friend operator&amp;lt;&amp;lt;(ostream&amp;amp; os, const musicaD&amp;amp; m): ostream&amp;amp;&lt;/i&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-16" vertex="1">
+          <mxGeometry y="88" width="380" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-20" value="videoD" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="560" y="920" width="380" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-21" value="- fps: unsigned int&lt;div&gt;- progressivo: bool&lt;/div&gt;&lt;div&gt;- risoluzione: QString&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-20" vertex="1">
+          <mxGeometry y="26" width="380" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-22" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="C5MePCJxCBqiCufAHBw2-20" vertex="1">
+          <mxGeometry y="80" width="380" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-23" value="+ videoD(t:QString, cP:QString, a:vector&amp;lt;QString&amp;gt;, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;aDProd:unsigned int, aDPubb:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;d:unsigned int, pP:QString, p:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;fps:unsigned int, isP:bool, r:QString)&lt;div&gt;+ &lt;i&gt;~videoD()&lt;/i&gt;&lt;/div&gt;&lt;div&gt;+ getFPS() const: unsigned int&lt;/div&gt;&lt;div&gt;+ isProgressivo() const: bool&lt;/div&gt;&lt;div&gt;+ getRisoluzione() const: QString&lt;/div&gt;&lt;div&gt;+ setFPS(fps:unsigned int)&lt;/div&gt;&lt;div&gt;+ setProgressivo(isP:bool)&lt;/div&gt;&lt;div&gt;+ setRisoluzione(r:QString)&lt;/div&gt;&lt;div&gt;+ &lt;i&gt;friend operator&amp;lt;&amp;lt;(ostream&amp;amp; os, const videoD&amp;amp; v): ostream&amp;amp;&lt;/i&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-20" vertex="1">
+          <mxGeometry y="88" width="380" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-24" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.476;exitY=-0.004;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="C5MePCJxCBqiCufAHBw2-16" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="40" y="840" as="sourcePoint" />
+            <mxPoint x="400" y="770" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="41" y="840" />
+              <mxPoint x="400" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-25" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.526;exitY=-0.004;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.497;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="C5MePCJxCBqiCufAHBw2-20" target="C5MePCJxCBqiCufAHBw2-10" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="320" y="910" as="sourcePoint" />
+            <mxPoint x="430" y="800" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="760" y="840" />
+              <mxPoint x="400" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-26" value="fileAudio" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-140" y="1280" width="380" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-27" value="- lossy: bool&lt;div&gt;- estensione: QString&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-26" vertex="1">
+          <mxGeometry y="26" width="380" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-28" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="C5MePCJxCBqiCufAHBw2-26" vertex="1">
+          <mxGeometry y="60" width="380" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-29" value="+ fileAudio(t:QString, cP:QString, a:vector&amp;lt;QString&amp;gt;, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;aDProd:unsigned int, aDPubb:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;d:unsigned int, pP:QString, p:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;fC:unsigned int, isS:bool, nC:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;isL:bool, e:QString)&lt;div&gt;+ isLossy() const: bool&lt;/div&gt;&lt;div&gt;+ getEstensione() const: QString&lt;/div&gt;&lt;div&gt;+ setIsLossy(isL:bool)&lt;/div&gt;&lt;div&gt;+ setEstensione(e:QString)&lt;/div&gt;&lt;div&gt;+ &lt;i&gt;friend operator&amp;lt;&amp;lt;(ostream&amp;amp; os, const fileAudio&amp;amp; fA): ostream&amp;amp;&lt;/i&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-26" vertex="1">
+          <mxGeometry y="68" width="380" height="152" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-30" value="fileVideo" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="560" y="1280" width="380" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-31" value="- estensione: QString" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-30" vertex="1">
+          <mxGeometry y="26" width="380" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-32" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="C5MePCJxCBqiCufAHBw2-30" vertex="1">
+          <mxGeometry y="50" width="380" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-33" value="+ videoD(t:QString, cP:QString, a:vector&amp;lt;QString&amp;gt;, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;aDProd:unsigned int, aDPubb:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;d:unsigned int, pP:QString, p:unsigned int, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;fps:unsigned int, isP:bool, r:QString, &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;e:QString)&lt;div&gt;+ getEstensione() const: QString&lt;/div&gt;&lt;div&gt;+ setEstensione(e:QString)&lt;/div&gt;&lt;div&gt;+ &lt;i&gt;friend operator&amp;lt;&amp;lt;(ostream&amp;amp; os, const fileVideo&amp;amp; fV): ostream&amp;amp;&lt;/i&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-30" vertex="1">
+          <mxGeometry y="58" width="380" height="122" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-34" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=0.476;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="C5MePCJxCBqiCufAHBw2-26" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-120" y="1240" as="sourcePoint" />
+            <mxPoint x="40" y="1190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-35" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=0.476;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="750.5" y="1280" as="sourcePoint" />
+            <mxPoint x="749.5" y="1190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-36" value="cd" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-680" y="960" width="320" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-37" value="- tracceAudio: std::vector&amp;lt;musicaD&amp;gt;&lt;div&gt;- diametro: unsigned float&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-36" vertex="1">
+          <mxGeometry y="26" width="320" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-38" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="C5MePCJxCBqiCufAHBw2-36" vertex="1">
+          <mxGeometry y="60" width="320" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-39" value="+ cd(tA:std::vector&amp;lt;musicaD&amp;gt;, d:unsigned float)&lt;div&gt;+ getTracceAudio() const: std::vector&amp;lt;musicaD&amp;gt;&lt;/div&gt;&lt;div&gt;+ getDiametro() const: unsigned float&lt;/div&gt;&lt;div&gt;+ setTracceAudio(tA:std::vector&amp;lt;musicaD&amp;gt;)&lt;/div&gt;&lt;div&gt;+ setDiametro(d:unsigned float)&lt;/div&gt;&lt;div&gt;+ friend operator&amp;lt;&amp;lt;(ostream&amp;amp; os, const cd&amp;amp; c): ostream&amp;amp;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-36" vertex="1">
+          <mxGeometry y="68" width="320" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-40" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="C5MePCJxCBqiCufAHBw2-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-330" y="1090" as="sourcePoint" />
+            <mxPoint x="-360" y="1000" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-260" y="1100" />
+              <mxPoint x="-260" y="1050" />
+              <mxPoint x="-260" y="1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-41" value="dvd" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1076" y="999" width="330" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-42" value="- tracceVideo: std::vector&amp;lt;videoD&amp;gt;&lt;div&gt;- diametro: unsigned float&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-41" vertex="1">
+          <mxGeometry y="26" width="330" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-43" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="C5MePCJxCBqiCufAHBw2-41" vertex="1">
+          <mxGeometry y="60" width="330" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-44" value="+ dvd(tV:std::vector&amp;lt;videoD&amp;gt;, d:unsigned float)&lt;div&gt;+ getTracceVideo() const: std::vector&amp;lt;videoD&amp;gt;&lt;/div&gt;&lt;div&gt;+ getDiametro() const: unsigned float&lt;/div&gt;&lt;div&gt;+ setTracceVideo(tV:const std::vector&amp;lt;videoD&amp;gt;&amp;amp;)&lt;/div&gt;&lt;div&gt;+ setDiametro(d:unsigned float)&lt;/div&gt;&lt;div&gt;+ friend operator&amp;lt;&amp;lt;(ostream&amp;amp; os, const dvd&amp;amp; d): ostream&amp;amp;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="C5MePCJxCBqiCufAHBw2-41" vertex="1">
+          <mxGeometry y="68" width="330" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="C5MePCJxCBqiCufAHBw2-45" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;exitX=1;exitY=0.401;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="C5MePCJxCBqiCufAHBw2-23" target="C5MePCJxCBqiCufAHBw2-42" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="950" y="940" as="sourcePoint" />
+            <mxPoint x="1070" y="1040" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1000" y="1080" />
+              <mxPoint x="1000" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mxdp67OhipBeIITyUtU6-1" value="&lt;i&gt;visitorCMultimediale&lt;/i&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="640" y="40" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Mxdp67OhipBeIITyUtU6-2" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Mxdp67OhipBeIITyUtU6-1" vertex="1">
+          <mxGeometry y="26" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Mxdp67OhipBeIITyUtU6-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="Mxdp67OhipBeIITyUtU6-1" vertex="1">
+          <mxGeometry y="52" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Mxdp67OhipBeIITyUtU6-4" value="+ visitMusicaD(mD:const musicaD&amp;amp;)&lt;div&gt;+ visitVideoD(vD:const videoD&amp;amp;)&lt;/div&gt;&lt;div&gt;+ visitFileAudio(fA:const fileAudio&amp;amp;)&lt;/div&gt;&lt;div&gt;+ visitFileVideo(fV:const fileVideo&amp;amp;)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Mxdp67OhipBeIITyUtU6-1" vertex="1">
+          <mxGeometry y="60" width="270" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
