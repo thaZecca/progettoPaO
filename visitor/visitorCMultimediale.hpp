@@ -1,12 +1,21 @@
 #ifndef VISITORCM_HPP
 #define VISITORCM_HPP
 
+class audioD;
+class fileAudio;
+class cd;
+class videoD;
+class fileVideo;
+class dvd;
+
 class visitorCMultimediale{
 public:
-    virtual void visitAudioD(const audioD&) = 0;
-    virtual void visitVideoD(const videoD&) = 0;
-    virtual void visitFileAudio(const fileAudio&) = 0;
-    virtual void visitFileVideo(const fileVideo&) = 0;
+    virtual void visitAudioD(audioD*);
+    virtual void visitFileAudio(fileAudio*);
+    virtual void visitCD(cd*);
+    virtual void visitVideoD(videoD*);
+    virtual void visitFileVideo(fileVideo*);
+    virtual void visitDVD(dvd*);
 };
 
 #endif

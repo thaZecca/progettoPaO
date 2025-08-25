@@ -1,19 +1,28 @@
 #ifndef JSONVISITOR_HPP
 #define JSONVISITOR_HPP
 
-#include <QJsonDocument>
+#include <QJsonObject>
+#include <QString>
+#include <vector>
 #include "../visitorCMultimediale.hpp"
 
-class JSONVisitor{
+using std::vector;
+
+class JSONVisitor: public visitorCMultimediale{
 private:
     QJsonObject jsonMedia;
+    vector<QJsonObject> jsonMore;
+    void toJsonCM(const contenutoMultimediale*);
+    void toJsonDig(const digitale*);
 public:
-    void visitAudioD(const audioD&) override;
-    void visitFileAudio(const fileAudio&) override;
-    void visitCD(const cd&) override;
-    void visitVideoD(const videoD&) override;
-    void visitFileVideo(const fileVideo&) override;
-    void visitDVD(const dvd&) override;
+    void visitAudioD(audioD*) override;
+    void visitFileAudio(fileAudio*) override;
+    void visitCD(cd*) override;
+    void visitVideoD(videoD*) override;
+    void visitFileVideo(fileVideo*) override;
+    void visitDVD(dvd*) override;
+    QJsonObject& getJson() const;
+    vector<QJsonObject>& getJsonMore() const;
 };
 
 #endif
