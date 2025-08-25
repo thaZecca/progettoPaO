@@ -41,7 +41,7 @@ void JSONvisitor::visit(audioD* audio){
 /*visit - trasforma l'oggetto fileAudio in json
 @param fa fileAudio da trasformare in json*/
 void JSONvisitor::visit(fileAudio* fa){
-    visitAudioD(fa);
+    visit(static_cast<audioD*>(fa));
     jsonMedia["tipo"] = "fileAudio";
     jsonMedia["lossy"] = (fa -> isLossy()?"true":"false");
     jsonMedia["estensione"] = fa -> getEstensione();
@@ -53,7 +53,8 @@ void JSONvisitor::visit(cd* c){
     //creo il json per ogni traccia audio
     vector<audioD> a = c -> getTracceAudio();
     for(auto i = a.begin(); i != a.end(); i++){
-        visitAudioD(&(*i)); //viene salvato il json in jsonMedia
+        audioD* ptr = &(*i);
+        visit(ptr); //viene salvato il json in jsonMedia
         QJsonObject appoggio = jsonMedia; //creo una copia dell'oggetto json
         jsonMore.push_back(appoggio); //inserisco la copia nell'array
     }
@@ -69,12 +70,12 @@ void JSONvisitor::visit(dvd* d){}
 
 /*getJson
 @return l'oggetto Json del singolo media*/
-QJsonObject JSONvisitor::getJson() const{
+QJsonObject& JSONvisitor::getJson(){
     return jsonMedia;
 }
 
 /*getJsonMore
 @retrun il vettore di oggetti Json dei media compositi (contenuti di cd e dvd)*/
-vector<QJsonObject> JSONvisito::getJsonMore() const{
+vector<QJsonObject>& JSONvisitor::getJsonMore(){
     return jsonMore;
 }

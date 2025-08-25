@@ -23,8 +23,8 @@ public:
     void visit(videoD*) override;
     void visit(fileVideo*) override;
     void visit(dvd*) override;
-    QJsonObject& getJson() const;
-    vector<QJsonObject>& getJsonMore() const;
+    QJsonObject& getJson();
+    vector<QJsonObject>& getJsonMore();
 };
 
 #endif

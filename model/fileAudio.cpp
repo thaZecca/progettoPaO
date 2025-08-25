@@ -42,7 +42,7 @@ void fileAudio::setEstensione(QString e){
 /*accept
 @param v visitor*/
 void fileAudio::accept(visitorCMultimediale& v){
-    v.accept(this);
+    v.visit(this);
 }
 
 ostream& operator<<(ostream& os, const fileAudio& fA){

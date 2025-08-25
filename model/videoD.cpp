@@ -48,7 +48,7 @@ void videoD::setRisoluzione(QString r){
 }
 
 void videoD::accept(visitorCMultimediale& v){
-    v.accept(this);
+    v.visit(this);
 }
 
 /*operator<< esterno

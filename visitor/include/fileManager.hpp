@@ -7,7 +7,8 @@
 #include "JSONvisitor.hpp"
 #include <QString>
 #include <QJsonDocument>
-#include <QJsonObject>
+#include <QJsonArray>
+#include <QCoreApplication>
 
 
 class fileManager{

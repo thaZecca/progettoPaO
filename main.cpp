@@ -1,5 +1,5 @@
 #include "./model/include/audioD.hpp"
-#include "./modules/include/contenutoMultimediale.hpp"
+#include "./model/include/contenutoMultimediale.hpp"
 #include "./visitor/include/fileManager.hpp"
 #include <QString>
 #include <vector>
@@ -17,7 +17,7 @@ int main(){
 
     vector<contenutoMultimediale*> vuoto;
 
-    fileManager manager();
+    fileManager manager;
 
     manager.save(cm, vuoto);
 
