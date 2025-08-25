@@ -4,7 +4,7 @@
 #include <QString>
 #include <vector>
 #include <iostream>
-#include "../visitor/visitorCMultimediale.hpp"
+#include "../../visitor/visitorCMultimediale.hpp"
 
 using std::vector;
 using std::ostream;

@@ -2,7 +2,7 @@
 
 fileManager::fileManager(): file("./storage.json") {}
 
-fileManager::fileManager(string path): file(path) {} 
+fileManager::fileManager(QString path): file(path) {} 
 
 void fileManager::save(const vector<contenutoMultimediale*>& contenuti, const vector<contenutoMultimediale*>& prestati){
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){

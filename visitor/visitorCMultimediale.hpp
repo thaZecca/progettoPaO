@@ -7,15 +7,16 @@ class cd;
 class videoD;
 class fileVideo;
 class dvd;
+class contenutoMultimediale;
 
 class visitorCMultimediale{
 public:
-    virtual void visitAudioD(audioD*);
-    virtual void visitFileAudio(fileAudio*);
-    virtual void visitCD(cd*);
-    virtual void visitVideoD(videoD*);
-    virtual void visitFileVideo(fileVideo*);
-    virtual void visitDVD(dvd*);
+    virtual void visitAudioD(audioD*) =0;
+    virtual void visitFileAudio(fileAudio*) =0;
+    virtual void visitCD(cd*) =0;
+    virtual void visitVideoD(videoD*) =0;
+    virtual void visitFileVideo(fileVideo*) =0;
+    virtual void visitDVD(dvd*) =0;
 };
 
 #endif

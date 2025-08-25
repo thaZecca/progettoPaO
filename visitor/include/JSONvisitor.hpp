@@ -6,9 +6,11 @@
 #include <vector>
 #include "../visitorCMultimediale.hpp"
 
+class digitale;
+
 using std::vector;
 
-class JSONVisitor: public visitorCMultimediale{
+class JSONvisitor: public visitorCMultimediale{
 private:
     QJsonObject jsonMedia;
     vector<QJsonObject> jsonMore;

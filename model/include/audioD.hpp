@@ -3,7 +3,7 @@
 
 #include "digitale.hpp"
 
-class audioD: digitale{
+class audioD: public digitale{
     friend ostream& operator<<(ostream&, const audioD&);
 private:
     unsigned int frequenzaCampionamento;
