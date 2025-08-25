@@ -1,0 +1,31 @@
+[
+    {
+        "autore0": "Dire Straits",
+        "canali": 2,
+        "casaProdutrice": "Vertigo Records",
+        "durata": 240,
+        "frequenza": 44100,
+        "peso": 100,
+        "picPath": "provapP",
+        "pubblicazione": 1978,
+        "stereo": "true",
+        "tipo": "audioD",
+        "titolo": "Sultans of Swing"
+    },
+    {
+        "autore0": "Dire Straits",
+        "autore1": "Sting",
+        "canali": 2,
+        "casaProdutrice": "Vertigo Records",
+        "durata": 240,
+        "estensione": "flac",
+        "frequenza": 44100,
+        "lossy": "false",
+        "peso": 100,
+        "picPath": "provapP",
+        "pubblicazione": 1978,
+        "stereo": "true",
+        "tipo": "fileAudio",
+        "titolo": "Money fo Nothing"
+    }
+]
