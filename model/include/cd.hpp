@@ -18,6 +18,7 @@ public:
     float getDiametro() const;
     void setTracceAudio(vector<audioD>&);
     void setDiametro(float);
+    virtual void accept(visitorCMultimediale&);
 };
 
 ostream& operator<<(ostream&, const cd&);

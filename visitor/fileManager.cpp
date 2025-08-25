@@ -10,7 +10,18 @@ void fileManager::save(const vector<contenutoMultimediale*>& contenuti, const ve
         return;
     }
 
+    QJsonObject obj;
+    JSONvisitor visitor;
+    QJsonDocument* doc;
+    for(auto it=contenuti.begin(); it!=contenuti.end(); it++){
+        *it -> accept(visitor);
+        obj = visitor.getJson();
+        doc = new QJsonDocument(obj);
+        file.write(doc->toJson());
+        delete doc;
+    }
 
+    file.close();
 
 }
 

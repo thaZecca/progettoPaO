@@ -49,8 +49,9 @@ void audioD::setNumeroCanali(unsigned int nC){
     numeroCanali = nC;
 }
 
-void audioD::accept(const visitorCMultimediale& v){
-    std::cout << "accept" << std::endl;
+/*accept -  design pattern per */
+void audioD::accept(visitorCMultimediale& v){
+    v.visit(this);
 }
 
 ostream& operator<<(ostream& os, const audioD& aD){

@@ -18,6 +18,7 @@ public:
     float getDiametro() const;
     void setTracceVideo(vector<videoD>&);
     void setDiametro(float d); 
+    virtual void accept(visitorCMultimediale&);
 };
 
 ostream& operator<<(ostream&, const dvd&);

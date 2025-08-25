@@ -14,7 +14,7 @@ public:
     QString getEstensione() const;
     void setLossy(bool);
     void setEstensione(QString);
-    virtual void accept(const visitorCMultimediale&) override;
+    virtual void accept(visitorCMultimediale&) override;
 };
 
 ostream& operator<<(ostream&, const fileAudio&);

@@ -18,7 +18,7 @@ public:
     void setFrequenzaCampionamento(unsigned int);
     void setStereo(bool);
     void setNumeroCanali(unsigned int);
-    void accept(const visitorCMultimediale&) override;
+    void accept(visitorCMultimediale&) override;
 };
 
 ostream& operator<<(ostream&, const audioD&);

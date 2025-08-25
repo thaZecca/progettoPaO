@@ -4,8 +4,10 @@
 #include <QFile>
 #include <vector>
 #include "../../model/include/contenutoMultimediale.hpp"
+#include "JSONvisitor.hpp"
 #include <QString>
 #include <QJsonDocument>
+#include <QJsonObject>
 
 
 class fileManager{

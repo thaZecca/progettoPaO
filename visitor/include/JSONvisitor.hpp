@@ -17,12 +17,12 @@ private:
     void toJsonCM(const contenutoMultimediale*);
     void toJsonDig(const digitale*);
 public:
-    void visitAudioD(audioD*) override;
-    void visitFileAudio(fileAudio*) override;
-    void visitCD(cd*) override;
-    void visitVideoD(videoD*) override;
-    void visitFileVideo(fileVideo*) override;
-    void visitDVD(dvd*) override;
+    void visit(audioD*) override;
+    void visit(fileAudio*) override;
+    void visit(cd*) override;
+    void visit(videoD*) override;
+    void visit(fileVideo*) override;
+    void visit(dvd*) override;
     QJsonObject& getJson() const;
     vector<QJsonObject>& getJsonMore() const;
 };

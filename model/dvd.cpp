@@ -29,6 +29,10 @@ void dvd::setDiametro(float d){
     diametro = d;
 }
 
+void dvd::accept(visitorCMultimediale& v){
+    v.visit(this);
+}
+
 ostream& operator<<(ostream& os, const dvd& d){
     for(auto iter = d.tracceVideo.begin(); iter != d.tracceVideo.end(); iter++){
         os << (*iter) << std::endl;

@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include "../../visitor/visitorCMultimediale.hpp"
+#include "../../visitor/include/JSONvisitor.hpp"
 
 using std::vector;
 using std::ostream;
@@ -34,7 +35,7 @@ public:
     void setAnnoDiPubblicazione(unsigned int aDPubb);
     void setDurataSecondi(unsigned int d);
     void setPicPath(const QString& pP);
-    virtual void accept(const visitorCMultimediale& v) = 0;
+    virtual void accept(visitorCMultimediale& v) = 0;
 };
 
 ostream& operator<<(ostream&, const contenutoMultimediale&);

@@ -29,6 +29,10 @@ void cd::setDiametro(float d){
     diametro=d;
 }
 
+void cd::accept(visitorCMultimediale& v){
+    v.visit(this);
+}
+
 ostream& operator<<(ostream& os, const cd& c){
     for(auto iterTa = c.tracceAudio.begin(); iterTa != c.tracceAudio.end(); iterTa++){
         os << (*iterTa) << std::endl;

@@ -11,12 +11,12 @@ class contenutoMultimediale;
 
 class visitorCMultimediale{
 public:
-    virtual void visitAudioD(audioD*) =0;
-    virtual void visitFileAudio(fileAudio*) =0;
-    virtual void visitCD(cd*) =0;
-    virtual void visitVideoD(videoD*) =0;
-    virtual void visitFileVideo(fileVideo*) =0;
-    virtual void visitDVD(dvd*) =0;
+    virtual void visit(audioD*) =0;
+    virtual void visit(fileAudio*) =0;
+    virtual void visit(cd*) =0;
+    virtual void visit(videoD*) =0;
+    virtual void visit(fileVideo*) =0;
+    virtual void visit(dvd*) =0;
 };
 
 #endif

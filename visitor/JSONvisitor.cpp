@@ -26,9 +26,9 @@ void JSONvisitor::toJsonDig(const digitale* dig){
     jsonMedia["peso"] = (dig -> getPeso());
 }
 
-/*visitAudioD - trasforma l'oggetto audioD in json
+/*visit - trasforma l'oggetto audioD in json
 @param audio audioD da trasformare in json*/
-void JSONvisitor::visitAudioD(audioD* audio){
+void JSONvisitor::visit(audioD* audio){
     jsonMedia = QJsonObject();
     jsonMedia["tipo"] = "audioD";
     toJsonCM(audio);
@@ -38,16 +38,18 @@ void JSONvisitor::visitAudioD(audioD* audio){
     jsonMedia["canali"] = static_cast<int>(audio -> getNumeroCanali()); //
 }
 
-/*visitFileAudio - trasforma l'oggetto fileAudio in json
+/*visit - trasforma l'oggetto fileAudio in json
 @param fa fileAudio da trasformare in json*/
-void JSONvisitor::visitFileAudio(fileAudio* fa){
+void JSONvisitor::visit(fileAudio* fa){
     visitAudioD(fa);
     jsonMedia["tipo"] = "fileAudio";
     jsonMedia["lossy"] = (fa -> isLossy()?"true":"false");
     jsonMedia["estensione"] = fa -> getEstensione();
 }
 
-void JSONvisitor::visitCD(cd* c){
+/*visit - trasforma l'oggetto cd in Json
+@param c cd da trasformare in Json*/
+void JSONvisitor::visit(cd* c){
     //creo il json per ogni traccia audio
     vector<audioD> a = c -> getTracceAudio();
     for(auto i = a.begin(); i != a.end(); i++){
@@ -59,8 +61,20 @@ void JSONvisitor::visitCD(cd* c){
     jsonMedia["tipo"] = "cd"; //lo sistemo perchè contenga le intestazioni per il cd
 }
 
-void JSONvisitor::visitVideoD(videoD* video){}
+void JSONvisitor::visit(videoD* video){}
 
-void JSONvisitor::visitFileVideo(fileVideo* fv){}
+void JSONvisitor::visit(fileVideo* fv){}
 
-void JSONvisitor::visitDVD(dvd* d){} 
+void JSONvisitor::visit(dvd* d){} 
+
+/*getJson
+@return l'oggetto Json del singolo media*/
+QJsonObject JSONvisitor::getJson() const{
+    return jsonMedia;
+}
+
+/*getJsonMore
+@retrun il vettore di oggetti Json dei media compositi (contenuti di cd e dvd)*/
+vector<QJsonObject> JSONvisito::getJsonMore() const{
+    return jsonMore;
+}

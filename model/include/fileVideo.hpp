@@ -11,7 +11,7 @@ public:
     fileVideo(QString, QString, vector<QString>, unsigned int, unsigned int, QString, float, unsigned int, bool, QString, QString);
     QString getEstensione() const;
     void setEstensione(QString);
-    virtual void accept(const visitorCMultimediale&) override;
+    virtual void accept(visitorCMultimediale&) override;
 };
 
 ostream& operator<<(ostream&, const fileVideo&);

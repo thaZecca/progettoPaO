@@ -41,8 +41,8 @@ void fileAudio::setEstensione(QString e){
 
 /*accept
 @param v visitor*/
-void fileAudio::accept(const visitorCMultimediale& v){
-    std::cout << "accept" << std::endl;
+void fileAudio::accept(visitorCMultimediale& v){
+    v.accept(this);
 }
 
 ostream& operator<<(ostream& os, const fileAudio& fA){

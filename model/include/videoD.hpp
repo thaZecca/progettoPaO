@@ -18,7 +18,7 @@ public:
     void setFPS(unsigned int);
     void setProgressivo(bool);
     void setRisoluzione(QString);
-    virtual void accept(const visitorCMultimediale& v) override;
+    virtual void accept(visitorCMultimediale& v) override;
 };
 
 ostream& operator<<(ostream&, const videoD&);

@@ -26,8 +26,8 @@ void fileVideo::setEstensione(QString e){
 
 /*accept
 @param v visitor*/
-void fileVideo::accept(const visitorCMultimediale& v){
-    std::cout << "accept" << std::endl;
+void fileVideo::accept(visitorCMultimediale& v){
+    v.visit(this);
 }
 
 /*operator<< esterno
