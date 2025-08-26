@@ -1,31 +1,61 @@
-[
-    {
-        "autore0": "Dire Straits",
-        "canali": 2,
-        "casaProdutrice": "Vertigo Records",
-        "durata": 240,
-        "frequenza": 44100,
-        "peso": 100,
-        "picPath": "provapP",
-        "pubblicazione": 1978,
-        "stereo": "true",
-        "tipo": "audioD",
-        "titolo": "Sultans of Swing"
-    },
-    {
-        "autore0": "Dire Straits",
-        "autore1": "Sting",
-        "canali": 2,
-        "casaProdutrice": "Vertigo Records",
-        "durata": 240,
-        "estensione": "flac",
-        "frequenza": 44100,
-        "lossy": "false",
-        "peso": 100,
-        "picPath": "provapP",
-        "pubblicazione": 1978,
-        "stereo": "true",
-        "tipo": "fileAudio",
-        "titolo": "Money fo Nothing"
-    }
-]
+{
+    "cInPossesso": [
+        {
+            "autore0": "Dire Straits",
+            "canali": 2,
+            "casaProdutrice": "Vertigo Records",
+            "durata": 240,
+            "frequenza": 44100,
+            "peso": 100,
+            "picPath": "provapP",
+            "pubblicazione": 1978,
+            "stereo": "true",
+            "tipo": "audioD",
+            "titolo": "Sultans of Swing"
+        },
+        {
+            "autore0": "Dire Straits",
+            "autore1": "Sting",
+            "canali": 2,
+            "casaProdutrice": "Vertigo Records",
+            "durata": 240,
+            "estensione": "flac",
+            "frequenza": 44100,
+            "lossy": "false",
+            "peso": 100,
+            "picPath": "provapP",
+            "pubblicazione": 1978,
+            "stereo": "true",
+            "tipo": "fileAudio",
+            "titolo": "Money fo Nothing"
+        }
+    ],
+    "cInPrestito": [
+    ],
+    "sInPossesso": [
+        {
+            "diametro": 12,
+            "tipo": "CD",
+            "tracce": [
+                {
+                    "autore0": "The Police",
+                    "casaProdutrice": "MJD Records",
+                    "durata": 240,
+                    "picPath": "pppolice",
+                    "pubblicazione": 1977,
+                    "titolo": "Message in a bottle"
+                },
+                {
+                    "autore0": "Dire Straits",
+                    "casaProdutrice": "Vertigo Records",
+                    "durata": 240,
+                    "picPath": "provapP",
+                    "pubblicazione": 1978,
+                    "titolo": "Sultans of Swing"
+                }
+            ]
+        }
+    ],
+    "sInPrestito": [
+    ]
+}
