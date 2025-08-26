@@ -7,7 +7,7 @@ cd::cd(vector<audioD*> tA,float d): tracceAudio(tA), diametro(d) {}
 
 /*getTracceAudio
 @return le tracce audio masterizzate nel CD*/
-vector<audioD*> cd::getTracce() const{
+vector<contenutoMultimediale*> cd::getTracce() const{
     return tracceAudio;
 }
 
