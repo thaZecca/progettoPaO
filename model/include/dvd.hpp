@@ -15,9 +15,9 @@ private:
     float diametro;
 public:
     dvd(vector<videoD*>, float);
-    vector<contenutoMultimediale*> getTracce() const; //covarianza del tipo di ritorno
+    vector<contenutoMultimediale*> getTracce() const override; 
     float getDiametro() const;
-    void setTracce(const vector<contenutoMultimediale*>&);
+    void setTracce(const vector<contenutoMultimediale*>&) override;
     void setDiametro(float d); 
     virtual void accept(visitorCMultimediale&);
 };

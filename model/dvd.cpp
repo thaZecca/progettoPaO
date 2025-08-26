@@ -8,7 +8,11 @@ dvd::dvd(vector<videoD*> tV, float d): tracceVideo(tV), diametro(d) {}
 /*getTracceVideo
 @return le tracce video masterizzate nel DVD*/
 vector<contenutoMultimediale*> dvd::getTracce() const{
-    return tracceVideo;
+    vector<contenutoMultimediale*> ret;
+    for(auto it = tracceVideo.begin(); it != tracceVideo.end(); it++){
+        ret.push_back(*it);
+    }
+    return ret;
 }
 
 /*getDiametro
@@ -20,7 +24,10 @@ float dvd::getDiametro() const{
 /*setTracceVideo
 @param tV tracce video da masterizzare nel DVD*/
 void dvd::setTracce(const vector<contenutoMultimediale*>& tV){
-    tracceVideo = tV;
+    for(auto it = tV.begin(); it != tV.end(); it++){
+        videoD* v = dynamic_cast<videoD*>(*it);
+        if(v) tracceVideo.push_back(v);
+    }
 }
 
 /*setDiametro
