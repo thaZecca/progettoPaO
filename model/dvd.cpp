@@ -3,11 +3,11 @@
 /*costruttore parametrico completo di DVD
 @param tV tracce video da masterizzare nel DVD
 @param d diametro del DVD*/
-dvd::dvd(vector<videoD> tV, float d): tracceVideo(tV), diametro(d) {}
+dvd::dvd(vector<videoD*> tV, float d): tracceVideo(tV), diametro(d) {}
 
 /*getTracceVideo
 @return le tracce video masterizzate nel DVD*/
-vector<videoD> dvd::getTracce() const{
+vector<contenutoMultimediale*> dvd::getTracce() const{
     return tracceVideo;
 }
 
@@ -19,7 +19,7 @@ float dvd::getDiametro() const{
 
 /*setTracceVideo
 @param tV tracce video da masterizzare nel DVD*/
-void dvd::setTracce(vector<videoD>& tV){
+void dvd::setTracce(const vector<contenutoMultimediale*>& tV){
     tracceVideo = tV;
 }
 
