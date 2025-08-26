@@ -1,5 +1,6 @@
 #include "include/JSONvisitor.hpp"
 #include "../model/include/contenutoMultimediale.hpp"
+#include "../model/include/supportoMultimediale.hpp"
 #include "../model/include/digitale.hpp"
 #include "../model/include/fileAudio.hpp"
 #include "../model/include/cd.hpp"
@@ -26,6 +27,19 @@ void JSONvisitor::toJsonDig(const digitale* dig){
     jsonMedia["peso"] = (dig -> getPeso());
 }
 
+/*toJsonSM - trasforma le tracce del supporto multimediale in Json
+@param sm supporto multimediale da trasformare in json*/
+void JSONvisitor::toJsonSM(const supportoMultimediale* sm){
+    vector<contenutoMultimediale*> contenuti= sm -> getTracce();
+    QJsonArray root;
+    for(auto it=contenuti.begin(); it!=contenuti.end(); it++){
+        visit(*it);
+        root.append(jsonMedia);
+    }
+    jsonMedia = QJsonObject;
+    jsonMedia["tracce"] = root;
+}
+
 /*visit - trasforma l'oggetto audioD in json
 @param audio audioD da trasformare in json*/
 void JSONvisitor::visit(audioD* audio){
@@ -50,16 +64,10 @@ void JSONvisitor::visit(fileAudio* fa){
 /*visit - trasforma l'oggetto cd in Json
 @param c cd da trasformare in Json*/
 void JSONvisitor::visit(cd* c){
-    //creo il json per ogni traccia audio
-    vector<audioD> a = c -> getTracceAudio();
-    for(auto i = a.begin(); i != a.end(); i++){
-        audioD* ptr = &(*i);
-        visit(ptr); //viene salvato il json in jsonMedia
-        QJsonObject appoggio = jsonMedia; //creo una copia dell'oggetto json
-        jsonMore.push_back(appoggio); //inserisco la copia nell'array
-    }
-    jsonMedia = QJsonObject(); //riinizializzo l'oggetto json
-    jsonMedia["tipo"] = "cd"; //lo sistemo perchè contenga le intestazioni per il cd
+    jsonMedia = QJsonObject;
+    toJsonSM(c);
+    jsonMedia["tipo"] = "CD";
+    jsonMedia["diametro"] = c -> getDiametro();
 }
 
 void JSONvisitor::visit(videoD* video){}
@@ -72,10 +80,4 @@ void JSONvisitor::visit(dvd* d){}
 @return l'oggetto Json del singolo media*/
 QJsonObject& JSONvisitor::getJson(){
     return jsonMedia;
-}
-
-/*getJsonMore
-@retrun il vettore di oggetti Json dei media compositi (contenuti di cd e dvd)*/
-vector<QJsonObject>& JSONvisitor::getJsonMore(){
-    return jsonMore;
 }

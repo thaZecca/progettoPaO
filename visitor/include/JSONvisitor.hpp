@@ -7,15 +7,17 @@
 #include "../visitorCMultimediale.hpp"
 
 class digitale;
+class supportoMultimediale;
 
 using std::vector;
 
 class JSONvisitor: public visitorCMultimediale{
 private:
     QJsonObject jsonMedia;
-    vector<QJsonObject> jsonMore;
     void toJsonCM(const contenutoMultimediale*);
     void toJsonDig(const digitale*);
+    void toJsonSM(const supportoMultimediale*);
+
 public:
     void visit(audioD*) override;
     void visit(fileAudio*) override;
@@ -24,7 +26,6 @@ public:
     void visit(fileVideo*) override;
     void visit(dvd*) override;
     QJsonObject& getJson();
-    vector<QJsonObject>& getJsonMore();
 };
 
 #endif
