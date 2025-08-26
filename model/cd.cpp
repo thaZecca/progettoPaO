@@ -8,7 +8,11 @@ cd::cd(vector<audioD*> tA,float d): tracceAudio(tA), diametro(d) {}
 /*getTracceAudio
 @return le tracce audio masterizzate nel CD*/
 vector<contenutoMultimediale*> cd::getTracce() const{
-    return tracceAudio;
+    vector<contenutoMultimediale*> ret;
+    for(auto it=tracceAudio.begin(); it!=tracceAudio.end(); it++){
+        ret.push_back(it);
+    }
+    return ret;
 }
 
 /*getDiametro
@@ -20,7 +24,10 @@ float cd::getDiametro() const{
 /*setTracceAudio
 @param tA tracce audio da rimasterizzare nel CD*/
 void cd::setTracce(const vector<contenutoMultimediale*>& tA){
-    tracceAudio=tA;
+    for(auto it = tA.begin(); it != tA.end(); it++){
+        audioD* a = dynamic_cast<audioD*>(*it);
+        if(a) tracceAudio.push_back(a);
+    }
 }
 
 /*setDiametro
