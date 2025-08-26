@@ -40,13 +40,12 @@ int main(int argc, char* argv[]){
     vector<contenutoMultimediale*> cm;
     cm.push_back(sos);
     cm.push_back(mfn);
-    cm.push_back(compilation);
 
     vector<contenutoMultimediale*> vuoto;
 
     fileManager manager(path);
 
-    manager.save(cm, vuoto);
+    manager.save(cm, vuoto, {compilation}, {});
 
     return 0;
 }
