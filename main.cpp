@@ -29,11 +29,11 @@ int main(int argc, char* argv[]){
     a.push_back("Sting");
     fileAudio* mfn = new fileAudio("Money fo Nothing", "Vertigo Records", a, 1978, 240, "provapP", 100, 44100, true, 2, false, "flac");
 
-    vector<audioD> audio;
+    vector<audioD*> audio;
     
     audioD* mib = new audioD("Message in a bottle", "MJD Records", {"The Police"}, 1977, 240, "pppolice", 1000, 44100, true, 2);
-    audio.push_back(*mib);
-    audio.push_back(*sos);
+    audio.push_back(mib);
+    audio.push_back(sos);
 
     cd* compilation = new cd(audio, 12);
     
