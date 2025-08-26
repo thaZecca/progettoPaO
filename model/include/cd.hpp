@@ -15,9 +15,9 @@ private:
     float diametro;
 public:
     cd(vector<audioD*>, float);
-    vector<audioD*> getTracceAudio() const;
+    vector<audioD*> getTracce() const;
     float getDiametro() const;
-    void setTracceAudio(vector<contenutoMultimediale*>&);
+    void setTracce(const vector<contenutoMultimediale*>&);
     void setDiametro(float);
     virtual void accept(visitorCMultimediale&);
 };

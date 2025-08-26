@@ -3,20 +3,21 @@
 
 #include <iostream>
 #include <vector>
+#include "./supportoMultimediale.hpp"
 #include "./videoD.hpp"
 
 using std::vector;
 
-class dvd{
+class dvd: public supportoMultimediale{
     friend ostream& operator<<(ostream&, const dvd&);
 private:
-    vector<videoD> tracceVideo;
+    vector<videoD*> tracceVideo;
     float diametro;
 public:
-    dvd(vector<videoD>, float);
-    vector<videoD> getTracceVideo() const;
+    dvd(vector<videoD*>, float);
+    vector<videoD*> getTracce() const; //covarianza del tipo di ritorno
     float getDiametro() const;
-    void setTracceVideo(vector<videoD>&);
+    void setTracce(const vector<contenutoMultimediale*>&);
     void setDiametro(float d); 
     virtual void accept(visitorCMultimediale&);
 };
