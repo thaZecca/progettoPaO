@@ -33,10 +33,10 @@ void JSONvisitor::toJsonSM(const supportoMultimediale* sm){
     vector<contenutoMultimediale*> contenuti= sm -> getTracce();
     QJsonArray root;
     for(auto it=contenuti.begin(); it!=contenuti.end(); it++){
-        visit(*it);
+        toJsonCM(*it); //mettere il visit!! Mancano le informazioni di audioD e videoD
         root.append(jsonMedia);
     }
-    jsonMedia = QJsonObject;
+    jsonMedia = QJsonObject();
     jsonMedia["tracce"] = root;
 }
 
@@ -64,7 +64,7 @@ void JSONvisitor::visit(fileAudio* fa){
 /*visit - trasforma l'oggetto cd in Json
 @param c cd da trasformare in Json*/
 void JSONvisitor::visit(cd* c){
-    jsonMedia = QJsonObject;
+    jsonMedia = QJsonObject();
     toJsonSM(c);
     jsonMedia["tipo"] = "CD";
     jsonMedia["diametro"] = c -> getDiametro();

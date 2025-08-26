@@ -2,6 +2,7 @@
 #define JSONVISITOR_HPP
 
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QString>
 #include <vector>
 #include "../visitorCMultimediale.hpp"
