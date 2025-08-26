@@ -4,19 +4,20 @@
 #include <vector>
 #include <iostream>
 #include "./audioD.hpp"
+#include "./supportoMultimediale.hpp"
 
 using std::vector;
 
-class cd{
+class cd: public supportoMultimediale{
     friend ostream& operator<<(ostream&, const cd&);
 private:
-    vector<audioD> tracceAudio;
+    vector<audioD*> tracceAudio;
     float diametro;
 public:
-    cd(vector<audioD>, float);
-    vector<audioD> getTracceAudio() const;
+    cd(vector<audioD*>, float);
+    vector<audioD*> getTracceAudio() const;
     float getDiametro() const;
-    void setTracceAudio(vector<audioD>&);
+    void setTracceAudio(vector<contenutoMultimediale*>&);
     void setDiametro(float);
     virtual void accept(visitorCMultimediale&);
 };

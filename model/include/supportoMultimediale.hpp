@@ -10,7 +10,7 @@ using std::vector;
 class supportoMultimediale{
 public:
     virtual vector<contenutoMultimediale*> getTracce() const = 0;
-    virtual void setTracce(const vector<contenutoMultimediale*>) = 0;
+    virtual void setTracce(const vector<contenutoMultimediale*>&) = 0;
     virtual void accept(visitorCMultimediale&) = 0;
 };
 

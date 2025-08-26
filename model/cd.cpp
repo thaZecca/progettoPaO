@@ -3,11 +3,11 @@
 /*Costruttore parametrico di CD
 @param tA tracce audio da masterizzare nel CD
 @param d diametro del CD in centimetri*/
-cd::cd(vector<audioD> tA,float d): tracceAudio(tA), diametro(d) {}
+cd::cd(vector<audioD*> tA,float d): tracceAudio(tA), diametro(d) {}
 
 /*getTracceAudio
 @return le tracce audio masterizzate nel CD*/
-vector<audioD> cd::getTracceAudio() const{
+vector<audioD*> cd::getTracceAudio() const{
     return tracceAudio;
 }
 
@@ -19,7 +19,7 @@ float cd::getDiametro() const{
 
 /*setTracceAudio
 @param tA tracce audio da rimasterizzare nel CD*/
-void cd::setTracceAudio(vector<audioD>& tA){
+void cd::setTracceAudio(vector<contenutoMultimediale*>& tA){
     tracceAudio=tA;
 }
 
