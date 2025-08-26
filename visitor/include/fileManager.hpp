@@ -4,6 +4,7 @@
 #include <QFile>
 #include <vector>
 #include "../../model/include/contenutoMultimediale.hpp"
+#include "../../model/include/supportoMultimediale.hpp"
 #include "JSONvisitor.hpp"
 #include <QString>
 #include <QJsonDocument>
@@ -15,9 +16,8 @@ class fileManager{
 private:
     QFile file;
 public:
-    fileManager();
     fileManager(QString);
-    void save(const vector<contenutoMultimediale*>&, const vector<contenutoMultimediale*>&);
+    void save(const vector<contenutoMultimediale*>&, const vector<contenutoMultimediale*>&, const vector<supportoMultimediale*>&, const vector<supportoMultimediale*>&);
     void load(vector<contenutoMultimediale*>&, vector<contenutoMultimediale*>&);
 };
 
