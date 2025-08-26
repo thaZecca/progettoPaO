@@ -10,7 +10,7 @@ cd::cd(vector<audioD*> tA,float d): tracceAudio(tA), diametro(d) {}
 vector<contenutoMultimediale*> cd::getTracce() const{
     vector<contenutoMultimediale*> ret;
     for(auto it=tracceAudio.begin(); it!=tracceAudio.end(); it++){
-        ret.push_back(it);
+        ret.push_back(*it);
     }
     return ret;
 }

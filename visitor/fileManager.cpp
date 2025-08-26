@@ -38,7 +38,6 @@ void fileManager::save(const vector<contenutoMultimediale*>& cInPossesso, const 
     QJsonDocument doc(root);
     file.write(doc.toJson());
     
-    std::cout << arr.empty() << std::endl;
     std::cout << doc.isEmpty() << std::endl;
     file.close();
     std::cout << doc.toJson().toStdString() << std::endl;
