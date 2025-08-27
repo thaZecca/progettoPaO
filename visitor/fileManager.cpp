@@ -66,11 +66,16 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
         QJsonObject obj = (*it).toObject();
         if(obj["tipo"].isString() && obj["tipo"].toString()=="audioD"){
             std::cout << *(fileManager::getAudioD(obj)) << std::endl ;
+        }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileAudio"){
+            std::cout << *(fileManager::getFileAudio(obj)) << std::endl;
         }
     }
 }
 
-audioD* fileManager::getAudioD(QJsonObject& o){
+/*getAudioD - costruisce l'oggetto audioD a partire dalla sua serializzazione in json
+@param o oggetto json da cui costruire l'oggetto audioD
+@return il puntatore all'oggetto costruito, nullptr altrimenti*/
+audioD* fileManager::getAudioD(const QJsonObject& o){
     audioD* ret = nullptr;
     if(o["titolo"].isString() && o["stereo"].isString() && 
             o["picPath"].isString() && o["casaProdutrice"].isString() && o["pubblicazione"].isDouble() && 
@@ -82,6 +87,26 @@ audioD* fileManager::getAudioD(QJsonObject& o){
                     num++;
                 }
                 ret = new audioD(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt());
+            }
+    return ret;
+}
+
+/*getFileAudio - costruisce l'oggetto fileAudio a partire dalla sua serializzazione in json
+@param o oggetto json da cui costruire l'oggetto fileAudio
+@return il puntatore all'oggetto costruito, nullptr altrimenti*/
+fileAudio* fileManager::getFileAudio(const QJsonObject& o){
+    fileAudio* ret = nullptr;
+    if(o["titolo"].isString() && o["stereo"].isString() && 
+            o["picPath"].isString() && o["casaProdutrice"].isString() && o["pubblicazione"].isDouble() && 
+            o["lossy"].isString() && o["estensione"].isString() && o["peso"].isDouble() && 
+            o["frequenza"].isDouble() && o["durata"].isDouble() && o["canali"].isDouble()){
+                vector<QString> autori;
+                int num=0;
+                while(o.contains(QString("autore%1").arg(num)) && o[QString("autore%1").arg(num)].isString()){
+                    autori.push_back(o[QString("autore%1").arg(num)].toString());
+                    num++;
+                }
+                ret = new fileAudio(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt(), o["lossy"].toString().toStdString() == "true", o["estensione"].toString());
             }
     return ret;
 }
