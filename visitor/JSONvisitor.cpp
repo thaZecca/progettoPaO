@@ -3,6 +3,7 @@
 #include "../model/include/supportoMultimediale.hpp"
 #include "../model/include/digitale.hpp"
 #include "../model/include/fileAudio.hpp"
+#include "../model/include/videoD.hpp"
 #include "../model/include/cd.hpp"
 
 /*toJsonCM - Trasforma il sottooggetto contenutoMultimediale in Json
@@ -33,7 +34,8 @@ void JSONvisitor::toJsonSM(const supportoMultimediale* sm){
     vector<contenutoMultimediale*> contenuti= sm -> getTracce();
     QJsonArray root;
     for(auto it=contenuti.begin(); it!=contenuti.end(); it++){
-        toJsonCM(*it); //mettere il visit!! Mancano le informazioni di audioD e videoD
+        if(dynamic_cast<audioD*>(*it)) visit(dynamic_cast<audioD*>(*it));
+        else visit(dynamic_cast<videoD*>(*it));
         root.append(jsonMedia);
     }
     jsonMedia = QJsonObject();

@@ -39,18 +39,28 @@
             "tracce": [
                 {
                     "autore0": "The Police",
+                    "canali": 2,
                     "casaProdutrice": "MJD Records",
                     "durata": 240,
+                    "frequenza": 44100,
+                    "peso": 1000,
                     "picPath": "pppolice",
                     "pubblicazione": 1977,
+                    "stereo": "true",
+                    "tipo": "audioD",
                     "titolo": "Message in a bottle"
                 },
                 {
                     "autore0": "Dire Straits",
+                    "canali": 2,
                     "casaProdutrice": "Vertigo Records",
                     "durata": 240,
+                    "frequenza": 44100,
+                    "peso": 100,
                     "picPath": "provapP",
                     "pubblicazione": 1978,
+                    "stereo": "true",
+                    "tipo": "audioD",
                     "titolo": "Sultans of Swing"
                 }
             ]
