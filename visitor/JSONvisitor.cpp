@@ -32,10 +32,11 @@ void JSONvisitor::toJsonDig(const digitale* dig){
 @param sm supporto multimediale da trasformare in json*/
 void JSONvisitor::toJsonSM(const supportoMultimediale* sm){
     vector<contenutoMultimediale*> contenuti= sm -> getTracce();
+    audioD* p = dynamic_cast<audioD*>(*contenuti.begin()); //so che il tipo dei supportiMultimediali è coerente (o solo file audio, o solo file video)
     QJsonArray root;
     for(auto it=contenuti.begin(); it!=contenuti.end(); it++){
-        if(dynamic_cast<audioD*>(*it)) visit(dynamic_cast<audioD*>(*it));
-        else visit(dynamic_cast<videoD*>(*it));
+        if(p) visit(static_cast<audioD*>(*it));
+        else visit(static_cast<videoD*>(*it));
         root.append(jsonMedia);
     }
     jsonMedia = QJsonObject();
