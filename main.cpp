@@ -1,7 +1,9 @@
 #include "./model/include/audioD.hpp"
 #include "./model/include/videoD.hpp"
 #include "./model/include/cd.hpp"
+#include "./model/include/dvd.hpp"
 #include "./model/include/fileAudio.hpp"
+#include "./model/include/fileVideo.hpp"
 #include "./model/include/contenutoMultimediale.hpp"
 #include "./visitor/include/fileManager.hpp"
 #include <QString>
@@ -38,7 +40,11 @@ int main(int argc, char* argv[]){
 
     videoD* police = new videoD("Message in a bottle - Video", "MJD Videos", {"Sting", "Andy Summers", "Steve Copland"}, 1977, 240, "pppolice", 1000, 60, true, "1920");
 
+    fileVideo* sff = new fileVideo("Strawberry fields forever - Video", "Apple Corps", {"Paul McCartney", "John Lennon", "George Harrison", "Ringo Starr"}, 1967, 240, "ppbeatles", 1000, 60, true, "1920", "mp4");
+
     cd* compilation = new cd(audio, 12);
+
+    dvd* MTV = new dvd({police, sff}, 12);
     
     vector<contenutoMultimediale*> cm;
     cm.push_back(sos);
@@ -46,10 +52,11 @@ int main(int argc, char* argv[]){
 
     vector<contenutoMultimediale*> prestati;
     prestati.push_back(police);
+    prestati.push_back(sff);
 
     fileManager manager(path);
 
-    manager.save(cm, prestati, {compilation}, {});
+    manager.save(cm, prestati, {compilation}, {MTV});
 
     return 0;
 }

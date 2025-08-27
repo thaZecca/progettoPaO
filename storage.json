@@ -45,6 +45,23 @@
             "risoluzione": "1920",
             "tipo": "videoD",
             "titolo": "Message in a bottle - Video"
+        },
+        {
+            "autore0": "Paul McCartney",
+            "autore1": "John Lennon",
+            "autore2": "George Harrison",
+            "autore3": "Ringo Starr",
+            "casaProdutrice": "Apple Corps",
+            "durata": 240,
+            "estensione": "mp4",
+            "fps": 60,
+            "peso": 1000,
+            "picPath": "ppbeatles",
+            "progressivo": "true",
+            "pubblicazione": 1967,
+            "risoluzione": "1920",
+            "tipo": "fileVideo",
+            "titolo": "Strawberry fields forever - Video"
         }
     ],
     "sInPossesso": [
@@ -82,5 +99,42 @@
         }
     ],
     "sInPrestito": [
+        {
+            "diametro": 12,
+            "tipo": "DVD",
+            "tracce": [
+                {
+                    "autore0": "Sting",
+                    "autore1": "Andy Summers",
+                    "autore2": "Steve Copland",
+                    "casaProdutrice": "MJD Videos",
+                    "durata": 240,
+                    "fps": 60,
+                    "peso": 1000,
+                    "picPath": "pppolice",
+                    "progressivo": "true",
+                    "pubblicazione": 1977,
+                    "risoluzione": "1920",
+                    "tipo": "videoD",
+                    "titolo": "Message in a bottle - Video"
+                },
+                {
+                    "autore0": "Paul McCartney",
+                    "autore1": "John Lennon",
+                    "autore2": "George Harrison",
+                    "autore3": "Ringo Starr",
+                    "casaProdutrice": "Apple Corps",
+                    "durata": 240,
+                    "fps": 60,
+                    "peso": 1000,
+                    "picPath": "ppbeatles",
+                    "progressivo": "true",
+                    "pubblicazione": 1967,
+                    "risoluzione": "1920",
+                    "tipo": "videoD",
+                    "titolo": "Strawberry fields forever - Video"
+                }
+            ]
+        }
     ]
 }

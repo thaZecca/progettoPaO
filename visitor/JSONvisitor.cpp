@@ -6,6 +6,7 @@
 #include "../model/include/videoD.hpp"
 #include "../model/include/fileVideo.hpp"
 #include "../model/include/cd.hpp"
+#include "../model/include/dvd.hpp"
 
 /*toJsonCM - Trasforma il sottooggetto contenutoMultimediale in Json
 @param cm contenuto multimediale da trasformare in json
@@ -74,6 +75,8 @@ void JSONvisitor::visit(cd* c){
     jsonMedia["diametro"] = c -> getDiametro();
 }
 
+/*visit - trasforma l'oggetto videoD in Json
+@param video videoD da trasformare in json*/
 void JSONvisitor::visit(videoD* video){
     jsonMedia = QJsonObject();
     toJsonCM(video);
@@ -84,12 +87,22 @@ void JSONvisitor::visit(videoD* video){
     jsonMedia["tipo"] = "videoD";
 }
 
+/*visit - trasforma l'oggetto fileVideo in Json
+@param fv fileVideo da trasformare in json*/
 void JSONvisitor::visit(fileVideo* fv){
     visit(static_cast<videoD*>(fv));
     jsonMedia["estensione"] = fv -> getEstensione();
+    jsonMedia["tipo"] = "fileVideo";
 }
 
-void JSONvisitor::visit(dvd* d){} 
+/*visit - trasforma l'oggetto dvd in Json
+@param d dvd da trasformare in json*/
+void JSONvisitor::visit(dvd* d){
+    jsonMedia = QJsonObject();
+    toJsonSM(d);
+    jsonMedia["tipo"] = "DVD";
+    jsonMedia["diametro"] = d -> getDiametro();
+} 
 
 /*getJson
 @return l'oggetto Json del singolo media*/
