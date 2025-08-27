@@ -4,6 +4,7 @@
 #include "../model/include/digitale.hpp"
 #include "../model/include/fileAudio.hpp"
 #include "../model/include/videoD.hpp"
+#include "../model/include/fileVideo.hpp"
 #include "../model/include/cd.hpp"
 
 /*toJsonCM - Trasforma il sottooggetto contenutoMultimediale in Json
@@ -83,7 +84,10 @@ void JSONvisitor::visit(videoD* video){
     jsonMedia["tipo"] = "videoD";
 }
 
-void JSONvisitor::visit(fileVideo* fv){}
+void JSONvisitor::visit(fileVideo* fv){
+    visit(static_cast<videoD*>(fv));
+    jsonMedia["estensione"] = fv -> getEstensione();
+}
 
 void JSONvisitor::visit(dvd* d){} 
 
