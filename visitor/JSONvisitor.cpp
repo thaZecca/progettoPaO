@@ -73,7 +73,15 @@ void JSONvisitor::visit(cd* c){
     jsonMedia["diametro"] = c -> getDiametro();
 }
 
-void JSONvisitor::visit(videoD* video){}
+void JSONvisitor::visit(videoD* video){
+    jsonMedia = QJsonObject();
+    toJsonCM(video);
+    toJsonDig(video);
+    jsonMedia["fps"] = static_cast<int>(video -> getFPS());
+    jsonMedia["progressivo"] = (video -> isProgressivo()?"true":"false");
+    jsonmedia["risoluzione"] = video -> getRisoluzione();
+    jsonMedia["tipo"] = "videoD";
+}
 
 void JSONvisitor::visit(fileVideo* fv){}
 
