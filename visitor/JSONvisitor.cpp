@@ -79,7 +79,7 @@ void JSONvisitor::visit(videoD* video){
     toJsonDig(video);
     jsonMedia["fps"] = static_cast<int>(video -> getFPS());
     jsonMedia["progressivo"] = (video -> isProgressivo()?"true":"false");
-    jsonmedia["risoluzione"] = video -> getRisoluzione();
+    jsonMedia["risoluzione"] = video -> getRisoluzione();
     jsonMedia["tipo"] = "videoD";
 }
 

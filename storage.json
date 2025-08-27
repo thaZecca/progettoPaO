@@ -31,6 +31,21 @@
         }
     ],
     "cInPrestito": [
+        {
+            "autore0": "Sting",
+            "autore1": "Andy Summers",
+            "autore2": "Steve Copland",
+            "casaProdutrice": "MJD Videos",
+            "durata": 240,
+            "fps": 60,
+            "peso": 1000,
+            "picPath": "pppolice",
+            "progressivo": "true",
+            "pubblicazione": 1977,
+            "risoluzione": "1920",
+            "tipo": "videoD",
+            "titolo": "Message in a bottle - Video"
+        }
     ],
     "sInPossesso": [
         {

@@ -1,4 +1,5 @@
 #include "./model/include/audioD.hpp"
+#include "./model/include/videoD.hpp"
 #include "./model/include/cd.hpp"
 #include "./model/include/fileAudio.hpp"
 #include "./model/include/contenutoMultimediale.hpp"
@@ -35,7 +36,7 @@ int main(int argc, char* argv[]){
     audio.push_back(mib);
     audio.push_back(sos);
 
-    videoD* police = new videoD("Message in a bottle - Video", "MJD Videos", {"Sting", "Andy Summers", "Steve Copland"}, 1977, 240, "pppolice", 1000, 60, true, 1920);
+    videoD* police = new videoD("Message in a bottle - Video", "MJD Videos", {"Sting", "Andy Summers", "Steve Copland"}, 1977, 240, "pppolice", 1000, 60, true, "1920");
 
     cd* compilation = new cd(audio, 12);
     
