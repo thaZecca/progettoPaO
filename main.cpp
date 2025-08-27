@@ -35,17 +35,20 @@ int main(int argc, char* argv[]){
     audio.push_back(mib);
     audio.push_back(sos);
 
+    videoD* police = new videoD("Message in a bottle - Video", "MJD Videos", {"Sting", "Andy Summers", "Steve Copland"}, 1977, 240, "pppolice", 1000, 60, true, 1920);
+
     cd* compilation = new cd(audio, 12);
     
     vector<contenutoMultimediale*> cm;
     cm.push_back(sos);
     cm.push_back(mfn);
 
-    vector<contenutoMultimediale*> vuoto;
+    vector<contenutoMultimediale*> prestati;
+    prestati.push_back(police);
 
     fileManager manager(path);
 
-    manager.save(cm, vuoto, {compilation}, {});
+    manager.save(cm, prestati, {compilation}, {});
 
     return 0;
 }
