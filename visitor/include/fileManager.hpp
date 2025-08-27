@@ -7,6 +7,8 @@
 #include "../../model/include/supportoMultimediale.hpp"
 #include "../../model/include/audioD.hpp"
 #include "../../model/include/fileAudio.hpp"
+#include "../../model/include/videoD.hpp"
+#include "../../model/include/fileVideo.hpp"
 #include "JSONvisitor.hpp"
 #include <QString>
 #include <QJsonDocument>

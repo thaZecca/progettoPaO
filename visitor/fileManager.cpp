@@ -58,18 +58,34 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
         qWarning("Errore nella composizione del file JSON");
         return;
     }
-
     QJsonObject root = doc.object();
-    QJsonArray cInPoss = root["cInPossesso"].toArray();
 
+    QJsonArray cInPoss = root["cInPossesso"].toArray();
     for(auto it=cInPoss.begin(); it!=cInPoss.end(); it++){
         QJsonObject obj = (*it).toObject();
         if(obj["tipo"].isString() && obj["tipo"].toString()=="audioD"){
-            std::cout << *(fileManager::getAudioD(obj)) << std::endl ;
+            cInPossesso.push_back(fileManager::getAudioD(obj));
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileAudio"){
-            std::cout << *(fileManager::getFileAudio(obj)) << std::endl;
+            cInPossesso.push_back(fileManager::getFileAudio(obj));
+        }else if(obj["tipo"].isString() && obj["tipo"].toString()=="videoD"){
+            cInPossesso.push_back(fileManager::getVideoD(obj));
         }
     }
+
+    QJsonArray cInPres = root["cInPrestito"].toArray();
+    for(auto it=cInPres.begin(); it!=cInPres.end(); it++){
+        QJsonObject obj = (*it).toObject();
+        if(obj["tipo"].isString() && obj["tipo"].toString()=="audioD"){
+            cInPrestito.push_back(fileManager::getAudioD(obj));
+        }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileAudio"){
+            cInPrestito.push_back(fileManager::getFileAudio(obj));
+        }else if(obj["tipo"].isString() && obj["tipo"].toString()=="videoD"){
+            cInPrestito.push_back(fileManager::getVideoD(obj));
+        }
+    }
+
+    QJsonArray sInPoss = root["sInPossesso"].toArray();
+
 }
 
 /*getAudioD - costruisce l'oggetto audioD a partire dalla sua serializzazione in json
@@ -109,4 +125,24 @@ fileAudio* fileManager::getFileAudio(const QJsonObject& o){
                 ret = new fileAudio(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt(), o["lossy"].toString().toStdString() == "true", o["estensione"].toString());
             }
     return ret;
+}
+
+/*getVideoD - costruisce l'oggetto videoD a partire dalla sua serializzazione in json
+@param o oggetto json da cui costruire l'oggetto videoD
+@return il puntatore all'oggetto costruito, nullptr altrimenti*/
+videoD* fileManager::getVideoD(const QJsonObject& o){
+    videoD* ret = nullptr;
+    if(o["titolo"].isString() && o["stereo"].isString() && 
+            o["picPath"].isString() && o["casaProdutrice"].isString() && o["pubblicazione"].isDouble() && 
+            o["progressivo"].isString() && o["risoluzione"].isString() && o["peso"].isDouble() && 
+            o["frequenza"].isDouble() && o["durata"].isDouble() && o["fps"].isDouble()){
+                vector<QString> autori;
+                int num=0;
+                while(o.contains(QString("autore%1").arg(num)) && o[QString("autore%1").arg(num)].isString()){
+                    autori.push_back(o[QString("autore%1").arg(num)].toString());
+                    num++;
+                }
+                ret = new videoD(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString());
+            }
+        return ret;
 }
