@@ -24,7 +24,7 @@ int main(int argc, char* argv[]){
         dir.cdUp();
     #endif
     QString path = dir.filePath("storage.json");
-
+    /*
     vector<QString> a;
     a.push_back("Dire Straits");
     audioD* sos = new audioD("Sultans of Swing", "Vertigo Records", a, 1978, 240, "provapP", 100, 44100, true, 2);
@@ -52,11 +52,18 @@ int main(int argc, char* argv[]){
 
     vector<contenutoMultimediale*> prestati;
     prestati.push_back(police);
-    prestati.push_back(sff);
+    prestati.push_back(sff);*/
 
     fileManager manager(path);
 
-    manager.save(cm, prestati, {compilation}, {MTV});
+    //manager.save(cm, prestati, {compilation}, {MTV});
+
+    vector<contenutoMultimediale*> uno;
+    vector<contenutoMultimediale*> due;
+    vector<supportoMultimediale*> tre;
+    vector<supportoMultimediale*> quattro;
+
+    manager.load(uno,due, tre, quattro);
 
     return 0;
 }

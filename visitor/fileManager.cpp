@@ -4,7 +4,7 @@ fileManager::fileManager(QString path): file(path) {}
 
 void fileManager::save(const vector<contenutoMultimediale*>& cInPossesso, const vector<contenutoMultimediale*>& cInPrestito, const vector<supportoMultimediale*>& sInPossesso, const vector<supportoMultimediale*>& sInPrestito){
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
-        std::cerr << ("\n\n\nCouldn't find the file.\n\n\n");
+        std::cerr << "Errore nell'apertura del file per la scrittura!" << std::endl;
         return;
     }
     
@@ -43,6 +43,45 @@ void fileManager::save(const vector<contenutoMultimediale*>& cInPossesso, const 
     std::cout << doc.toJson().toStdString() << std::endl;
 }
 
-void fileManager::load(vector<contenutoMultimediale*>& contenuti, vector<contenutoMultimediale*>& prestati){
+void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<contenutoMultimediale*>& cInPrestito, vector<supportoMultimediale*>& sInPossesso, vector<supportoMultimediale*>& sInPrestito){
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        std::cerr << "Errore nell'apertura del file per la lettura!" << std::endl;
+        return;
+    }
 
+    QByteArray dati = file.readAll(); //leggo tutto
+    file.close(); //chiudo il file perchè non mi serve più
+
+    QJsonDocument doc(QJsonDocument::fromJson(dati));
+
+    if(!doc.isObject()){
+        qWarning("Errore nella composizione del file JSON");
+        return;
+    }
+
+    QJsonObject root = doc.object();
+    QJsonArray cInPoss = root["cInPossesso"].toArray();
+
+    for(auto it=cInPoss.begin(); it!=cInPoss.end(); it++){
+        QJsonObject obj = (*it).toObject();
+        if(obj["tipo"].isString() && obj["tipo"].toString()=="audioD"){
+            std::cout << *(fileManager::getAudioD(obj)) << std::endl ;
+        }
+    }
+}
+
+audioD* fileManager::getAudioD(QJsonObject& o){
+    audioD* ret = nullptr;
+    if(o["titolo"].isString() && o["stereo"].isString() && 
+            o["picPath"].isString() && o["casaProdutrice"].isString() && o["pubblicazione"].isDouble() && 
+            o["peso"].isDouble() && o["frequenza"].isDouble() && o["durata"].isDouble() && o["canali"].isDouble()){
+                vector<QString> autori;
+                int num=0;
+                while(o.contains(QString("autore%1").arg(num)) && o[QString("autore%1").arg(num)].isString()){
+                    autori.push_back(o[QString("autore%1").arg(num)].toString());
+                    num++;
+                }
+                ret = new audioD(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt());
+            }
+    return ret;
 }
