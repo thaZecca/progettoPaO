@@ -69,6 +69,8 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
             cInPossesso.push_back(fileManager::getFileAudio(obj));
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="videoD"){
             cInPossesso.push_back(fileManager::getVideoD(obj));
+        }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileVideo"){
+            cInPossesso.push_back(fileManager::getFileVideo(obj));
         }
     }
 
@@ -81,6 +83,8 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
             cInPrestito.push_back(fileManager::getFileAudio(obj));
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="videoD"){
             cInPrestito.push_back(fileManager::getVideoD(obj));
+        }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileVideo"){
+            cInPrestito.push_back(fileManager::getFileVideo(obj));
         }
     }
 
@@ -143,6 +147,26 @@ videoD* fileManager::getVideoD(const QJsonObject& o){
                     num++;
                 }
                 ret = new videoD(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString());
+            }
+        return ret;
+}
+
+/*getFileVideo - costruisce l'oggetto fileVideo a partire dalla sua serializzazione in json
+@param o oggetto json da cui costruire l'oggetto fileVideo
+@return il puntatore all'oggetto costruito, nullptr altrimenti*/
+fileVideo* fileManager::getFileVideo(const QJsonObject& o){
+    fileVideo* ret = nullptr;
+    if(o["titolo"].isString() && o["stereo"].isString() && 
+            o["picPath"].isString() && o["casaProdutrice"].isString() && o["pubblicazione"].isDouble() && 
+            o["progressivo"].isString() && o["risoluzione"].isString() && o["peso"].isDouble() && 
+            o["frequenza"].isDouble() && o["durata"].isDouble() && o["fps"].isDouble() && o["estensione"].isString()){
+                vector<QString> autori;
+                int num=0;
+                while(o.contains(QString("autore%1").arg(num)) && o[QString("autore%1").arg(num)].isString()){
+                    autori.push_back(o[QString("autore%1").arg(num)].toString());
+                    num++;
+                }
+                ret = new fileVideo(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString(), o["estensione"].toString());
             }
         return ret;
 }
