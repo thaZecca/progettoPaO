@@ -1,6 +1,6 @@
 #include "./include/fileManager.hpp"
 
-fileManager::fileManager(QString path): file(path) {std::cout<< "ciaooo2";} 
+fileManager::fileManager(QString path): file(path) {} 
 
 void fileManager::save(const vector<contenutoMultimediale*>& cInPossesso, const vector<contenutoMultimediale*>& cInPrestito, const vector<supportoMultimediale*>& sInPossesso, const vector<supportoMultimediale*>& sInPrestito){
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
