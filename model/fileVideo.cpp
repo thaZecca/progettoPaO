@@ -8,6 +8,9 @@
 @param d durata espressa in secondi
 @param pP percorso dell'immagine
 @param p peso del fileVideo digitale espresso in MB
+@param f fps del fileVideo
+@param isP true se il fileVideo è progressivo, false altrimenti
+@param r risoluzione del fileVideo
 @param e estensione del fileVideo
 */
 fileVideo::fileVideo(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP, float p, unsigned int f, bool isP, QString r, QString e): videoD(t,cP,a,aDPubb,d,pP,p,f,isP,r), estensione(e) {}
@@ -24,7 +27,7 @@ void fileVideo::setEstensione(QString e){
     estensione = e;
 }
 
-/*accept
+/*accept - design pattern per accedere all'oggetto
 @param v visitor*/
 void fileVideo::accept(visitorCMultimediale& v){
     v.visit(this);

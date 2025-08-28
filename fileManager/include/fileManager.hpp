@@ -11,7 +11,7 @@
 #include "../../model/include/fileVideo.hpp"
 #include "../../model/include/cd.hpp"
 #include "../../model/include/dvd.hpp"
-#include "JSONvisitor.hpp"
+#include "../../visitor/include/JSONvisitor.hpp"
 #include <QString>
 #include <QJsonDocument>
 #include <QJsonArray>

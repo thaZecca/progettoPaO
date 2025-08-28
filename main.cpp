@@ -5,7 +5,7 @@
 #include "./model/include/fileAudio.hpp"
 #include "./model/include/fileVideo.hpp"
 #include "./model/include/contenutoMultimediale.hpp"
-#include "./visitor/include/fileManager.hpp"
+#include "./fileManager/include/fileManager.hpp"
 #include <QString>
 #include <vector>
 #include <iostream>

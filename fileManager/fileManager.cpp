@@ -1,7 +1,14 @@
 #include "./include/fileManager.hpp"
 
+/*Costruttore parametrico completo
+@param path percorso per istanziare l'oggetto file*/
 fileManager::fileManager(QString path): file(path) {} 
 
+/*save - salva i contenuti multimediali e i supporti multimediali sul file locale json
+@param cInPossesso vettore di puntatori ai contenuti multimediali in possesso
+@param cInPrestito vettore di puntatori ai contenuti multimediali in prestito
+@param sInPossesso vettore di puntatori ai supporti multimediali in possesso
+@param sInPrestito vettore di puntatori ai supporto multimediali in prestito*/
 void fileManager::save(const vector<contenutoMultimediale*>& cInPossesso, const vector<contenutoMultimediale*>& cInPrestito, const vector<supportoMultimediale*>& sInPossesso, const vector<supportoMultimediale*>& sInPrestito){
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
         std::cerr << "Errore nell'apertura del file per la scrittura!" << std::endl;
@@ -43,6 +50,11 @@ void fileManager::save(const vector<contenutoMultimediale*>& cInPossesso, const 
     std::cout << doc.toJson().toStdString() << std::endl;
 }
 
+/*load - caricamento dei contenuti multimediali e dei supporti multimediali da file locale json
+@param cInPossesso vettore di puntatori ai contenuti multimediali che saranno in possesso
+@param cInPrestito vettore di puntatori ai contenuti multimediali che saranno in prestito
+@param sInPossesso vettore di puntatori ai supporti multimediali che saranno in possesso
+@param sInPrestito vettore di puntatori ai supporto multimediali che saranno in prestito*/
 void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<contenutoMultimediale*>& cInPrestito, vector<supportoMultimediale*>& sInPossesso, vector<supportoMultimediale*>& sInPrestito){
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
         std::cerr << "Errore nell'apertura del file per la lettura!" << std::endl;

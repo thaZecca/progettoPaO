@@ -2,7 +2,7 @@
 #define SUPP_MULT_HPP
 
 #include "digitale.hpp"
-#include "../../visitor/visitorCMultimediale.hpp"
+#include "../../visitor/include/visitorCMultimediale.hpp"
 #include <vector>
 
 using std::vector;

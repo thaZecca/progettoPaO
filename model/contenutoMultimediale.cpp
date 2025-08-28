@@ -11,6 +11,7 @@
 @param pP percorso dell'immagine*/
 contenutoMultimediale::contenutoMultimediale(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP): titolo(t), casaProduttrice(cP), autori(a), annoDiPubblicazione(aDPubb), durataSecondi(d), picPath(pP) {}
 
+/*Distruttore per evitare undefined symbols*/
 contenutoMultimediale::~contenutoMultimediale() {}
 
 /*getTitolo
@@ -93,6 +94,9 @@ void contenutoMultimediale::setPicPath(const QString& pP){
     picPath=pP;
 }
 
+/*operator<< esterno
+@param os stream di output
+@param c contenutoMultimediale da stampare*/
 ostream& operator<<(ostream& os, const contenutoMultimediale& c){
     os << c.titolo.toStdString() << " - " << c.casaProduttrice.toStdString() << " - " "Pubblicazione: " << std::to_string(c.annoDiPubblicazione) << "\n";
     os << "Autori: ";

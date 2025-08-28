@@ -1,7 +1,7 @@
 #include "./include/cd.hpp"
 
 /*Costruttore parametrico di CD
-@param tA tracce audio da masterizzare nel CD
+@param tA puntatori a tracce audio da masterizzare nel CD
 @param d diametro del CD in centimetri*/
 cd::cd(vector<audioD*> tA,float d): tracceAudio(tA), diametro(d) {}
 
@@ -36,10 +36,15 @@ void cd::setDiametro(float d){
     diametro=d;
 }
 
+/*accept - design pattern per accedere all'oggetto
+@param v visitor*/
 void cd::accept(visitorCMultimediale& v){
     v.visit(this);
 }
 
+/*operator<< esterno
+@param os stream di output
+@param c cd da stampare*/
 ostream& operator<<(ostream& os, const cd& c){
     for(auto iterTa = c.tracceAudio.begin(); iterTa != c.tracceAudio.end(); iterTa++){
         os << *(*iterTa) << std::endl;

@@ -1,4 +1,4 @@
-#include "include/JSONvisitor.hpp"
+#include "../fileManager/include/fileManager.hpp"
 #include "../model/include/contenutoMultimediale.hpp"
 #include "../model/include/supportoMultimediale.hpp"
 #include "../model/include/digitale.hpp"
@@ -106,6 +106,6 @@ void JSONvisitor::visit(dvd* d){
 
 /*getJson
 @return l'oggetto Json del singolo media*/
-QJsonObject& JSONvisitor::getJson(){
+QJsonObject& JSONvisitor::getJson() const{
     return jsonMedia;
 }

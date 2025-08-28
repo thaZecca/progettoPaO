@@ -8,6 +8,9 @@
 @param d durata espressa in secondi
 @param pP percorso dell'immagine
 @param p peso del contenuto multimediale digitale espresso in MB
+@param f fps del video digitale
+@param isP true se il video è progressivo, false altrimenti
+@param r risoluzione del video
 */
 videoD::videoD(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP, float p, unsigned int f, bool isP, QString r): digitale(t,cP,a,aDPubb,d,pP,p), fps(f), progressivo(isP), risoluzione(r) {}
 
@@ -47,6 +50,8 @@ void videoD::setRisoluzione(QString r){
     risoluzione = r;
 }
 
+/*accept - design pattern per accedere all'oggetto
+@param v visitor*/
 void videoD::accept(visitorCMultimediale& v){
     v.visit(this);
 }

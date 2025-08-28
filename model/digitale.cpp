@@ -23,6 +23,9 @@ void digitale::setPeso(float p){
     peso = p;
 }
 
+/*operator<< esterno
+@param os stream di output
+@param d contenutoMultimediale digitale da stampare*/
 ostream& operator<<(ostream& os, const digitale& d){
     operator<<(os,static_cast<const contenutoMultimediale&>(d));
     os << "\n" << "Peso: " << std::to_string(d.peso) << "MB";

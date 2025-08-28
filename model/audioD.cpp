@@ -49,11 +49,15 @@ void audioD::setNumeroCanali(unsigned int nC){
     numeroCanali = nC;
 }
 
-/*accept -  design pattern per */
+/*accept -  design pattern per accedere all'ggetto
+@param v visitor*/
 void audioD::accept(visitorCMultimediale& v){
     v.visit(this);
 }
 
+/*operator<< esterno
+@param os stream di output
+@param aD audioD da stampare*/
 ostream& operator<<(ostream& os, const audioD& aD){
     operator<<(os,static_cast<const digitale&>(aD));
     os << "\n" << "Freq. camp. " << std::to_string(aD.frequenzaCampionamento) << ", " << (aD.stereo?"stereo":"mono") << "\n" << "Numero canali: " << std::to_string(aD.numeroCanali);

@@ -53,6 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
+		fileManager/fileManager.cpp \
 		model/audioD.cpp \
 		model/cd.cpp \
 		model/contenutoMultimediale.cpp \
@@ -61,9 +62,9 @@ SOURCES       = main.cpp \
 		model/fileAudio.cpp \
 		model/fileVideo.cpp \
 		model/videoD.cpp \
-		visitor/fileManager.cpp \
 		visitor/JSONvisitor.cpp 
 OBJECTS       = main.o \
+		fileManager.o \
 		audioD.o \
 		cd.o \
 		contenutoMultimediale.o \
@@ -72,7 +73,6 @@ OBJECTS       = main.o \
 		fileAudio.o \
 		fileVideo.o \
 		videoD.o \
-		fileManager.o \
 		JSONvisitor.o
 DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/device_config.prf \
@@ -415,7 +415,6 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/qt_config.prf \
 		/opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf \
 		/opt/homebrew/share/qt/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/opt/homebrew/share/qt/mkspecs/features/exclusive_builds.prf \
 		/opt/homebrew/share/qt/mkspecs/features/mac/sdk.prf \
 		/opt/homebrew/share/qt/mkspecs/features/toolchain.prf \
@@ -444,7 +443,7 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/exceptions.prf \
 		/opt/homebrew/share/qt/mkspecs/features/yacc.prf \
 		/opt/homebrew/share/qt/mkspecs/features/lex.prf \
-		progetto.pro visitor/visitorCMultimediale.hpp \
+		progetto.pro fileManager/include/fileManager.hpp \
 		model/include/audioD.hpp \
 		model/include/cd.hpp \
 		model/include/contenutoMultimediale.hpp \
@@ -452,9 +451,11 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		model/include/dvd.hpp \
 		model/include/fileAudio.hpp \
 		model/include/fileVideo.hpp \
+		model/include/supportoMultimediale.hpp \
 		model/include/videoD.hpp \
-		visitor/include/fileManager.hpp \
-		visitor/include/JSONvisitor.hpp main.cpp \
+		visitor/include/JSONvisitor.hpp \
+		visitor/include/visitorCMultimediale.hpp main.cpp \
+		fileManager/fileManager.cpp \
 		model/audioD.cpp \
 		model/cd.cpp \
 		model/contenutoMultimediale.cpp \
@@ -463,7 +464,6 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		model/fileAudio.cpp \
 		model/fileVideo.cpp \
 		model/videoD.cpp \
-		visitor/fileManager.cpp \
 		visitor/JSONvisitor.cpp
 QMAKE_TARGET  = progetto
 DESTDIR       = 
@@ -473,7 +473,7 @@ TARGET        = progetto.app/Contents/MacOS/progetto
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 15.5
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
-EXPORT__QMAKE_STASH_ = /Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto/.qmake.stash
+EXPORT__QMAKE_STASH_ = 
 EXPORT_VALID_ARCHS = arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -830,7 +830,6 @@ Makefile: progetto.pro /opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf /opt
 		/opt/homebrew/share/qt/mkspecs/features/qt_config.prf \
 		/opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf \
 		/opt/homebrew/share/qt/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/opt/homebrew/share/qt/mkspecs/features/exclusive_builds.prf \
 		/opt/homebrew/share/qt/mkspecs/features/mac/sdk.prf \
 		/opt/homebrew/share/qt/mkspecs/features/toolchain.prf \
@@ -1205,7 +1204,6 @@ Makefile: progetto.pro /opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf /opt
 /opt/homebrew/share/qt/mkspecs/features/qt_config.prf:
 /opt/homebrew/share/qt/mkspecs/macx-clang/qmake.conf:
 /opt/homebrew/share/qt/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /opt/homebrew/share/qt/mkspecs/features/exclusive_builds.prf:
 /opt/homebrew/share/qt/mkspecs/features/mac/sdk.prf:
 /opt/homebrew/share/qt/mkspecs/features/toolchain.prf:
@@ -1263,8 +1261,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents visitor/visitorCMultimediale.hpp model/include/audioD.hpp model/include/cd.hpp model/include/contenutoMultimediale.hpp model/include/digitale.hpp model/include/dvd.hpp model/include/fileAudio.hpp model/include/fileVideo.hpp model/include/videoD.hpp visitor/include/fileManager.hpp visitor/include/JSONvisitor.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp model/audioD.cpp model/cd.cpp model/contenutoMultimediale.cpp model/digitale.cpp model/dvd.cpp model/fileAudio.cpp model/fileVideo.cpp model/videoD.cpp visitor/fileManager.cpp visitor/JSONvisitor.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents fileManager/include/fileManager.hpp model/include/audioD.hpp model/include/cd.hpp model/include/contenutoMultimediale.hpp model/include/digitale.hpp model/include/dvd.hpp model/include/fileAudio.hpp model/include/fileVideo.hpp model/include/supportoMultimediale.hpp model/include/videoD.hpp visitor/include/JSONvisitor.hpp visitor/include/visitorCMultimediale.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp fileManager/fileManager.cpp model/audioD.cpp model/cd.cpp model/contenutoMultimediale.cpp model/digitale.cpp model/dvd.cpp model/fileAudio.cpp model/fileVideo.cpp model/videoD.cpp visitor/JSONvisitor.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1274,7 +1272,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r progetto.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -1324,32 +1321,63 @@ main.o: main.cpp model/include/audioD.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
-		visitor/include/fileManager.hpp \
-		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
-		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
-		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
-		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
-		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
+		model/include/videoD.hpp \
+		model/include/cd.hpp \
+		model/include/supportoMultimediale.hpp \
+		model/include/dvd.hpp \
+		model/include/fileAudio.hpp \
+		model/include/fileVideo.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
+
+fileManager.o: fileManager/fileManager.cpp fileManager/include/fileManager.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		model/include/contenutoMultimediale.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		visitor/include/visitorCMultimediale.hpp \
+		visitor/include/JSONvisitor.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
+		model/include/supportoMultimediale.hpp \
+		model/include/digitale.hpp \
+		model/include/audioD.hpp \
+		model/include/fileAudio.hpp \
+		model/include/videoD.hpp \
+		model/include/fileVideo.hpp \
+		model/include/cd.hpp \
+		model/include/dvd.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QByteArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qbytearray.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
+		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fileManager.o fileManager/fileManager.cpp
 
 audioD.o: model/audioD.cpp model/include/audioD.hpp \
 		model/include/digitale.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o audioD.o model/audioD.cpp
 
 cd.o: model/cd.cpp model/include/cd.hpp \
@@ -1358,41 +1386,51 @@ cd.o: model/cd.cpp model/include/cd.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
+		model/include/supportoMultimediale.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cd.o model/cd.cpp
 
 contenutoMultimediale.o: model/contenutoMultimediale.cpp model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o contenutoMultimediale.o model/contenutoMultimediale.cpp
 
 digitale.o: model/digitale.cpp model/include/digitale.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o digitale.o model/digitale.cpp
 
 dvd.o: model/dvd.cpp model/include/dvd.hpp \
-		model/include/videoD.hpp \
+		model/include/supportoMultimediale.hpp \
 		model/include/digitale.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
+		model/include/videoD.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dvd.o model/dvd.cpp
 
 fileAudio.o: model/fileAudio.cpp model/include/fileAudio.hpp \
@@ -1401,10 +1439,12 @@ fileAudio.o: model/fileAudio.cpp model/include/fileAudio.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fileAudio.o model/fileAudio.cpp
 
 fileVideo.o: model/fileVideo.cpp model/include/fileVideo.hpp \
@@ -1413,10 +1453,12 @@ fileVideo.o: model/fileVideo.cpp model/include/fileVideo.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fileVideo.o model/fileVideo.cpp
 
 videoD.o: model/videoD.cpp model/include/videoD.hpp \
@@ -1424,41 +1466,40 @@ videoD.o: model/videoD.cpp model/include/videoD.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o videoD.o model/videoD.cpp
 
-fileManager.o: visitor/fileManager.cpp visitor/include/fileManager.hpp \
+JSONvisitor.o: visitor/JSONvisitor.cpp fileManager/include/fileManager.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
 		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
+		visitor/include/visitorCMultimediale.hpp \
 		visitor/include/JSONvisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
-		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
+		model/include/supportoMultimediale.hpp \
+		model/include/digitale.hpp \
+		model/include/audioD.hpp \
+		model/include/fileAudio.hpp \
+		model/include/videoD.hpp \
+		model/include/fileVideo.hpp \
+		model/include/cd.hpp \
+		model/include/dvd.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QByteArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qbytearray.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
 		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fileManager.o visitor/fileManager.cpp
-
-JSONvisitor.o: visitor/JSONvisitor.cpp visitor/include/JSONvisitor.hpp \
-		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
-		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
-		/opt/homebrew/lib/QtCore.framework/Headers/QString \
-		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
-		visitor/visitorCMultimediale.hpp \
-		model/include/contenutoMultimediale.hpp \
-		model/include/digitale.hpp \
-		model/include/fileAudio.hpp \
-		model/include/audioD.hpp \
-		model/include/cd.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o JSONvisitor.o visitor/JSONvisitor.cpp
 
 ####### Install

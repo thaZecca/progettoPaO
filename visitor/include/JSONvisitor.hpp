@@ -5,7 +5,7 @@
 #include <QJsonArray>
 #include <QString>
 #include <vector>
-#include "../visitorCMultimediale.hpp"
+#include "./visitorCMultimediale.hpp"
 
 class digitale;
 class supportoMultimediale;
@@ -26,7 +26,7 @@ public:
     void visit(videoD*) override;
     void visit(fileVideo*) override;
     void visit(dvd*) override;
-    QJsonObject& getJson();
+    QJsonObject& getJson() const;
 };
 
 #endif

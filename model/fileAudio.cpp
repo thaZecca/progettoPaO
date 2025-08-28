@@ -39,12 +39,15 @@ void fileAudio::setEstensione(QString e){
     estensione = e;
 }
 
-/*accept
+/*accept - design pattern per accedere all'oggetto
 @param v visitor*/
 void fileAudio::accept(visitorCMultimediale& v){
     v.visit(this);
 }
 
+/*operator<< esterno
+@param os stream di output
+@param fA fileAudio da stampare*/
 ostream& operator<<(ostream& os, const fileAudio& fA){
     operator<<(os, static_cast<const audioD&>(fA));
     os << "\nFILE AUDIO!!" << "\n" << "Estensione: " << fA.estensione.toStdString() << "\n" << (fA.lossy?"Lossy":"Lossless");
