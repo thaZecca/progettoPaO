@@ -177,6 +177,9 @@ fileVideo* fileManager::getFileVideo(const QJsonObject& o){
         return ret;
 }
 
+/*getCD - costruisce l'oggetto CD a partire dalla sua serializzazione in Json
+@param o serializzazione json dell'oggetto CD
+@return il puntatore all'oggetto costruito, nullptr altrimenti*/
 cd* fileManager::getCD(const QJsonObject& o){
     cd* ret = nullptr;
     if(o["diametro"].isDouble()){
