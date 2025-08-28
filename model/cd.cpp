@@ -42,7 +42,7 @@ void cd::accept(visitorCMultimediale& v){
 
 ostream& operator<<(ostream& os, const cd& c){
     for(auto iterTa = c.tracceAudio.begin(); iterTa != c.tracceAudio.end(); iterTa++){
-        os << (*iterTa) << std::endl;
+        os << *(*iterTa) << std::endl;
     }
     os << std::to_string(c.diametro) << "cm";
     return os;
