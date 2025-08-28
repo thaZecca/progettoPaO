@@ -64,12 +64,12 @@ int main(int argc, char* argv[]){
     vector<supportoMultimediale*> quattro;
 
     manager.load(uno,due, tre, quattro);
-
+/*
     for(auto i=uno.begin(); i!=uno.end(); i++)
         std::cout << *(*i) << std::endl;
 
     for(auto i=due.begin(); i!=due.end(); i++)
-        std::cout << *(*i) << std::endl;
+        std::cout << *(*i) << std::endl;*/
 
     return 0;
 }

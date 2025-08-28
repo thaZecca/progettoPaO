@@ -42,7 +42,7 @@ void dvd::accept(visitorCMultimediale& v){
 
 ostream& operator<<(ostream& os, const dvd& d){
     for(auto iter = d.tracceVideo.begin(); iter != d.tracceVideo.end(); iter++){
-        os << (*iter) << std::endl;
+        os << *(*iter) << std::endl;
     }
     os << d.diametro << "cm";
     return os;

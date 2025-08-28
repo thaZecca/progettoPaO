@@ -93,6 +93,18 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
         QJsonObject obj = (*it).toObject();
         if(obj["tipo"].isString() && obj["tipo"].toString()=="CD"){
             std::cout << *fileManager::getCD(obj) << std::endl;
+        }else if(obj["tipo"].isString() && obj["tipo"].toString()=="DVD"){
+            std::cout << *fileManager::getDVD(obj) << std::endl;
+        }
+    }
+
+    QJsonArray sInPres = root["sInPrestito"].toArray();
+    for(auto it=sInPres.begin(); it!=sInPres.end(); it++){
+        QJsonObject obj = (*it).toObject();
+        if(obj["tipo"].isString() && obj["tipo"].toString()=="CD"){
+            std::cout << *fileManager::getCD(obj) << std::endl;
+        }else if(obj["tipo"].isString() && obj["tipo"].toString()=="DVD"){
+            std::cout << *fileManager::getDVD(obj) << std::endl;
         }
     }
 
@@ -112,7 +124,7 @@ audioD* fileManager::getAudioD(const QJsonObject& o){
                     autori.push_back(o[QString("autore%1").arg(num)].toString());
                     num++;
                 }
-                ret = new audioD(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt());
+                ret = new audioD(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), o["peso"].toDouble(), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt());
             }
     return ret;
 }
@@ -132,7 +144,7 @@ fileAudio* fileManager::getFileAudio(const QJsonObject& o){
                     autori.push_back(o[QString("autore%1").arg(num)].toString());
                     num++;
                 }
-                ret = new fileAudio(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt(), o["lossy"].toString().toStdString() == "true", o["estensione"].toString());
+                ret = new fileAudio(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), o["peso"].toDouble(), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt(), o["lossy"].toString().toStdString() == "true", o["estensione"].toString());
             }
     return ret;
 }
@@ -152,7 +164,7 @@ videoD* fileManager::getVideoD(const QJsonObject& o){
                     autori.push_back(o[QString("autore%1").arg(num)].toString());
                     num++;
                 }
-                ret = new videoD(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString());
+                ret = new videoD(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), o["peso"].toDouble(), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString());
             }
         return ret;
 }
@@ -172,7 +184,7 @@ fileVideo* fileManager::getFileVideo(const QJsonObject& o){
                     autori.push_back(o[QString("autore%1").arg(num)].toString());
                     num++;
                 }
-                ret = new fileVideo(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), static_cast<float>(o["peso"].toDouble()), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString(), o["estensione"].toString());
+                ret = new fileVideo(o["titolo"].toString(), o["casaProdutrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), o["peso"].toDouble(), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString(), o["estensione"].toString());
             }
         return ret;
 }
@@ -192,6 +204,23 @@ cd* fileManager::getCD(const QJsonObject& o){
             }
         }
         ret = new cd(tracceAudio, o["diametro"].toDouble());
+    }
+    return ret;
+}
+
+
+dvd* fileManager::getDVD(const QJsonObject& o){
+    dvd* ret = nullptr;
+    if(o["diametro"].isDouble()){
+        vector<videoD*> tracceVideo;
+        QJsonArray tracce = o["tracce"].toArray();
+        for(auto it = tracce.begin(); it!=tracce.end(); it++){
+            if((*it).isObject()){
+                videoD* ptr = fileManager::getVideoD((*it).toObject());
+                if(ptr) tracceVideo.push_back(ptr);
+            }
+        }
+        ret = new dvd(tracceVideo, o["diametro"].toDouble());
     }
     return ret;
 }
