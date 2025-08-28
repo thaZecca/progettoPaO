@@ -20,7 +20,7 @@ private:
     unsigned int annoDiPubblicazione;
     unsigned int durataSecondi;
     QString picPath;
-    //parte "sporcata" dalla bibliteca
+    //sistema bibliotecario
     QString scaffale;
     bool inPrestito;
     QDate dataPrestito;
@@ -43,8 +43,8 @@ public:
     void setDurataSecondi(unsigned int d);
     void setPicPath(const QString& pP);
     virtual void accept(visitorCMultimediale& v) = 0;
-    
-    //parte "sporcata" dalla biblioteca
+
+    //sistema bibliotecario
 
     bool isInPrestito() const;
     void setInPrestito(bool);
