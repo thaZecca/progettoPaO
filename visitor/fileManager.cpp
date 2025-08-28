@@ -64,13 +64,17 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
     for(auto it=cInPoss.begin(); it!=cInPoss.end(); it++){
         QJsonObject obj = (*it).toObject();
         if(obj["tipo"].isString() && obj["tipo"].toString()=="audioD"){
-            cInPossesso.push_back(fileManager::getAudioD(obj));
+            audioD* ptr = fileManager::getAudioD(obj);
+            if(ptr) cInPossesso.push_back(ptr);
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileAudio"){
-            cInPossesso.push_back(fileManager::getFileAudio(obj));
+            fileAudio* ptr = fileManager::getFileAudio(obj);
+            if(ptr) cInPossesso.push_back(ptr);
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="videoD"){
-            cInPossesso.push_back(fileManager::getVideoD(obj));
+            videoD* ptr = fileManager::getVideoD(obj);
+            if(ptr) cInPossesso.push_back(ptr);
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileVideo"){
-            cInPossesso.push_back(fileManager::getFileVideo(obj));
+            fileVideo* ptr = fileManager::getFileVideo(obj);
+            if(ptr) cInPossesso.push_back(ptr);
         }
     }
 
@@ -78,13 +82,17 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
     for(auto it=cInPres.begin(); it!=cInPres.end(); it++){
         QJsonObject obj = (*it).toObject();
         if(obj["tipo"].isString() && obj["tipo"].toString()=="audioD"){
-            cInPrestito.push_back(fileManager::getAudioD(obj));
+            audioD* ptr = fileManager::getAudioD(obj);
+            if(ptr) cInPrestito.push_back(ptr);
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileAudio"){
-            cInPrestito.push_back(fileManager::getFileAudio(obj));
+            fileAudio* ptr = fileManager::getFileAudio(obj);
+            if(ptr) cInPrestito.push_back(ptr);
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="videoD"){
-            cInPrestito.push_back(fileManager::getVideoD(obj));
+            videoD* ptr = fileManager::getVideoD(obj);
+            if(ptr) cInPrestito.push_back(ptr);
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="fileVideo"){
-            cInPrestito.push_back(fileManager::getFileVideo(obj));
+            fileVideo* ptr = fileManager::getFileVideo(obj);
+            if(ptr) cInPrestito.push_back(ptr);
         }
     }
 
@@ -92,9 +100,11 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
     for(auto it=sInPoss.begin(); it!=sInPoss.end(); it++){
         QJsonObject obj = (*it).toObject();
         if(obj["tipo"].isString() && obj["tipo"].toString()=="CD"){
-            std::cout << *fileManager::getCD(obj) << std::endl;
+            cd* ptr = fileManager::getCD(obj);
+            if(ptr) sInPossesso.push_back(ptr);
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="DVD"){
-            std::cout << *fileManager::getDVD(obj) << std::endl;
+            dvd* ptr = fileManager::getDVD(obj);
+            if(ptr) sInPossesso.push_back(ptr);
         }
     }
 
@@ -102,9 +112,11 @@ void fileManager::load(vector<contenutoMultimediale*>& cInPossesso, vector<conte
     for(auto it=sInPres.begin(); it!=sInPres.end(); it++){
         QJsonObject obj = (*it).toObject();
         if(obj["tipo"].isString() && obj["tipo"].toString()=="CD"){
-            std::cout << *fileManager::getCD(obj) << std::endl;
+            cd* ptr = fileManager::getCD(obj);
+            if(ptr) sInPrestito.push_back(ptr);
         }else if(obj["tipo"].isString() && obj["tipo"].toString()=="DVD"){
-            std::cout << *fileManager::getDVD(obj) << std::endl;
+            dvd* ptr = fileManager::getDVD(obj);
+            if(ptr) sInPrestito.push_back(ptr);
         }
     }
 
@@ -208,7 +220,9 @@ cd* fileManager::getCD(const QJsonObject& o){
     return ret;
 }
 
-
+/*getDVD - costruisce l'oggetto DVD a partire dalla sua serializzazione in Json
+@param o serializzazione json dell'oggetto DVD
+@return il puntatore all'oggetto costruito, nullptr altrimenti*/
 dvd* fileManager::getDVD(const QJsonObject& o){
     dvd* ret = nullptr;
     if(o["diametro"].isDouble()){
