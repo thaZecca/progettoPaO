@@ -136,10 +136,10 @@ fileAudio* fileManager::getFileAudio(const QJsonObject& o){
 @return il puntatore all'oggetto costruito, nullptr altrimenti*/
 videoD* fileManager::getVideoD(const QJsonObject& o){
     videoD* ret = nullptr;
-    if(o["titolo"].isString() && o["stereo"].isString() && 
+    if(o["titolo"].isString() && 
             o["picPath"].isString() && o["casaProdutrice"].isString() && o["pubblicazione"].isDouble() && 
             o["progressivo"].isString() && o["risoluzione"].isString() && o["peso"].isDouble() && 
-            o["frequenza"].isDouble() && o["durata"].isDouble() && o["fps"].isDouble()){
+            o["durata"].isDouble() && o["fps"].isDouble()){
                 vector<QString> autori;
                 int num=0;
                 while(o.contains(QString("autore%1").arg(num)) && o[QString("autore%1").arg(num)].isString()){
@@ -156,10 +156,10 @@ videoD* fileManager::getVideoD(const QJsonObject& o){
 @return il puntatore all'oggetto costruito, nullptr altrimenti*/
 fileVideo* fileManager::getFileVideo(const QJsonObject& o){
     fileVideo* ret = nullptr;
-    if(o["titolo"].isString() && o["stereo"].isString() && 
+    if(o["titolo"].isString() && 
             o["picPath"].isString() && o["casaProdutrice"].isString() && o["pubblicazione"].isDouble() && 
             o["progressivo"].isString() && o["risoluzione"].isString() && o["peso"].isDouble() && 
-            o["frequenza"].isDouble() && o["durata"].isDouble() && o["fps"].isDouble() && o["estensione"].isString()){
+            o["durata"].isDouble() && o["fps"].isDouble() && o["estensione"].isString()){
                 vector<QString> autori;
                 int num=0;
                 while(o.contains(QString("autore%1").arg(num)) && o[QString("autore%1").arg(num)].isString()){
