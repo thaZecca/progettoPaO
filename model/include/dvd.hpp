@@ -14,7 +14,7 @@ private:
     vector<videoD*> tracceVideo;
     float diametro;
 public:
-    dvd(vector<videoD*>, float);
+    dvd(vector<videoD*>, float, QString);
     vector<contenutoMultimediale*> getTracce() const override; 
     float getDiametro() const;
     void setTracce(const vector<contenutoMultimediale*>&) override;

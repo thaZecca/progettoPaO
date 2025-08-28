@@ -9,7 +9,7 @@
 @param pP percorso dell'immagine
 @param p peso del contenuto multimediale digitale espresso in MB
 @param fC frequenza dei campionamento audio espressa in Hz
-@param isS true se il fileAudio è stereo, false altrimenti
+@param s true se il fileAudio è stereo, false altrimenti
 @param nC numero canali dell'audioD
 @param l true se il fileAudio è lossy, false altrimenti
 @param e estensione del fileAudio*/

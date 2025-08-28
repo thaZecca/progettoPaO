@@ -2,8 +2,9 @@
 
 /*costruttore parametrico completo di DVD
 @param tV puntatori a tracce videoD da masterizzare nel DVD
+@param s scaffale del DVD
 @param d diametro del DVD*/
-dvd::dvd(vector<videoD*> tV, float d): tracceVideo(tV), diametro(d) {}
+dvd::dvd(vector<videoD*> tV, float d, QString s): supportoMultimediale(s), tracceVideo(tV), diametro(d) {}
 
 /*getTracceVideo
 @return le tracce video masterizzate nel DVD*/

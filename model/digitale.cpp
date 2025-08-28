@@ -9,7 +9,7 @@
 @param d durata espressa in secondi
 @param pP percorso dell'immagine
 @param p peso del contenuto multimediale digitale in MB*/
-digitale::digitale(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP, float p): contenutoMultimediale(t, cP, a, aDPubb, d, pP), peso(p) {}
+digitale::digitale(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP, float p): contenutoMultimediale(t, cP, a, aDPubb, d, pP, ""), peso(p) {}
 
 /*getPeso
 @return il peso del contenuto multimediale digitale espresso in MB*/
