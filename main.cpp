@@ -72,10 +72,10 @@ int main(int argc, char* argv[]){
         std::cout << *(*i) << std::endl;
 
     for(auto i=tre.begin(); i!=tre.end(); i++)
-        std::cout << *(*i) << std::endl;
+        std::cout << (*i) << std::endl;
 
     for(auto i=quattro.begin(); i!=quattro.end(); i++)
-        std::cout << *(*i) << std::endl;
+        std::cout << (*i) << std::endl;
 
     return 0;
 }
