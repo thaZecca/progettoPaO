@@ -13,7 +13,7 @@
 */
 void JSONvisitor::toJsonCM(const contenutoMultimediale* cm){
     jsonMedia["titolo"] = cm -> getTitolo();
-    jsonMedia["casaProdutrice"] = cm -> getCasaProduttrice();
+    jsonMedia["casaProduttrice"] = cm -> getCasaProduttrice();
     vector<QString> autori = cm -> getAutori();
     int num = 0;
     for(auto a = autori.begin(); a != autori.end(); a++){
