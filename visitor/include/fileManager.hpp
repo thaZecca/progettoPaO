@@ -9,6 +9,8 @@
 #include "../../model/include/fileAudio.hpp"
 #include "../../model/include/videoD.hpp"
 #include "../../model/include/fileVideo.hpp"
+#include "../../model/include/cd.hpp"
+#include "../../model/include/dvd.hpp"
 #include "JSONvisitor.hpp"
 #include <QString>
 #include <QJsonDocument>
@@ -24,6 +26,8 @@ private:
     static videoD* getVideoD(const QJsonObject&);
     static fileAudio* getFileAudio(const QJsonObject&);
     static fileVideo* getFileVideo(const QJsonObject&);
+    static cd* getCD(const QJsonObject&);
+    static dvd* getDVD(const QJsonObject&);
 public:
     fileManager(QString);
     void save(const vector<contenutoMultimediale*>&, const vector<contenutoMultimediale*>&, const vector<supportoMultimediale*>&, const vector<supportoMultimediale*>&);
