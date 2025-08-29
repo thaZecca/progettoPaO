@@ -4,10 +4,12 @@
 #include "digitale.hpp"
 #include "../../visitor/include/visitorCMultimediale.hpp"
 #include <vector>
+#include <iostream>
 
 using std::vector;
 
 class supportoMultimediale{
+    friend ostream& operator<<(ostream&, const supportoMultimediale&);
 private:
     QString scaffale;
     bool inPrestito;
@@ -33,5 +35,7 @@ public:
     QString getScaffale() const;
     void setScaffale(const QString&);
 };
+
+ostream& operator<<(ostream&, const supportoMultimediale&);
 
 #endif

@@ -63,3 +63,14 @@ QString supportoMultimediale::getScaffale() const{
 void supportoMultimediale::setScaffale(const QString& s){
     scaffale = s;
 }
+
+/*operator<< esterno
+@param os stream di output
+@param s supporto multimediale da stampare
+@return stream di output*/
+ostream& operator<<(ostream& os, const supportoMultimediale& s){
+    if(s.inPrestito){
+        os << "\n" << "Supporto preso in prestito da " << s.nomePrestito.toStdString() << " il giorno " << s.dataPrestito.toString().toStdString() << ", restituzione prevista tra " << s.durataPrestito << " giorni.";   
+    }else os << "Supporto non in prestito";
+    return os;
+}

@@ -157,7 +157,8 @@ void contenutoMultimediale::setScaffale(const QString& s){
 
 /*operator<< esterno
 @param os stream di output
-@param c contenutoMultimediale da stampare*/
+@param c contenutoMultimediale da stampare
+@return stream di output*/
 ostream& operator<<(ostream& os, const contenutoMultimediale& c){
     os << c.titolo.toStdString() << " - " << c.casaProduttrice.toStdString() << " - " "Pubblicazione: " << std::to_string(c.annoDiPubblicazione) << "\n";
     os << "Autori: ";
@@ -167,5 +168,8 @@ ostream& operator<<(ostream& os, const contenutoMultimediale& c){
     unsigned int min = static_cast<unsigned int>(c.durataSecondi / 60);
     unsigned int sec = c.durataSecondi % 60;
     os << "\n" << "Durata: " << std::to_string(min) << " min " << std::to_string(sec) << " sec" << "\n" << "Pp: " << c.picPath.toStdString();
+    if(c.inPrestito){
+        os << "\n" << "Contenuto preso in prestito da " << c.nomePrestito.toStdString() << " il giorno " << c.dataPrestito.toString().toStdString() << ", restituzione prevista tra " << c.durataPrestito << " giorni.";
+    }else os << "\n" << "Contenuto non in prestito!";
     return os;
 }

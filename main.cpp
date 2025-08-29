@@ -72,17 +72,11 @@ int main(int argc, char* argv[]){
     fileManager manager(path);
 
     //manager.save(cm, {compilation, MTV});
+    vector<contenutoMultimediale*> supporti;
+    vector<supportoMultimediale*> contenuti;
 
-    vector<contenutoMultimediale*> uno;
-    vector<supportoMultimediale*> due;
+    manager.load(supporti,contenuti);
 
-    manager.load(uno,due);
-
-    for(auto i=uno.begin(); i!=uno.end(); i++)
-        std::cout << *(*i) << std::endl;
-
-    for(auto i=due.begin(); i!=due.end(); i++)
-        std::cout << (*i) << std::endl;
 
     return 0;
 }
