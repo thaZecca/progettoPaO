@@ -22,6 +22,11 @@ void JSONvisitor::toJsonCM(const contenutoMultimediale* cm){
     jsonMedia["pubblicazione"] = static_cast<int>(cm -> getAnnoDiPubblicazione());
     jsonMedia["durata"] = static_cast<int>(cm -> getDurataSecondi());
     jsonMedia["picPath"] = (cm -> getPicPath());
+    jsonMedia["scaffale"] = cm -> getScaffale();
+    jsonMedia["inPrestito"] = (cm -> isInPrestito()?"true":"false");
+    jsonMedia["dataPrestito"] = cm -> getDataPrestito();
+    jsonMedia["durataPrestito"] = cm -> getDurataPrestito();
+    jsonMedia["nomePrestito"] = cm -> getNomePrestito();
 }
 
 /*toJsonDig - trasforma il sottooggetto digitale in Json
