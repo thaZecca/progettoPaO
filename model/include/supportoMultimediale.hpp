@@ -13,9 +13,9 @@ private:
     bool inPrestito;
     QDate dataPrestito;
     int durataPrestito;
-    QString nomePresito;
+    QString nomePrestito;
 public:
-    supportoMultimediale(QString s): scaffale(s) {}
+    supportoMultimediale(const QString& s);
     virtual vector<contenutoMultimediale*> getTracce() const = 0;
     virtual void setTracce(const vector<contenutoMultimediale*>&) = 0;
     virtual void accept(visitorCMultimediale&) = 0;

@@ -24,7 +24,7 @@ void JSONvisitor::toJsonCM(const contenutoMultimediale* cm){
     jsonMedia["picPath"] = (cm -> getPicPath());
     jsonMedia["scaffale"] = cm -> getScaffale();
     jsonMedia["inPrestito"] = (cm -> isInPrestito()?"true":"false");
-    jsonMedia["dataPrestito"] = cm -> getDataPrestito();
+    jsonMedia["dataPrestito"] = cm -> getDataPrestito().toString();
     jsonMedia["durataPrestito"] = cm -> getDurataPrestito();
     jsonMedia["nomePrestito"] = cm -> getNomePrestito();
 }
@@ -48,6 +48,11 @@ void JSONvisitor::toJsonSM(const supportoMultimediale* sm){
     }
     jsonMedia = QJsonObject();
     jsonMedia["tracce"] = root;
+    jsonMedia["inPrestito"] = (sm -> isInPrestito()?"true":"false");
+    jsonMedia["dataPrestito"] = (sm -> getDataPrestito()).toString();
+    jsonMedia["durataPrestito"] = sm -> getDurataPrestito();
+    jsonMedia["nomePrestito"] = sm -> getNomePrestito();
+    jsonMedia["scaffale"] = sm -> getScaffale();
 }
 
 /*visit - trasforma l'oggetto audioD in json
@@ -111,6 +116,6 @@ void JSONvisitor::visit(dvd* d){
 
 /*getJson
 @return l'oggetto Json del singolo media*/
-QJsonObject& JSONvisitor::getJson() const{
+QJsonObject& JSONvisitor::getJson(){
     return jsonMedia;
 }

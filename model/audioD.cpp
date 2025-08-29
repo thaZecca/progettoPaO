@@ -7,12 +7,11 @@
 @param aDPubb anno di pubblicazione
 @param d durata espressa in secondi
 @param pP percorso dell'immagine
-@param sc scaffale dell'audioD
 @param p peso del contenuto multimediale digitale espresso in MB
 @param fC frequenza dei campionamento audio espressa in Hz
 @param s true se l'audioD è stereo, false altrimenti
 @param nC numero canali dell'audioD*/
-audioD::audioD(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP, QString sc, float p, unsigned int fC, bool s, unsigned int nC): digitale(t,cP,a,aDPubb,d,pP,sc,p), frequenzaCampionamento(fC), stereo(s), numeroCanali(nC) {}
+audioD::audioD(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP, float p, unsigned int fC, bool s, unsigned int nC): digitale(t,cP,a,aDPubb,d,pP,p), frequenzaCampionamento(fC), stereo(s), numeroCanali(nC) {}
 
 /*getFrequenzaCampionamento
 @return la frequenza di campionamento espressa in kHz*/

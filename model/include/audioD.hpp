@@ -10,7 +10,7 @@ private:
     bool stereo;
     unsigned int numeroCanali;
 public:
-    audioD(QString, QString, vector<QString>, unsigned int, unsigned int, QString, QString, float, unsigned int, bool, unsigned int);
+    audioD(QString, QString, vector<QString>, unsigned int, unsigned int, QString, float, unsigned int, bool, unsigned int);
     virtual ~audioD() override = default;
     unsigned int getFrequenzaCampionamento() const;
     bool isStereo() const;

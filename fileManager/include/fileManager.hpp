@@ -30,8 +30,8 @@ private:
     static dvd* getDVD(const QJsonObject&);
 public:
     fileManager(QString);
-    void save(const vector<contenutoMultimediale*>&, const vector<contenutoMultimediale*>&, const vector<supportoMultimediale*>&, const vector<supportoMultimediale*>&);
-    void load(vector<contenutoMultimediale*>&, vector<contenutoMultimediale*>&, vector<supportoMultimediale*>&, vector<supportoMultimediale*>&);
+    void save(const vector<contenutoMultimediale*>&, const vector<supportoMultimediale*>&);
+    void load(vector<contenutoMultimediale*>&, vector<supportoMultimediale*>&);
 };
 
 #endif

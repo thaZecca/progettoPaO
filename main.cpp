@@ -39,42 +39,49 @@ int main(int argc, char* argv[]){
     audio.push_back(sos);
 
     videoD* police = new videoD("Message in a bottle - Video", "MJD Videos", {"Sting", "Andy Summers", "Steve Copland"}, 1977, 240, "pppolice", 1000, 60, true, "1920");
+    videoD* police2 = new videoD("Message in a bottle - Video", "MJD Videos", {"Sting", "Andy Summers", "Steve Copland"}, 1977, 240, "pppolice", 1000, 60, true, "1920");
 
     fileVideo* sff = new fileVideo("Strawberry fields forever - Video", "Apple Corps", {"Paul McCartney", "John Lennon", "George Harrison", "Ringo Starr"}, 1967, 240, "ppbeatles", 1000, 60, true, "1920", "mp4");
+    fileVideo* sff2 = new fileVideo("Strawberry fields forever - Video", "Apple Corps", {"Paul McCartney", "John Lennon", "George Harrison", "Ringo Starr"}, 1967, 240, "ppbeatles", 1000, 60, true, "1920", "mp4");
 
-    cd* compilation = new cd(audio, 12);
+    cd* compilation = new cd(audio, 12, "5A2");
 
-    dvd* MTV = new dvd({police, sff}, 12);
+    dvd* MTV = new dvd({police2, sff2}, 12, "6A2");
+    MTV -> setInPrestito(true);
+    MTV -> setDataPrestito(QDate(2025,8,29));
+    MTV -> setDurataPrestito(7);
+    MTV -> setNomePrestito("Simone");
     
     vector<contenutoMultimediale*> cm;
     cm.push_back(sos);
     cm.push_back(mfn);
 
-    vector<contenutoMultimediale*> prestati;
-    prestati.push_back(police);
-    prestati.push_back(sff);*/
+    police -> setInPrestito(true);
+    police -> setDataPrestito(QDate(2025,8,29));
+    police -> setDurataPrestito(7);
+    police -> setNomePrestito("Simone");
+
+    sff -> setInPrestito(true);
+    sff -> setDataPrestito(QDate(2025,8,22));
+    sff -> setDurataPrestito(7);
+    sff -> setNomePrestito("Clara");
+
+    cm.push_back(police);
+    cm.push_back(sff);*/
 
     fileManager manager(path);
 
-    //manager.save(cm, prestati, {compilation}, {MTV});
+    //manager.save(cm, {compilation, MTV});
 
     vector<contenutoMultimediale*> uno;
-    vector<contenutoMultimediale*> due;
-    vector<supportoMultimediale*> tre;
-    vector<supportoMultimediale*> quattro;
+    vector<supportoMultimediale*> due;
 
-    manager.load(uno,due, tre, quattro);
+    manager.load(uno,due);
 
     for(auto i=uno.begin(); i!=uno.end(); i++)
         std::cout << *(*i) << std::endl;
 
     for(auto i=due.begin(); i!=due.end(); i++)
-        std::cout << *(*i) << std::endl;
-
-    for(auto i=tre.begin(); i!=tre.end(); i++)
-        std::cout << (*i) << std::endl;
-
-    for(auto i=quattro.begin(); i!=quattro.end(); i++)
         std::cout << (*i) << std::endl;
 
     return 0;
