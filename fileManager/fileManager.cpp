@@ -33,9 +33,7 @@ void fileManager::save(const vector<contenutoMultimediale*>& contenuti, const ve
     QJsonDocument doc(root);
     file.write(doc.toJson());
     
-    std::cout << doc.isEmpty() << std::endl;
     file.close();
-    std::cout << doc.toJson().toStdString() << std::endl;
 }
 
 /*load - caricamento dei contenuti multimediali e dei supporti multimediali da file locale json

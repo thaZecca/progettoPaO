@@ -44,7 +44,7 @@
             "autore1": "Andy Summers",
             "autore2": "Steve Copland",
             "casaProduttrice": "MJD Videos",
-            "dataPrestito": "Fri Aug 29 2025",
+            "dataPrestito": "",
             "durata": 240,
             "durataPrestito": 7,
             "fps": 60,
@@ -65,7 +65,7 @@
             "autore2": "George Harrison",
             "autore3": "Ringo Starr",
             "casaProduttrice": "Apple Corps",
-            "dataPrestito": "Fri Aug 22 2025",
+            "dataPrestito": "",
             "durata": 240,
             "durataPrestito": 7,
             "estensione": "mp4",
@@ -131,7 +131,7 @@
             ]
         },
         {
-            "dataPrestito": "Fri Aug 29 2025",
+            "dataPrestito": "",
             "diametro": 12,
             "durataPrestito": 7,
             "inPrestito": "true",
