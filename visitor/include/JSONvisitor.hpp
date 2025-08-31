@@ -20,12 +20,12 @@ private:
     void toJsonSM(const supportoMultimediale*);
 
 public:
-    void visit(audioD*) override;
-    void visit(fileAudio*) override;
-    void visit(cd*) override;
-    void visit(videoD*) override;
-    void visit(fileVideo*) override;
-    void visit(dvd*) override;
+    virtual void visit(audioD*) override;
+    virtual void visit(fileAudio*) override;
+    virtual void visit(cd*) override;
+    virtual void visit(videoD*) override;
+    virtual void visit(fileVideo*) override;
+    virtual void visit(dvd*) override;
     QJsonObject& getJson();
 };
 

@@ -53,6 +53,7 @@ void JSONvisitor::toJsonSM(const supportoMultimediale* sm){
     jsonMedia["durataPrestito"] = sm -> getDurataPrestito();
     jsonMedia["nomePrestito"] = sm -> getNomePrestito();
     jsonMedia["scaffale"] = sm -> getScaffale();
+    jsonMedia["titolo"] = sm -> getTitolo();
 }
 
 /*visit - trasforma l'oggetto audioD in json
