@@ -8,6 +8,16 @@ biblioteca::~biblioteca(){
     fM.save(contenuti, supporti);
 }
 
+/*projectPath - ritorna il percorso della cartella del progetto tramite direttive cross-platform*/
+QDir biblioteca::projectPath() const{
+    QDir dir(QCoreApplication::applicationDirPath());
+    #if defined(Q_OS_MAC) //direttiva per sistema operativo Apple macOS
+        dir.cdUp(); dir.cdUp(); dir.cdUp(); 
+    #else //direttiva per sistemi Linux e Microsoft Windows
+        dir.cdUp();
+    #endif
+}
+
 /*getFileManager
 @return il file manager della biblioteca*/
 fileManager& biblioteca::getFileManager(){
@@ -17,14 +27,7 @@ fileManager& biblioteca::getFileManager(){
 /*instance
 @return il singleton di biblioteca*/
 biblioteca& biblioteca::instance(){
-    QDir dir(QCoreApplication::applicationDirPath());
-    #if defined(Q_OS_MAC) //direttiva per sistema operativo Apple macOS
-        dir.cdUp(); dir.cdUp(); dir.cdUp(); 
-    #else //direttiva per sistemi Linux e Microsoft Windows
-        dir.cdUp();
-    #endif
-    QString path = dir.filePath("storage.json");
-
+    QString path = biblioteca::projectPath().filePath("storage.json");
     static biblioteca b(path);
     b.getFileManager().load(b.getContenuti(), b.getSupporti());
     return b;

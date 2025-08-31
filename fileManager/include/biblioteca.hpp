@@ -21,6 +21,7 @@ private:
     fileManager fM;
 public:
     static biblioteca& instance();  
+    static QDir projectPath() const;
     vector<contenutoMultimediale*>& getContenuti();
     vector<supportoMultimediale*>& getSupporti();
     static void presta(contenutoMultimediale*, QString, QDate, int);
