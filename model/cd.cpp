@@ -3,8 +3,9 @@
 /*Costruttore parametrico di CD
 @param tA puntatori a tracce audio da masterizzare nel CD
 @param d diametro del CD in centimetri
-@param s scaffale del CD*/
-cd::cd(vector<audioD*> tA,float d, QString s): supportoMultimediale(s), tracceAudio(tA), diametro(d) {}
+@param s scaffale del CD
+@param t titolo del CD*/
+cd::cd(vector<audioD*> tA,float d, QString s, QString t): supportoMultimediale(s,t), tracceAudio(tA), diametro(d) {}
 
 /*getTracceAudio
 @return le tracce audio masterizzate nel CD*/

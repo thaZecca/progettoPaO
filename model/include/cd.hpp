@@ -14,7 +14,7 @@ private:
     vector<audioD*> tracceAudio;
     float diametro;
 public:
-    cd(vector<audioD*>, float, QString);
+    cd(vector<audioD*>, float, QString, QString);
     vector<contenutoMultimediale*> getTracce() const override;
     float getDiametro() const;
     void setTracce(const vector<contenutoMultimediale*>&) override;
