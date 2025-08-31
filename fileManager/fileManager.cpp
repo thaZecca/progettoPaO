@@ -202,7 +202,7 @@ fileVideo* fileManager::getFileVideo(const QJsonObject& o){
 cd* fileManager::getCD(const QJsonObject& o){
     cd* ret = nullptr;
     if(o["diametro"].isDouble() && o["inPrestito"].isString() && o["dataPrestito"].isString() &&
-        o["nomePrestito"].isString() && o["scaffale"].isString() && o["durataPrestito"].isDouble()){
+        o["nomePrestito"].isString() && o["scaffale"].isString() && o["durataPrestito"].isDouble() && o["titolo"].isString()){
         vector<audioD*> tracceAudio;
         QJsonArray tracce = o["tracce"].toArray();
         for(auto it = tracce.begin(); it!=tracce.end(); it++){
@@ -211,7 +211,7 @@ cd* fileManager::getCD(const QJsonObject& o){
                 if(ptr) tracceAudio.push_back(ptr);
             }
         }
-        ret = new cd(tracceAudio, o["diametro"].toDouble(), o["scaffale"].toString());
+        ret = new cd(tracceAudio, o["diametro"].toDouble(), o["scaffale"].toString(), o["titolo"].toString());
         if(o["inPrestito"].toString()=="true"){
             ret -> setInPrestito(true);
             ret -> setDataPrestito(QDate::fromString(o["dataPrestito"].toString()));
@@ -228,7 +228,7 @@ cd* fileManager::getCD(const QJsonObject& o){
 dvd* fileManager::getDVD(const QJsonObject& o){
     dvd* ret = nullptr;
     if(o["diametro"].isDouble() && o["inPrestito"].isString() && o["dataPrestito"].isString() &&
-        o["nomePrestito"].isString() && o["scaffale"].isString() && o["durataPrestito"].isDouble()){
+        o["nomePrestito"].isString() && o["scaffale"].isString() && o["durataPrestito"].isDouble() && o["titolo"].isString()){
         vector<videoD*> tracceVideo;
         QJsonArray tracce = o["tracce"].toArray();
         for(auto it = tracce.begin(); it!=tracce.end(); it++){
@@ -237,7 +237,7 @@ dvd* fileManager::getDVD(const QJsonObject& o){
                 if(ptr) tracceVideo.push_back(ptr);
             }
         }
-        ret = new dvd(tracceVideo, o["diametro"].toDouble(), o["scaffale"].toString());
+        ret = new dvd(tracceVideo, o["diametro"].toDouble(), o["scaffale"].toString(), o["titolo"].toString());
         if(o["inPrestito"].toString()=="true"){
             ret -> setInPrestito(true);
             ret -> setDataPrestito(QDate::fromString(o["dataPrestito"].toString()));
