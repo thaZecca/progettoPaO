@@ -11,16 +11,19 @@ using std::vector;
 class supportoMultimediale{
     friend ostream& operator<<(ostream&, const supportoMultimediale&);
 private:
+    QString titolo;
     QString scaffale;
     bool inPrestito;
     QDate dataPrestito;
     int durataPrestito;
     QString nomePrestito;
 public:
-    supportoMultimediale(const QString& s);
+    supportoMultimediale(const QString& s, const QString& t);
     virtual vector<contenutoMultimediale*> getTracce() const = 0;
     virtual void setTracce(const vector<contenutoMultimediale*>&) = 0;
     virtual void accept(visitorCMultimediale&) = 0;
+    QString getTitolo() const;
+    void setTitolo(const QString& t);
     
     //sistema bibliotecario
 
