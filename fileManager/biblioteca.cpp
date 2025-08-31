@@ -2,7 +2,9 @@
 
 /*Costruttore parametrico
 @param path percorso per il fileManager*/
-biblioteca::biblioteca(QString path): contenuti(), supporti(), fM(path){}
+biblioteca::biblioteca(QString path): fM(path){
+    fM.load(contenuti, supporti);
+}
 
 biblioteca::~biblioteca(){
     fM.save(contenuti, supporti);
@@ -30,7 +32,6 @@ fileManager& biblioteca::getFileManager(){
 biblioteca& biblioteca::instance(){
     QString path = biblioteca::projectPath().filePath("storage.json");
     static biblioteca b(path);
-    b.getFileManager().load(b.getContenuti(), b.getSupporti());
     return b;
 }
 

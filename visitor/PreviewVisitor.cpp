@@ -24,6 +24,8 @@ void PreviewVisitor::prepare(){
     rightLayout -> addWidget(qualita);
 
     mainLayout -> addLayout(rightLayout);
+    preview -> setObjectName("preview");
+    preview -> setStyleSheet("#preview {border: 1px solid black;}");
 }
 
 /*visit - design pattern per visitare l'audioD

@@ -20,3 +20,8 @@ MainWindow.o
 biblioteca.o
 cd.o
 .vscode/tasks.json
+.DS_Store
+biblioteca.o
+MainWindow.o
+PreviewVisitor.o
+progetto.app/Contents/MacOS/progetto

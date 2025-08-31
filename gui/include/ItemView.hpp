@@ -11,7 +11,7 @@
 
 using std::vector;
 
-class ItemView: public QWidget{
+class ItemView: public QScrollArea{
     Q_OBJECT
 public:
     explicit ItemView(QWidget* parent =nullptr);
