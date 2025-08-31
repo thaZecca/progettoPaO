@@ -2,7 +2,7 @@
 
 /*Costruttore parametrico completo
 @param s scaffale dove si trova il supporto multimediale*/
-supportoMultimediale::supportoMultimediale(const QString& s, const QString t): scaffale(s), titolo(t) {} 
+supportoMultimediale::supportoMultimediale(const QString& s, const QString& t): titolo(t), scaffale(s) {} 
 
 /*isInPrestito
 @return true se in prestito, false altrimenti*/

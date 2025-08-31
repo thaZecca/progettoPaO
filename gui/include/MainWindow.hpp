@@ -5,6 +5,7 @@
 #include <QWidget>
 #include "../../fileManager/include/biblioteca.hpp"
 #include "../../visitor/include/PreviewVisitor.hpp"
+#include "ItemView.hpp"
 
 class MainWindow: public QMainWindow{
     Q_OBJECT

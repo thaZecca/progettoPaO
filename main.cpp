@@ -1,5 +1,6 @@
 #include <QApplication>
 #include "./gui/include/MainWindow.hpp"
+#include "fileManager/include/biblioteca.hpp"
 
 int main(int argc, char* argv[]){
     QApplication app(argc,argv);

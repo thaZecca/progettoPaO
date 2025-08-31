@@ -2,20 +2,21 @@
 
 /*Costruttore parametrico
 @param path percorso per il fileManager*/
-biblioteca::biblioteca(QString path): fM(path) {}
+biblioteca::biblioteca(QString path): contenuti(), supporti(), fM(path){}
 
 biblioteca::~biblioteca(){
     fM.save(contenuti, supporti);
 }
 
 /*projectPath - ritorna il percorso della cartella del progetto tramite direttive cross-platform*/
-QDir biblioteca::projectPath() const{
+QDir biblioteca::projectPath(){
     QDir dir(QCoreApplication::applicationDirPath());
     #if defined(Q_OS_MAC) //direttiva per sistema operativo Apple macOS
         dir.cdUp(); dir.cdUp(); dir.cdUp(); 
     #else //direttiva per sistemi Linux e Microsoft Windows
         dir.cdUp();
     #endif
+    return dir;
 }
 
 /*getFileManager

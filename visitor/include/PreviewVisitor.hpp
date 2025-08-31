@@ -31,6 +31,6 @@ public:
     virtual void visit(cd*) override;
     virtual void visit(dvd*) override;
     QWidget* getPreview();
-}
+};
 
 #endif
