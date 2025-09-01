@@ -25,3 +25,9 @@ biblioteca.o
 MainWindow.o
 PreviewVisitor.o
 progetto.app/Contents/MacOS/progetto
+main.o
+main.o
+MainWindow.o
+moc_MainWindow.cpp
+moc_MainWindow.o
+progetto.app/Contents/MacOS/progetto
