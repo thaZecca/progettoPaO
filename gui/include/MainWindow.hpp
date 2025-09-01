@@ -6,6 +6,7 @@
 #include "../../fileManager/include/biblioteca.hpp"
 #include "../../visitor/include/PreviewVisitor.hpp"
 #include "ItemView.hpp"
+#include "StatView.hpp"
 
 class MainWindow: public QWidget{
     Q_OBJECT
