@@ -7,7 +7,7 @@
 #include "../../visitor/include/PreviewVisitor.hpp"
 #include "ItemView.hpp"
 
-class MainWindow: public QMainWindow{
+class MainWindow: public QWidget{
     Q_OBJECT
 private:
     QWidget* prova;

@@ -1,8 +1,10 @@
 #include "include/MainWindow.hpp"
 
-MainWindow::MainWindow(QWidget* parent): QMainWindow(parent){
+/*Costruttore parametrico di MainWindow*/
+MainWindow::MainWindow(QWidget* parent): QWidget(parent){
     resize(900, 650); // Imposta la dimensione iniziale della finestra
     setMinimumSize(600, 400); // Imposta la dimensione minima
-    ItemView* main = new ItemView();
-    setCentralWidget(main);
+    ItemView* previews = new ItemView();
+    QHBoxLayout* mainLayout = new QHBoxLayout(this);
+    mainLayout -> addWidget(previews);
 } 
