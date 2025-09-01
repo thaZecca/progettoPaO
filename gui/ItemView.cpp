@@ -1,5 +1,7 @@
 #include "include/ItemView.hpp"
 
+/*Costruttore parametrico
+@param parent*/
 ItemView::ItemView(QWidget* parent): QScrollArea(parent){
     PreviewVisitor prevVisitor; //visitor che crea la preview per ogni item
     setWidgetResizable(true); //ridimensionamento automatico
