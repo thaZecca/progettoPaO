@@ -44,6 +44,28 @@ void cd::accept(visitorCMultimediale& v){
     v.visit(this);
 }
 
+/*getAutori
+@return un vettore con tutti gli autori presenti nel cd*/
+vector<QString> cd::getAutori() const{
+    vector<QString> ret;
+    for(auto it = tracceAudio.begin(); it != tracceAudio.end(); it++){
+        const auto& autori = (*it) -> getAutori();
+        for(auto& a : autori) ret.push_back(a);
+    }
+    return ret;
+}
+
+/*getAnno
+@return un vettore con tutti gli anni di pubblicazione delle tracce del CD*/
+vector<int> cd::getAnno() const{
+    vector<int> ret;
+    for(auto it = tracceAudio.begin(); it != tracceAudio.end(); it++){
+        const auto& anno = (*it) -> getAnnoDiPubblicazione(); 
+        ret.push_back(anno);
+    }
+    return ret;
+}
+
 /*operator<< esterno
 @param os stream di output
 @param c cd da stampare*/
