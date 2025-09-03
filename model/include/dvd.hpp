@@ -20,6 +20,8 @@ public:
     void setTracce(const vector<contenutoMultimediale*>&) override;
     void setDiametro(float d); 
     virtual void accept(visitorCMultimediale&) override;
+    virtual vector<QString> getAutori() const override;
+    virtual vector<int> getAnno() const override;
 };
 
 ostream& operator<<(ostream&, const dvd&);
