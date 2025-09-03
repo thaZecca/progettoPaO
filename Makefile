@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = progetto1.0.0
-DISTDIR = /Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione\ ad\ Oggetti/Qt/progetto/.tmp/progetto1.0.0
+DISTDIR = /Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione\ ad\ Oggetti/Qt/progetto/.tmp/progetto1.0.0
 LINK          = /Library/Developer/CommandLineTools/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=14.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/opt/homebrew/lib
 LIBS          = $(SUBLIBS) -F/opt/homebrew/lib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework UniformTypeIdentifiers -framework AGL -framework OpenGL   
@@ -56,7 +56,10 @@ SOURCES       = main.cpp \
 		fileManager/biblioteca.cpp \
 		fileManager/fileManager.cpp \
 		gui/ItemView.cpp \
+		gui/MainButtonView.cpp \
 		gui/MainWindow.cpp \
+		gui/SearchView.cpp \
+		gui/StatView.cpp \
 		model/audioD.cpp \
 		model/cd.cpp \
 		model/contenutoMultimediale.cpp \
@@ -64,17 +67,24 @@ SOURCES       = main.cpp \
 		model/dvd.cpp \
 		model/fileAudio.cpp \
 		model/fileVideo.cpp \
+		model/query.cpp \
 		model/supportoMultimediale.cpp \
 		model/videoD.cpp \
 		visitor/JSONvisitor.cpp \
 		visitor/PreviewVisitor.cpp moc_ItemView.cpp \
+		moc_MainButtonView.cpp \
 		moc_MainWindow.cpp \
+		moc_SearchView.cpp \
+		moc_StatView.cpp \
 		moc_PreviewVisitor.cpp
 OBJECTS       = main.o \
 		biblioteca.o \
 		fileManager.o \
 		ItemView.o \
+		MainButtonView.o \
 		MainWindow.o \
+		SearchView.o \
+		StatView.o \
 		audioD.o \
 		cd.o \
 		contenutoMultimediale.o \
@@ -82,12 +92,16 @@ OBJECTS       = main.o \
 		dvd.o \
 		fileAudio.o \
 		fileVideo.o \
+		query.o \
 		supportoMultimediale.o \
 		videoD.o \
 		JSONvisitor.o \
 		PreviewVisitor.o \
 		moc_ItemView.o \
+		moc_MainButtonView.o \
 		moc_MainWindow.o \
+		moc_SearchView.o \
+		moc_StatView.o \
 		moc_PreviewVisitor.o
 DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/device_config.prf \
@@ -462,7 +476,10 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		progetto.pro fileManager/include/biblioteca.hpp \
 		fileManager/include/fileManager.hpp \
 		gui/include/ItemView.hpp \
+		gui/include/MainButtonView.hpp \
 		gui/include/MainWindow.hpp \
+		gui/include/SearchView.hpp \
+		gui/include/StatView.hpp \
 		model/include/audioD.hpp \
 		model/include/cd.hpp \
 		model/include/contenutoMultimediale.hpp \
@@ -470,6 +487,7 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		model/include/dvd.hpp \
 		model/include/fileAudio.hpp \
 		model/include/fileVideo.hpp \
+		model/include/query.hpp \
 		model/include/supportoMultimediale.hpp \
 		model/include/videoD.hpp \
 		visitor/include/JSONvisitor.hpp \
@@ -478,7 +496,10 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		fileManager/biblioteca.cpp \
 		fileManager/fileManager.cpp \
 		gui/ItemView.cpp \
+		gui/MainButtonView.cpp \
 		gui/MainWindow.cpp \
+		gui/SearchView.cpp \
+		gui/StatView.cpp \
 		model/audioD.cpp \
 		model/cd.cpp \
 		model/contenutoMultimediale.cpp \
@@ -486,6 +507,7 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		model/dvd.cpp \
 		model/fileAudio.cpp \
 		model/fileVideo.cpp \
+		model/query.cpp \
 		model/supportoMultimediale.cpp \
 		model/videoD.cpp \
 		visitor/JSONvisitor.cpp \
@@ -498,12 +520,12 @@ TARGET        = progetto.app/Contents/MacOS/progetto
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 15.5
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
-EXPORT__QMAKE_STASH_ = /Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto/.qmake.stash
+EXPORT__QMAKE_STASH_ = /Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/.qmake.stash
 EXPORT_VALID_ARCHS = arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
 EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ARCHS), $(EXPORT_ARCHS), $(EXPORT_VALID_ARCHS)), -arch $(arch))
-EXPORT__PRO_FILE_ = /Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto/progetto.pro
+EXPORT__PRO_FILE_ = /Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/progetto.pro
 
 
 include /opt/homebrew/Cellar/qt/6.9.0/share/qt/mkspecs/features/mac/sdk.mk
@@ -1288,8 +1310,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents fileManager/include/biblioteca.hpp fileManager/include/fileManager.hpp gui/include/ItemView.hpp gui/include/MainWindow.hpp model/include/audioD.hpp model/include/cd.hpp model/include/contenutoMultimediale.hpp model/include/digitale.hpp model/include/dvd.hpp model/include/fileAudio.hpp model/include/fileVideo.hpp model/include/supportoMultimediale.hpp model/include/videoD.hpp visitor/include/JSONvisitor.hpp visitor/include/PreviewVisitor.hpp visitor/include/visitorCMultimediale.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp fileManager/biblioteca.cpp fileManager/fileManager.cpp gui/ItemView.cpp gui/MainWindow.cpp model/audioD.cpp model/cd.cpp model/contenutoMultimediale.cpp model/digitale.cpp model/dvd.cpp model/fileAudio.cpp model/fileVideo.cpp model/supportoMultimediale.cpp model/videoD.cpp visitor/JSONvisitor.cpp visitor/PreviewVisitor.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents fileManager/include/biblioteca.hpp fileManager/include/fileManager.hpp gui/include/ItemView.hpp gui/include/MainButtonView.hpp gui/include/MainWindow.hpp gui/include/SearchView.hpp gui/include/StatView.hpp model/include/audioD.hpp model/include/cd.hpp model/include/contenutoMultimediale.hpp model/include/digitale.hpp model/include/dvd.hpp model/include/fileAudio.hpp model/include/fileVideo.hpp model/include/query.hpp model/include/supportoMultimediale.hpp model/include/videoD.hpp visitor/include/JSONvisitor.hpp visitor/include/PreviewVisitor.hpp visitor/include/visitorCMultimediale.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp fileManager/biblioteca.cpp fileManager/fileManager.cpp gui/ItemView.cpp gui/MainButtonView.cpp gui/MainWindow.cpp gui/SearchView.cpp gui/StatView.cpp model/audioD.cpp model/cd.cpp model/contenutoMultimediale.cpp model/digitale.cpp model/dvd.cpp model/fileAudio.cpp model/fileVideo.cpp model/query.cpp model/supportoMultimediale.cpp model/videoD.cpp visitor/JSONvisitor.cpp visitor/PreviewVisitor.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1324,17 +1346,71 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=14.0 -Wall -Wextra -dM -E -o moc_predefs.h /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_ItemView.cpp moc_MainWindow.cpp moc_PreviewVisitor.cpp
+compiler_moc_header_make_all: moc_ItemView.cpp moc_MainButtonView.cpp moc_MainWindow.cpp moc_SearchView.cpp moc_StatView.cpp moc_PreviewVisitor.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_ItemView.cpp moc_MainWindow.cpp moc_PreviewVisitor.cpp
+	-$(DEL_FILE) moc_ItemView.cpp moc_MainButtonView.cpp moc_MainWindow.cpp moc_SearchView.cpp moc_StatView.cpp moc_PreviewVisitor.cpp
 moc_ItemView.cpp: gui/include/ItemView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		fileManager/include/biblioteca.hpp \
+		model/include/contenutoMultimediale.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDate \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		visitor/include/visitorCMultimediale.hpp \
+		visitor/include/JSONvisitor.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
+		model/include/supportoMultimediale.hpp \
+		model/include/digitale.hpp \
+		fileManager/include/fileManager.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		model/include/audioD.hpp \
+		model/include/fileAudio.hpp \
+		model/include/videoD.hpp \
+		model/include/fileVideo.hpp \
+		model/include/cd.hpp \
+		model/include/dvd.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QByteArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qbytearray.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
+		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		visitor/include/PreviewVisitor.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QPixmap \
+		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib gui/include/ItemView.hpp -o moc_ItemView.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib gui/include/ItemView.hpp -o moc_ItemView.cpp
+
+moc_MainButtonView.cpp: gui/include/MainButtonView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib gui/include/MainButtonView.hpp -o moc_MainButtonView.cpp
 
 moc_MainWindow.cpp: gui/include/MainWindow.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1384,9 +1460,100 @@ moc_MainWindow.cpp: gui/include/MainWindow.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		gui/include/ItemView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		gui/include/StatView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		gui/include/MainButtonView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		gui/include/SearchView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLineEdit \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QRadioButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qradiobutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QCheckBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		model/include/query.hpp \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib gui/include/MainWindow.hpp -o moc_MainWindow.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib gui/include/MainWindow.hpp -o moc_MainWindow.cpp
+
+moc_SearchView.cpp: gui/include/SearchView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLineEdit \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QRadioButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qradiobutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QCheckBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		model/include/query.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib gui/include/SearchView.hpp -o moc_SearchView.cpp
+
+moc_StatView.cpp: gui/include/StatView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		fileManager/include/biblioteca.hpp \
+		model/include/contenutoMultimediale.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDate \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		visitor/include/visitorCMultimediale.hpp \
+		visitor/include/JSONvisitor.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
+		model/include/supportoMultimediale.hpp \
+		model/include/digitale.hpp \
+		fileManager/include/fileManager.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		model/include/audioD.hpp \
+		model/include/fileAudio.hpp \
+		model/include/videoD.hpp \
+		model/include/fileVideo.hpp \
+		model/include/cd.hpp \
+		model/include/dvd.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QByteArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qbytearray.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
+		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib gui/include/StatView.hpp -o moc_StatView.cpp
 
 moc_PreviewVisitor.cpp: visitor/include/PreviewVisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
@@ -1435,7 +1602,7 @@ moc_PreviewVisitor.cpp: visitor/include/PreviewVisitor.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/Università/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib visitor/include/PreviewVisitor.hpp -o moc_PreviewVisitor.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib visitor/include/PreviewVisitor.hpp -o moc_PreviewVisitor.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1502,7 +1669,28 @@ main.o: main.cpp /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		gui/include/ItemView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		gui/include/StatView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		gui/include/MainButtonView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		gui/include/SearchView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLineEdit \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QRadioButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qradiobutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QCheckBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		model/include/query.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 biblioteca.o: fileManager/biblioteca.cpp fileManager/include/biblioteca.hpp \
@@ -1574,8 +1762,60 @@ ItemView.o: gui/ItemView.cpp gui/include/ItemView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		fileManager/include/biblioteca.hpp \
+		model/include/contenutoMultimediale.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDate \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		visitor/include/visitorCMultimediale.hpp \
+		visitor/include/JSONvisitor.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
+		model/include/supportoMultimediale.hpp \
+		model/include/digitale.hpp \
+		fileManager/include/fileManager.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		model/include/audioD.hpp \
+		model/include/fileAudio.hpp \
+		model/include/videoD.hpp \
+		model/include/fileVideo.hpp \
+		model/include/cd.hpp \
+		model/include/dvd.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QByteArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qbytearray.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
+		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		visitor/include/PreviewVisitor.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QPixmap \
+		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ItemView.o gui/ItemView.cpp
+
+MainButtonView.o: gui/MainButtonView.cpp gui/include/MainButtonView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainButtonView.o gui/MainButtonView.cpp
 
 MainWindow.o: gui/MainWindow.cpp gui/include/MainWindow.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1624,8 +1864,95 @@ MainWindow.o: gui/MainWindow.cpp gui/include/MainWindow.hpp \
 		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		gui/include/ItemView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		gui/include/StatView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		gui/include/MainButtonView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		gui/include/SearchView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLineEdit \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QRadioButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qradiobutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QCheckBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		model/include/query.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o gui/MainWindow.cpp
+
+SearchView.o: gui/SearchView.cpp gui/include/SearchView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLineEdit \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QRadioButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qradiobutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QCheckBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		model/include/query.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SearchView.o gui/SearchView.cpp
+
+StatView.o: gui/StatView.cpp gui/include/StatView.hpp \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		fileManager/include/biblioteca.hpp \
+		model/include/contenutoMultimediale.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDate \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
+		visitor/include/visitorCMultimediale.hpp \
+		visitor/include/JSONvisitor.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
+		model/include/supportoMultimediale.hpp \
+		model/include/digitale.hpp \
+		fileManager/include/fileManager.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		model/include/audioD.hpp \
+		model/include/fileAudio.hpp \
+		model/include/videoD.hpp \
+		model/include/fileVideo.hpp \
+		model/include/cd.hpp \
+		model/include/dvd.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
+		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QByteArray \
+		/opt/homebrew/lib/QtCore.framework/Headers/qbytearray.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
+		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o StatView.o gui/StatView.cpp
 
 audioD.o: model/audioD.cpp model/include/audioD.hpp \
 		model/include/digitale.hpp \
@@ -1734,6 +2061,11 @@ fileVideo.o: model/fileVideo.cpp model/include/fileVideo.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fileVideo.o model/fileVideo.cpp
+
+query.o: model/query.cpp model/include/query.hpp \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o query.o model/query.cpp
 
 supportoMultimediale.o: model/supportoMultimediale.cpp model/include/supportoMultimediale.hpp \
 		model/include/digitale.hpp \
@@ -1845,8 +2177,17 @@ PreviewVisitor.o: visitor/PreviewVisitor.cpp visitor/include/PreviewVisitor.hpp 
 moc_ItemView.o: moc_ItemView.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ItemView.o moc_ItemView.cpp
 
+moc_MainButtonView.o: moc_MainButtonView.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MainButtonView.o moc_MainButtonView.cpp
+
 moc_MainWindow.o: moc_MainWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MainWindow.o moc_MainWindow.cpp
+
+moc_SearchView.o: moc_SearchView.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_SearchView.o moc_SearchView.cpp
+
+moc_StatView.o: moc_StatView.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_StatView.o moc_StatView.cpp
 
 moc_PreviewVisitor.o: moc_PreviewVisitor.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_PreviewVisitor.o moc_PreviewVisitor.cpp

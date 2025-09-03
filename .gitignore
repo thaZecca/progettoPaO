@@ -31,3 +31,5 @@ MainWindow.o
 moc_MainWindow.cpp
 moc_MainWindow.o
 progetto.app/Contents/MacOS/progetto
+main.o
+
