@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QScrollArea>
+#include <QString>
 #include "../../model/include/query.hpp"
 #include "../../fileManager/include/biblioteca.hpp"
 #include "../../visitor/include/PreviewVisitor.hpp"
