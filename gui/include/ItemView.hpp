@@ -5,16 +5,19 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QScrollArea>
-#include <vector>
+#include "../../model/include/query.hpp"
 #include "../../fileManager/include/biblioteca.hpp"
 #include "../../visitor/include/PreviewVisitor.hpp"
 
-using std::vector;
-
 class ItemView: public QScrollArea{
-    Q_OBJECT
+    Q_OBJECT 
+private:
+    void filter(query* q, vector<contenutoMultimediale*>&, vector<supportoMultimediale*>&);
 public:
     explicit ItemView(QWidget* parent =nullptr);
+    void prepare(query* =nullptr);
+public slots:
+    void submitQuery(query q);
 };
 
 #endif
