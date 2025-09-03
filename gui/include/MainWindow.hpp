@@ -7,11 +7,11 @@
 #include "../../visitor/include/PreviewVisitor.hpp"
 #include "ItemView.hpp"
 #include "StatView.hpp"
+#include "MainButtonView.hpp"
+#include "SearchView.hpp"
 
 class MainWindow: public QWidget{
     Q_OBJECT
-private:
-    QWidget* prova;
 public:
     explicit MainWindow(QWidget *parent = nullptr);
 };
