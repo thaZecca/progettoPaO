@@ -24,6 +24,8 @@ public:
     virtual void accept(visitorCMultimediale&) = 0;
     QString getTitolo() const;
     void setTitolo(const QString& t);
+    virtual vector<QString> getAutori() const = 0;
+    virtual vector<int> getAnno() const = 0;
     
     //sistema bibliotecario
 
