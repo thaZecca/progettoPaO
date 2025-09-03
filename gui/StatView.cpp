@@ -1,7 +1,7 @@
 #include "./include/StatView.hpp"
 
 /*Costruttore parmetrico di StatView*/
-StatView::StatView(QWidget* parent): QWidget(parent){
+StatView::StatView(QWidget* parent): QGroupBox("Statistiche",parent){
     //inizializzo le Qlabel altrimenti senza un "aggancio rimangono nullptr"
     tot = new QLabel(this);
     totC = new QLabel(this);

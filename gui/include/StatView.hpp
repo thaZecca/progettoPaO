@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QGridLayout>
+#include <QGroupBox>
 #include "../../fileManager/include/biblioteca.hpp"
 #include "../../model/include/audioD.hpp"
 #include "../../model/include/cd.hpp"
@@ -12,7 +13,7 @@
 #include "../../model/include/fileVideo.hpp"
 #include "../../model/include/videoD.hpp"
 
-class StatView: public QWidget{
+class StatView: public QGroupBox{
     Q_OBJECT
 private:
     QGridLayout* mainLayout;
