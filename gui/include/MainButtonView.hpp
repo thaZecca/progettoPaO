@@ -14,6 +14,9 @@ private:
     QPushButton* reload;
 public:
     explicit MainButtonView(QWidget* parent =nullptr);
+signals:
+    void save_event();
+    void reload_event();
 };
 
 #endif
