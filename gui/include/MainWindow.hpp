@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QWidget>
+#include <QMessageBox>
 #include "../../fileManager/include/biblioteca.hpp"
 #include "../../visitor/include/PreviewVisitor.hpp"
 #include "ItemView.hpp"
@@ -14,6 +15,11 @@ class MainWindow: public QWidget{
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+signals:
+    void reload_preview_event();
+public slots:
+    void save();
+    void reload();
 };
 
 #endif
