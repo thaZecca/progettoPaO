@@ -37,3 +37,110 @@ bool query::getCheckArtist() const{
 bool query::getCheckYear() const{
     return checkYear;
 }
+
+/*filter - filtra i contenuti multimeidali e i supporti multimediali a seconda della query
+@param cM vettore di contenuti multimediali
+@param sM vettore di supporti multimediali*/
+void query::filter(vector<contenutoMultimediale*>& cM, vector<supportoMultimediale*>& sM){
+    //filtro per contenuto multimediale
+    for (auto it = cM.begin(); it != cM.end();){
+        bool keep = true;
+
+        //filtro di tipo
+        auto* ptr = *it;
+        if (type == "Audio digitale" && typeid(*ptr) != typeid(audioD)) keep = false;
+        else if (type == "File Audio" && typeid(*ptr) != typeid(fileAudio)) keep = false;
+        else if (type == "File Video" && typeid(*ptr) != typeid(fileVideo)) keep = false;
+        else if (type == "Video digitale" && typeid(*ptr) != typeid(videoD)) keep = false;
+        else if (type == "CD" && typeid(*ptr) != typeid(cd)) keep = false;
+        else if (type == "DVD" && typeid(*ptr) != typeid(dvd)) keep = false;
+
+        //se il tipo non corrisponde, lo elimino subito
+        if (!keep){
+            it = cM.erase(it);
+            continue;
+        }
+
+        //check filtri aggiuntivi solo se almeno uno selezionato
+        bool filterActive = checkTitle || checkArtist || checkYear;
+        if (filterActive){
+            bool matched = false;
+
+            //titolo
+            if (checkTitle && (*it)->getTitolo().contains(text, Qt::CaseInsensitive))
+                matched = true;
+
+            //autore
+            if (!matched && checkArtist){
+                for (auto& a : (*it)->getAutori()){
+                    if (a.contains(text, Qt::CaseInsensitive)){
+                        matched = true;
+                        break;
+                    }
+                }
+            }
+
+            //anno
+            if (!matched && checkYear){
+                if (static_cast<int>((*it)->getAnnoDiPubblicazione()) == text.toInt()) matched = true;
+            }
+            //controllo se ha superato almeno una dei tre match
+            if (!matched) keep = false;
+        }
+        //scelta finale
+        if (!keep) cM.erase(it);
+        else it++;
+    }
+    //filtro per supporto multimediale
+    for (auto it = sM.begin(); it != sM.end();){
+        bool keep = true;
+
+        //filtro di tipo
+        auto* ptr = *it;
+        if (type == "Audio digitale" && typeid(*ptr) != typeid(audioD)) keep = false;
+        else if (type == "File Audio" && typeid(*ptr) != typeid(fileAudio)) keep = false;
+        else if (type == "File Video" && typeid(*ptr) != typeid(fileVideo)) keep = false;
+        else if (type == "Video digitale" && typeid(*ptr) != typeid(videoD)) keep = false;
+        else if (type == "CD" && typeid(*ptr) != typeid(cd)) keep = false;
+        else if (type == "DVD" && typeid(*ptr) != typeid(dvd)) keep = false;
+
+        //se il tipo non corrisponde, lo elimino subito
+        if (!keep){
+            it = sM.erase(it);
+            continue;
+        }
+
+        //check filtri aggiuntivi solo se almeno uno selezionato
+        bool filterActive = checkTitle || checkArtist || checkYear;
+        if (filterActive) {
+            bool matched = false;
+
+            //titolo
+            if (checkTitle && (*it)->getTitolo().contains(text, Qt::CaseInsensitive))
+                matched = true;
+
+            //autore
+            if (!matched && checkArtist){
+                for (auto& a : (*it)->getAutori()){
+                    if (a.contains(text, Qt::CaseInsensitive)){
+                        matched = true;
+                        break;
+                    }
+                }
+            }
+
+            //anno
+            if (!matched && checkYear){
+                vector<int> anni = (*it) -> getAnno();
+                for(auto y = anni.begin(); y != anni.end(); y++)
+                    if (*y == text.toInt()) matched = true;
+            }
+            //controllo se ha superato almeno una dei tre match
+            if (!matched) keep = false;
+        }
+        //decisione finale
+        if (!keep) sM.erase(it);
+        else it++;
+    }
+
+}
