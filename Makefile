@@ -1358,10 +1358,11 @@ moc_ItemView.cpp: gui/include/ItemView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		fileManager/include/biblioteca.hpp \
-		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		model/include/query.hpp \
+		fileManager/include/biblioteca.hpp \
+		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDate \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
 		visitor/include/visitorCMultimediale.hpp \
@@ -1417,6 +1418,8 @@ moc_MainWindow.cpp: gui/include/MainWindow.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		fileManager/include/biblioteca.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1463,6 +1466,7 @@ moc_MainWindow.cpp: gui/include/MainWindow.hpp \
 		gui/include/ItemView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		model/include/query.hpp \
 		gui/include/StatView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
@@ -1480,7 +1484,6 @@ moc_MainWindow.cpp: gui/include/MainWindow.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qcheckbox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
-		model/include/query.hpp \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
 	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include '/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/moc_predefs.h' -I/opt/homebrew/share/qt/mkspecs/macx-clang -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I'/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto' -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/17/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/opt/homebrew/lib gui/include/MainWindow.hpp -o moc_MainWindow.cpp
@@ -1629,6 +1632,8 @@ main.o: main.cpp /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		fileManager/include/biblioteca.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1673,6 +1678,7 @@ main.o: main.cpp /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		gui/include/ItemView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		model/include/query.hpp \
 		gui/include/StatView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
@@ -1689,8 +1695,7 @@ main.o: main.cpp /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QCheckBox \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qcheckbox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
-		model/include/query.hpp
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 biblioteca.o: fileManager/biblioteca.cpp fileManager/include/biblioteca.hpp \
@@ -1767,10 +1772,11 @@ ItemView.o: gui/ItemView.cpp gui/include/ItemView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		fileManager/include/biblioteca.hpp \
-		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		model/include/query.hpp \
+		fileManager/include/biblioteca.hpp \
+		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDate \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
 		visitor/include/visitorCMultimediale.hpp \
@@ -1822,6 +1828,8 @@ MainWindow.o: gui/MainWindow.cpp gui/include/MainWindow.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		fileManager/include/biblioteca.hpp \
 		model/include/contenutoMultimediale.hpp \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1868,6 +1876,7 @@ MainWindow.o: gui/MainWindow.cpp gui/include/MainWindow.hpp \
 		gui/include/ItemView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		model/include/query.hpp \
 		gui/include/StatView.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
@@ -1884,8 +1893,7 @@ MainWindow.o: gui/MainWindow.cpp gui/include/MainWindow.hpp \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QCheckBox \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qcheckbox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
-		model/include/query.hpp
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o gui/MainWindow.cpp
 
 SearchView.o: gui/SearchView.cpp gui/include/SearchView.hpp \
