@@ -3,11 +3,11 @@
 /*Costruttore parametrico
 @param path percorso per il fileManager*/
 biblioteca::biblioteca(QString path): fM(path){
-    fM.load(contenuti, supporti);
+    load();
 }
 
 biblioteca::~biblioteca(){
-    fM.save(contenuti, supporti);
+    save();
 }
 
 /*projectPath - ritorna il percorso della cartella del progetto tramite direttive cross-platform*/
@@ -87,5 +87,17 @@ void biblioteca::rientra(supportoMultimediale* s){
     s -> setNomePrestito("");
     s -> setDataPrestito(QDate());
     s -> setDurataPrestito(0);
+}
+
+/*save - salva nel file di storage lo stato dei contenuti e dei supporti*/
+void biblioteca::save(){
+    fM.save(contenuti, supporti);
+}
+
+/*load - carica dal file di storage il contenuto dei contenuti e dei supporti*/
+void biblioteca::load(){
+    contenuti.erase(contenuti.begin(), contenuti.end()); //svuoto i contenuti
+    supporti.erase(supporti.begin(), supporti.end()); //svuoto i supporti
+    fM.load(contenuti, supporti);
 }
 

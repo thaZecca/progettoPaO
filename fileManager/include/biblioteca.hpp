@@ -28,6 +28,8 @@ public:
     static void presta(supportoMultimediale*, QString, QDate, int);
     static void rientra(contenutoMultimediale*);
     static void rientra(supportoMultimediale*);
+    void save();
+    void load();
 };
 
 #endif
