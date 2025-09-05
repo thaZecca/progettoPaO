@@ -6,7 +6,7 @@ PreviewVisitor::PreviewVisitor(QObject* parent): QObject(parent) {}
 
 /*prepare - prepara la preview*/
 void PreviewVisitor::prepare(){
-    preview = new QWidget();
+    preview = new ClickablePreview();
     QHBoxLayout* mainLayout = new QHBoxLayout(preview);
     mainLayout -> setAlignment(Qt::AlignLeft | Qt::AlignTop);
 
@@ -24,8 +24,6 @@ void PreviewVisitor::prepare(){
     rightLayout -> addWidget(qualita);
 
     mainLayout -> addLayout(rightLayout);
-    preview -> setObjectName("preview");
-    preview -> setStyleSheet("#preview {border: 1px solid black;}");
 }
 
 /*visit - design pattern per visitare l'audioD
@@ -164,7 +162,7 @@ void PreviewVisitor::visit(dvd* d){
 
 /*getPreview
 @return la preview del contenutoMultimediale o del supportoMultimediale*/
-QWidget* PreviewVisitor::getPreview(){
+ClickablePreview* PreviewVisitor::getPreview(){
     prepare();
     return preview;
 }

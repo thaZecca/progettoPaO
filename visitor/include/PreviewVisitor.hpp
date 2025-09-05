@@ -8,13 +8,14 @@
 #include <QPixmap>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include "../../gui/include/ClickablePreview.hpp"
 #include "visitorCMultimediale.hpp"
 #include "../../fileManager/include/biblioteca.hpp"
 
 class PreviewVisitor: public QObject, public visitorCMultimediale{
     Q_OBJECT
 private:
-    QWidget* preview; 
+    ClickablePreview* preview; 
     QLabel* pic;
     QLabel* titolo;
     QLabel* artisti;
@@ -30,7 +31,7 @@ public:
     virtual void visit(fileVideo*) override;
     virtual void visit(cd*) override;
     virtual void visit(dvd*) override;
-    QWidget* getPreview();
+    ClickablePreview* getPreview();
 };
 
 #endif
