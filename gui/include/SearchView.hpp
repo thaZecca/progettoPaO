@@ -33,7 +33,6 @@ signals:
     void search_event(query q);
 public slots:
     void search();
-
 };
 
 #endif
