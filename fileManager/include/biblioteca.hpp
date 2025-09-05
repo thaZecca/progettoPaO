@@ -30,6 +30,8 @@ public:
     static void rientra(supportoMultimediale*);
     void save();
     void load();
+    static contenutoMultimediale* cSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s);
+    static supportoMultimediale* sSerach(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s);
 };
 
 #endif

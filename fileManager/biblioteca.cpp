@@ -101,3 +101,30 @@ void biblioteca::load(){
     fM.load(contenuti, supporti);
 }
 
+/*cSearch - ricerca tra i contenutiMultimediali alla posizione specificata
+@param pos posizione in cui cercare
+@param c vettore dei contenuti multimeidali
+@param s vettore dei supporti multimediali
+@return il contenutoMultimediale cercato se esiste, nullptr altrimenti*/
+contenutoMultimediale* biblioteca::cSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s){
+    contenutoMultimediale* ret = nullptr;
+    if(pos>=0 && pos<c.size()){
+        ret = c[pos];
+    }
+    return ret;
+}
+
+/*cSearch - ricerca tra i supportiMultimediali alla posizione specificata
+@param pos posizione in cui cercare
+@param c vettore dei contenuti multimeidali
+@param s vettore dei supporti multimediali
+@return il supportoMultimediale cercato se esiste, nullptr altrimenti*/
+supportoMultimediale* biblioteca::sSerach(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s){
+    supportoMultimediale* ret = nullptr;
+    pos = pos - (c.size() - 1);
+    if(pos>=0 && pos<s.size()){
+        ret = s[pos];
+    }
+    return ret;
+}
+
