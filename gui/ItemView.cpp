@@ -55,7 +55,8 @@ query* ItemView::getLastQuery() const{
 @param q query*/
 void ItemView::submitQuery(query q){
     prepare(&q);
-    lastQuery = &q;
+    delete lastQuery; //libero la memoria se è occupata
+    lastQuery = new query(q); //creo una copia così non la perdo
 }
 
 /*reload_preview - slot per ricaricare l'interfaccia a seguito di ricaricamenti dal file di storage*/
@@ -66,6 +67,5 @@ void ItemView::reload_preview(){
 /*click_preview_event - slot per ricevere l'evento di click sulle preview
 @param ip indice della preview cliccata*/
 void ItemView::click_preview_event(int ip){
-    std::cout << "click(recived)"+std::to_string(ip) << std::endl;
     emit(clicked(ip));
 }
