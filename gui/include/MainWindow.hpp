@@ -10,6 +10,7 @@
 #include "StatView.hpp"
 #include "MainButtonView.hpp"
 #include "SearchView.hpp"
+#include "FullPreview.hpp"
 
 class MainWindow: public QWidget{
     Q_OBJECT
@@ -20,8 +21,8 @@ private:
     StatView* statistics;
     SearchView* search;
     MainButtonView* buttons;
+    FullPreview* fullprev;
     void prepareMainRightWindow();
-    void prepareFullPreview();
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void prepareMainWindow();
@@ -31,6 +32,7 @@ public slots:
     void save();
     void reload();
     void show_full_preview(int ip);
+    void back();
 };
 
 #endif

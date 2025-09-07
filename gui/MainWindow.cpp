@@ -1,37 +1,42 @@
 #include "include/MainWindow.hpp"
 
 /*Costruttore parametrico di MainWindow*/
-MainWindow::MainWindow(QWidget* parent): QWidget(parent){
+MainWindow::MainWindow(QWidget* parent): QWidget(parent), mainLayout(nullptr), right(nullptr), previews(nullptr), statistics(nullptr), search(nullptr), buttons(nullptr), fullprev(nullptr){
     resize(1050, 700); // Imposta la dimensione iniziale della finestra
     setMinimumSize(600, 400); // Imposta la dimensione minima
     prepareMainWindow();
-
-    //Connessioni tra segnali e slots delle classi
-    connect(search, &SearchView::search_event, previews, &ItemView::submitQuery);
-    connect(buttons, &MainButtonView::save_event, this, &MainWindow::save);
-    connect(buttons, &MainButtonView::reload_event, this, &MainWindow::reload);
-    connect(this, &MainWindow::reload_preview_event, previews, &ItemView::reload_preview);
 } 
 
+/*prepareMainWindow - prepara la finestra principale di default*/
 void MainWindow::prepareMainWindow(){
     mainLayout = new QHBoxLayout(this);
     previews = new ItemView();
-    statistics = new StatView();
-    search = new SearchView();
-    buttons = new MainButtonView();
 
     mainLayout -> addWidget(previews);
     prepareMainRightWindow();
-    mainLayout -> addWidget(right);
+
+    //Connessione tra segnali e slots delle classi
+    connect(previews, &ItemView::clicked, this, &MainWindow::show_full_preview);
 }
 
+/*prepareMainWindow - prepara nella finestra principale la schermata destra di default */
 void MainWindow::prepareMainRightWindow(){
+    statistics = new StatView();
+    search = new SearchView();
+    buttons = new MainButtonView();
     right = new QWidget();
     right -> setMaximumWidth(330);
     QVBoxLayout* rightLayout = new QVBoxLayout(right);
     rightLayout -> addWidget(statistics);
     rightLayout -> addWidget(search);
     rightLayout -> addWidget(buttons);
+    mainLayout -> addWidget(right);
+
+    //Connessioni tra segnali e slots delle classi
+    connect(search, &SearchView::search_event, previews, &ItemView::submitQuery);
+    connect(buttons, &MainButtonView::save_event, this, &MainWindow::save);
+    connect(buttons, &MainButtonView::reload_event, this, &MainWindow::reload);
+    connect(this, &MainWindow::reload_preview_event, previews, &ItemView::reload_preview);
 }
 
 /*save - slot per il savataggio*/
@@ -42,6 +47,7 @@ void MainWindow::save(){
     info.exec();
 }
 
+/*reload - slot per ricevere il segnale di ricarica dal file*/
 void MainWindow::reload(){
     QMessageBox alert;
     QMessageBox info;
@@ -64,6 +70,24 @@ void MainWindow::reload(){
     }
 }
 
+/*show_full_preview - slot per ricevere il segnale di mostrare la fullpreview
+@param ip index position dell'oggetto cliccato*/
 void MainWindow::show_full_preview(int ip){
+    if(right){
+        delete right;
+        right = nullptr;
+    }
+    if(fullprev != nullptr){ 
+        delete fullprev;
+        fullprev = nullptr;
+    }
+    fullprev = new FullPreview(ip, previews->getLastQuery());
+    mainLayout -> addWidget(fullprev);
+    connect(fullprev, &FullPreview::back_event, this, &MainWindow::back);
+}
 
+void MainWindow::back(){
+    delete fullprev;
+    fullprev = nullptr;
+    prepareMainRightWindow();
 }
