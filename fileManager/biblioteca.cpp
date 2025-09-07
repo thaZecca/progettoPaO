@@ -108,7 +108,7 @@ void biblioteca::load(){
 @return il contenutoMultimediale cercato se esiste, nullptr altrimenti*/
 contenutoMultimediale* biblioteca::cSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s){
     contenutoMultimediale* ret = nullptr;
-    if(pos>=0 && pos<c.size()){
+    if(pos>=0 && pos<c.size() && !c.empty()){
         ret = c[pos];
     }
     return ret;
@@ -119,10 +119,10 @@ contenutoMultimediale* biblioteca::cSearch(int pos, vector<contenutoMultimediale
 @param c vettore dei contenuti multimeidali
 @param s vettore dei supporti multimediali
 @return il supportoMultimediale cercato se esiste, nullptr altrimenti*/
-supportoMultimediale* biblioteca::sSerach(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s){
+supportoMultimediale* biblioteca::sSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s){
     supportoMultimediale* ret = nullptr;
-    pos = pos - (c.size() - 1);
-    if(pos>=0 && pos<s.size()){
+    if(!c.empty()) pos -= (c.size());
+    if(pos>=0 && pos<s.size() && !s.empty()){
         ret = s[pos];
     }
     return ret;
