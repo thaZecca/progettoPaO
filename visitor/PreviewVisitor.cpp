@@ -1,9 +1,5 @@
 #include "include/PreviewVisitor.hpp"
 
-/*Costruttore parametrico
-@param parent parent di this*/
-PreviewVisitor::PreviewVisitor(QObject* parent): QObject(parent) {}
-
 /*prepare - prepara la preview*/
 void PreviewVisitor::prepare(){
     preview = new ClickablePreview();

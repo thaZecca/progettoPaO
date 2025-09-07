@@ -12,8 +12,7 @@
 #include "visitorCMultimediale.hpp"
 #include "../../fileManager/include/biblioteca.hpp"
 
-class PreviewVisitor: public QObject, public visitorCMultimediale{
-    Q_OBJECT
+class PreviewVisitor: public visitorCMultimediale{
 private:
     ClickablePreview* preview; 
     QLabel* pic;
@@ -24,7 +23,6 @@ private:
     QLabel* qualita;
     void prepare();
 public:
-    explicit PreviewVisitor(QObject* parent =nullptr);
     virtual void visit(audioD*) override;
     virtual void visit(videoD*) override;
     virtual void visit(fileAudio*) override;
