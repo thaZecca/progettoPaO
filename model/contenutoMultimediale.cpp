@@ -5,7 +5,6 @@
 @param t titolo del contenuto multimediale
 @param cP casa produttrice
 @param a vettore degli autori
-@param aDProd anno di produzione
 @param aDPubb anno di pubblicazione
 @param d durata espress in secondi
 @param pP percorso dell'immagine
