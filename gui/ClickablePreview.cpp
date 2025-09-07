@@ -9,5 +9,4 @@ ClickablePreview::ClickablePreview(QWidget* parent): QWidget(parent){}
 void ClickablePreview::mousePressEvent(QMouseEvent* event){
     emit(clicked(objectName().toInt()));
     QWidget::mousePressEvent(event);
-    std::cout << ("click"+ objectName().toStdString()) << std::endl;
 }
