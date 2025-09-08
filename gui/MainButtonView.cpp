@@ -22,4 +22,5 @@ MainButtonView::MainButtonView(QWidget* parent): QWidget(parent){
     //signal forwarding dei pulsanti
     connect(save, &QPushButton::clicked, this, &MainButtonView::save_event);
     connect(reload, &QPushButton::clicked, this, &MainButtonView::reload_event);
+    connect(add, &QPushButton::clicked, this, &MainButtonView::add_event);
 }

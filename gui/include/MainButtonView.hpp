@@ -17,6 +17,7 @@ public:
 signals:
     void save_event();
     void reload_event();
+    void add_event();
 };
 
 #endif
