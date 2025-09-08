@@ -11,6 +11,7 @@
 #include "MainButtonView.hpp"
 #include "SearchView.hpp"
 #include "FullPreview.hpp"
+#include "AddObjectView.hpp"
 
 class MainWindow: public QWidget{
     Q_OBJECT
@@ -22,6 +23,7 @@ private:
     SearchView* search;
     MainButtonView* buttons;
     FullPreview* fullprev;
+    AddObjectView* addobject;
     void prepareMainRightWindow();
 public:
     explicit MainWindow(QWidget *parent = nullptr);
@@ -33,6 +35,8 @@ public slots:
     void reload();
     void show_full_preview(int ip);
     void back();
+    void add_object();
+    void add_back();
 };
 
 #endif

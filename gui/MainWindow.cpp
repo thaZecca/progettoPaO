@@ -4,12 +4,12 @@
 MainWindow::MainWindow(QWidget* parent): QWidget(parent), mainLayout(nullptr), right(nullptr), previews(nullptr), statistics(nullptr), search(nullptr), buttons(nullptr), fullprev(nullptr){
     resize(1050, 700); // Imposta la dimensione iniziale della finestra
     setMinimumSize(600, 400); // Imposta la dimensione minima
+    mainLayout = new QHBoxLayout(this);
     prepareMainWindow();
 } 
 
 /*prepareMainWindow - prepara la finestra principale di default*/
 void MainWindow::prepareMainWindow(){
-    mainLayout = new QHBoxLayout(this);
     previews = new ItemView();
 
     mainLayout -> addWidget(previews);
@@ -37,6 +37,7 @@ void MainWindow::prepareMainRightWindow(){
     connect(buttons, &MainButtonView::save_event, this, &MainWindow::save);
     connect(buttons, &MainButtonView::reload_event, this, &MainWindow::reload);
     connect(this, &MainWindow::reload_preview_event, previews, &ItemView::reload_preview);
+    connect(buttons, &MainButtonView::add_event, this, &MainWindow::add_object);
 }
 
 /*save - slot per il savataggio*/
@@ -90,4 +91,18 @@ void MainWindow::back(){
     delete fullprev;
     fullprev = nullptr;
     prepareMainRightWindow();
+}
+
+void MainWindow::add_object(){
+    delete right;
+    delete previews;
+    addobject = new AddObjectView();
+    mainLayout -> addWidget(addobject);
+    
+    connect(addobject, &AddObjectView::back_event, this, &MainWindow::add_back);
+}
+
+void MainWindow::add_back(){
+    delete addobject;
+    prepareMainWindow();
 }
