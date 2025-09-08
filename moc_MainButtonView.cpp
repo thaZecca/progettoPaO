@@ -41,7 +41,8 @@ template <> constexpr inline auto MainButtonView::qt_create_metaobjectdata<qt_me
         "MainButtonView",
         "save_event",
         "",
-        "reload_event"
+        "reload_event",
+        "add_event"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -49,6 +50,8 @@ template <> constexpr inline auto MainButtonView::qt_create_metaobjectdata<qt_me
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'reload_event'
         QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'add_event'
+        QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -74,6 +77,7 @@ void MainButtonView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         switch (_id) {
         case 0: _t->save_event(); break;
         case 1: _t->reload_event(); break;
+        case 2: _t->add_event(); break;
         default: ;
         }
     }
@@ -81,6 +85,8 @@ void MainButtonView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         if (QtMocHelpers::indexOfMethod<void (MainButtonView::*)()>(_a, &MainButtonView::save_event, 0))
             return;
         if (QtMocHelpers::indexOfMethod<void (MainButtonView::*)()>(_a, &MainButtonView::reload_event, 1))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (MainButtonView::*)()>(_a, &MainButtonView::add_event, 2))
             return;
     }
 }
@@ -104,14 +110,14 @@ int MainButtonView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
@@ -126,5 +132,11 @@ void MainButtonView::save_event()
 void MainButtonView::reload_event()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void MainButtonView::add_event()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 QT_WARNING_POP
