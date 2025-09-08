@@ -15,6 +15,7 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QFormLayout>
+#include <QMessageBox>
 #include <QPixmap>
 #include "../../fileManager/include/biblioteca.hpp"
 
@@ -46,6 +47,7 @@ private:
     QSpinBox* fps;
     QCheckBox* progressivo;
     QLineEdit* risoluzione;
+    bool check();
 public:
     explicit AddContenutoView(QWidget* parent =nullptr);
     void bottomAudioD();
@@ -54,6 +56,7 @@ public:
     void bottomFileVideo();
 public slots:
     void type_event(QAbstractButton*);
+    void save();
 signals:
     void cancel_event();
 };

@@ -31,6 +31,7 @@ AddContenutoView::AddContenutoView(QWidget* parent):
         infoLayout -> addWidget(anno);
         infoLayout -> addWidget(new QLabel("Durata:"),1,2);
         durata = new QDateTimeEdit();
+        durata -> setDisplayFormat("mm:ss");
         infoLayout -> addWidget(durata,1,3);
         infoLayout -> addWidget(new QLabel("Scaffale:"),2,2);
         scaffale = new QLineEdit();
@@ -72,6 +73,7 @@ AddContenutoView::AddContenutoView(QWidget* parent):
 
         connect(tipo, &QButtonGroup::buttonClicked, this, &AddContenutoView::type_event);
         connect(cancella, &QPushButton::clicked, this, &AddContenutoView::cancel_event);
+        connect(salva, &QPushButton::clicked, this, &AddContenutoView::save);
     }
 
     /*type_event - slot per ridisegnare la bottom interface quando viene selezionato un tipo
@@ -146,5 +148,29 @@ AddContenutoView::AddContenutoView(QWidget* parent):
         estensione = new QLineEdit();
         bottomLayout -> addWidget(new QLabel("Estensione:"),3,0);
         bottomLayout -> addWidget(estensione,3,1);
+    }
+
+    void AddContenutoView::save(){
+        QAbstractButton* b = tipo -> checkedButton();
+        if(b){
+            if(check()){
+                if(b->text() == "Audio Digitale") qDebug() << "ok";
+            }else{
+                QMessageBox error;
+                error.setText("Uno o più campi incompleti o errati!");
+                error.exec();
+            }
+        }else{
+            QMessageBox error; 
+            error.setText("Non è stato selezionato nessun tipo!");
+            error.exec();
+        }
+    }
+
+    bool AddContenutoView::check(){
+        bool a;
+        anno -> text().toInt(&a);
+        return !titolo -> text().isEmpty() && !autori -> text().isEmpty() && !casaProd -> text().isEmpty() && a 
+            && !scaffale -> text().isEmpty();
     }
 
