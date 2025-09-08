@@ -74,6 +74,7 @@ AddContenutoView::AddContenutoView(QWidget* parent):
         connect(tipo, &QButtonGroup::buttonClicked, this, &AddContenutoView::type_event);
         connect(cancella, &QPushButton::clicked, this, &AddContenutoView::cancel_event);
         connect(salva, &QPushButton::clicked, this, &AddContenutoView::save);
+        connect(picSelect, &QPushButton::clicked, this, &AddContenutoView::select_image);
     }
 
     /*type_event - slot per ridisegnare la bottom interface quando viene selezionato un tipo
@@ -153,8 +154,8 @@ AddContenutoView::AddContenutoView(QWidget* parent):
     void AddContenutoView::save(){
         QAbstractButton* b = tipo -> checkedButton();
         if(b){
-            if(check()){
-                if(b->text() == "Audio Digitale") qDebug() << "ok";
+            if(check() && fd && !fd -> selectedFiles().isEmpty()){ //l'utente ha scritto tutto e di tipo corretto
+                if(b->text() == "Audio Digitale") buildAudioD();
             }else{
                 QMessageBox error;
                 error.setText("Uno o più campi incompleti o errati!");
@@ -172,5 +173,25 @@ AddContenutoView::AddContenutoView(QWidget* parent):
         anno -> text().toInt(&a);
         return !titolo -> text().isEmpty() && !autori -> text().isEmpty() && !casaProd -> text().isEmpty() && a 
             && !scaffale -> text().isEmpty();
+    }
+
+    void AddContenutoView::select_image(){
+        fd = new QFileDialog(this);
+        fd -> setFileMode(QFileDialog::ExistingFile); //il file deve esistere e deve essere unico
+        fd -> setNameFilter(tr("Images (*.png *.xpm *.jpg)")); //il file deve essere di tipo immagine
+        fd -> setDirectory(biblioteca::projectPath()); //deve cercarlo dove si trova il progetto
+        fd -> exec();
+    }
+
+    void AddContenutoView::buildAudioD(){
+        vector<QString> aut;
+        for(auto a : autori -> text().split(",")){
+            aut.push_back(a);
+        }
+        int sec = (durata -> time().minute() * 60) + (durata -> time().second());
+        audioD* app = new audioD(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, fd -> selectedFiles().first(), 1, freqCamp -> text().toInt(), stereo -> checkState() == Qt::Checked, numeroCanali -> value());
+        std::cout << *app << std::endl;
+        biblioteca::add(app);
+        emit(cancel_event());
     }
 

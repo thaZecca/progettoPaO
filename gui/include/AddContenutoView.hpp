@@ -48,6 +48,7 @@ private:
     QCheckBox* progressivo;
     QLineEdit* risoluzione;
     bool check();
+    void buildAudioD();
 public:
     explicit AddContenutoView(QWidget* parent =nullptr);
     void bottomAudioD();
@@ -57,6 +58,7 @@ public:
 public slots:
     void type_event(QAbstractButton*);
     void save();
+    void select_image();
 signals:
     void cancel_event();
 };
