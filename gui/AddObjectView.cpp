@@ -25,7 +25,6 @@ AddObjectView::AddObjectView(QWidget* parent): QWidget(parent), addContenuto(nul
 
     connect(indietro, &QPushButton::clicked, this, &AddObjectView::back_event);
     connect(selectContenuto, &QPushButton::clicked, this, &AddObjectView::add_contenuto);
-    
 }
 
 void AddObjectView::add_contenuto(){

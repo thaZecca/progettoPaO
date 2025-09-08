@@ -80,6 +80,42 @@
             "scaffale": "",
             "tipo": "fileVideo",
             "titolo": "Strawberry fields forever - Video"
+        },
+        {
+            "autore0": "The Beatles",
+            "canali": 2,
+            "casaProduttrice": "Apple Corps",
+            "dataPrestito": "",
+            "durata": 142,
+            "durataPrestito": 0,
+            "frequenza": 44100,
+            "inPrestito": "false",
+            "nomePrestito": "",
+            "peso": 1,
+            "picPath": "/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/src/contenutoMultimediale.png",
+            "pubblicazione": 1969,
+            "scaffale": "",
+            "stereo": "true",
+            "tipo": "audioD",
+            "titolo": "The End"
+        },
+        {
+            "autore0": "Bruce Springsteen",
+            "canali": 2,
+            "casaProduttrice": "EMI",
+            "dataPrestito": "",
+            "durata": 180,
+            "durataPrestito": 0,
+            "frequenza": 44100,
+            "inPrestito": "false",
+            "nomePrestito": "",
+            "peso": 1,
+            "picPath": "/Users/zcchnt/Library/CloudStorage/OneDrive-Personal/UNI/IIAnno/Programmazione ad Oggetti/Qt/progetto/src/cd.png",
+            "pubblicazione": 1980,
+            "scaffale": "",
+            "stereo": "true",
+            "tipo": "audioD",
+            "titolo": "Nebraska"
         }
     ],
     "supporti": [
