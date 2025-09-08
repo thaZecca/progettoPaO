@@ -32,8 +32,8 @@ public:
     void load();
     static contenutoMultimediale* cSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s);
     static supportoMultimediale* sSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s);
-    void add(contenutoMultimediale*);
-    void add(supportoMultimediale*);
+    static void add(contenutoMultimediale*);
+    static void add(supportoMultimediale*);
 };
 
 #endif

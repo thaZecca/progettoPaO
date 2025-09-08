@@ -131,11 +131,11 @@ supportoMultimediale* biblioteca::sSearch(int pos, vector<contenutoMultimediale*
 /*add - aggiunge il contenutoMultimediale alla biblioteca
 @param c contenutoMultimediale da aggiungere alla biblioteca, se nullptr continue*/
 void biblioteca::add(contenutoMultimediale* c){
-    if(c) contenuti.push_back(c);
+    if(c) biblioteca::instance().getContenuti().push_back(c);
 }
 
 /*add - aggiunge il supportoMultimediale alla biblioteca
 @param s supportoMultimediale da aggiungere alla biblioteca, se nullptr continue*/
 void biblioteca::add(supportoMultimediale* s){
-    if(s) supporti.push_back(s);
+    if(s) biblioteca::instance().getSupporti().push_back(s);
 }
