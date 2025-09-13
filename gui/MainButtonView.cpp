@@ -23,4 +23,5 @@ MainButtonView::MainButtonView(QWidget* parent): QWidget(parent){
     connect(save, &QPushButton::clicked, this, &MainButtonView::save_event);
     connect(reload, &QPushButton::clicked, this, &MainButtonView::reload_event);
     connect(add, &QPushButton::clicked, this, &MainButtonView::add_event);
+    connect(remove, &QPushButton::clicked, this, &MainButtonView::remove_event);
 }

@@ -18,6 +18,7 @@ signals:
     void save_event();
     void reload_event();
     void add_event();
+    void remove_event();
 };
 
 #endif
