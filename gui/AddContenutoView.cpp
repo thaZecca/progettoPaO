@@ -1,9 +1,10 @@
 #include "include/AddContenutoView.hpp"
 
 /*Costruttore parametrico di AddContenutoView
+@param s stato di istanziazione: 1 - CD, 2 - DVD, other: normale
 @param parent*/
-AddContenutoView::AddContenutoView(QWidget* parent): 
-    QWidget(parent), bottom(nullptr), fd(nullptr), picSelect(nullptr), titolo(nullptr), autori(nullptr), 
+AddContenutoView::AddContenutoView(int s, QWidget* parent): 
+    QWidget(parent), ptr(nullptr), state(s), bottom(nullptr), fd(nullptr), picSelect(nullptr), titolo(nullptr), autori(nullptr), 
     casaProd(nullptr), anno(nullptr), durata(nullptr), scaffale(nullptr), tipo(nullptr),
     freqCamp(nullptr), stereo(nullptr), numeroCanali(nullptr), lossy(nullptr),
     estensione(nullptr), fps(nullptr), progressivo(nullptr), risoluzione(nullptr) {
@@ -75,6 +76,20 @@ AddContenutoView::AddContenutoView(QWidget* parent):
         connect(cancella, &QPushButton::clicked, this, &AddContenutoView::cancel_event);
         connect(salva, &QPushButton::clicked, this, &AddContenutoView::save);
         connect(picSelect, &QPushButton::clicked, this, &AddContenutoView::select_image);
+
+        if(s == 1){
+            aD -> setChecked(true);
+            fA -> setEnabled(false);
+            vD -> setEnabled(false);
+            fV -> setEnabled(false);
+            type_event(aD);
+        }else if(s == 2){
+            aD -> setEnabled(false);
+            fA -> setEnabled(false);
+            vD -> setChecked(true);
+            fV -> setEnabled(false);
+            type_event(vD);
+        }
     }
 
     /*type_event - slot per ridisegnare la bottom interface quando viene selezionato un tipo
@@ -88,7 +103,7 @@ AddContenutoView::AddContenutoView(QWidget* parent):
 
     /*bottomAudioD - prepara la bottom interface con i campi di audioD*/
     void AddContenutoView::bottomAudioD(){
-        delete bottom;
+        delete bottom; //caso sicuro, bottom è amorfo
         bottom = new QWidget();
         QGridLayout* bottomLayout = new QGridLayout(bottom);
 
@@ -151,23 +166,24 @@ AddContenutoView::AddContenutoView(QWidget* parent):
         bottomLayout -> addWidget(estensione,3,1);
     }
 
+    /*save - controlla se i campi sono completi, quindi fa istanziare l'oggetto. Errore altrimenti*/
     void AddContenutoView::save(){
         QAbstractButton* b = tipo -> checkedButton();
         if(b){
             if(check() && fd && !fd -> selectedFiles().isEmpty()){ //l'utente ha scritto tutto e di tipo corretto
-                if(b->text() == "Audio Digitale") buildAudioD();
+                if(b->text() == "Audio Digitale" && !freqCamp -> text().isEmpty()) buildAudioD();
+                else if(b -> text() == "File Audio" && !freqCamp -> text().isEmpty() && !estensione -> text().isEmpty()) buildFileAudio();
+                else if(b -> text() == "Video Digitale" && !risoluzione -> text().isEmpty())  buildVideoD();
+                else if(b -> text() == "File Video" && !risoluzione -> text().isEmpty() && !estensione -> text().isEmpty()) buildFileVideo();
             }else{
-                QMessageBox error;
-                error.setText("Uno o più campi incompleti o errati!");
-                error.exec();
+                error("Uno o più campi incompleti o errati!");
             }
-        }else{
-            QMessageBox error; 
-            error.setText("Non è stato selezionato nessun tipo!");
-            error.exec();
+        }else{ 
+            error("Non è stato selezionato nessun tipo!");
         }
     }
 
+    /*checl - controllo primario sui campi di contenutoMultimediale*/
     bool AddContenutoView::check(){
         bool a;
         anno -> text().toInt(&a);
@@ -175,6 +191,8 @@ AddContenutoView::AddContenutoView(QWidget* parent):
             && !scaffale -> text().isEmpty();
     }
 
+    /*select_image - apre la finestra di QFileDialog nella cartella del progetto per selezionare l'immagine del contenuto
+    @see QFileDialog*/
     void AddContenutoView::select_image(){
         fd = new QFileDialog(this);
         fd -> setFileMode(QFileDialog::ExistingFile); //il file deve esistere e deve essere unico
@@ -183,15 +201,105 @@ AddContenutoView::AddContenutoView(QWidget* parent):
         fd -> exec();
     }
 
+    /*buildAudioD - costruisce l'audioD*/
     void AddContenutoView::buildAudioD(){
+        QDir baseDir(biblioteca::projectPath());
         vector<QString> aut;
         for(auto a : autori -> text().split(",")){
+            if(a[0]==' '){
+                a.removeFirst();
+            }
             aut.push_back(a);
         }
         int sec = (durata -> time().minute() * 60) + (durata -> time().second());
-        audioD* app = new audioD(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, fd -> selectedFiles().first(), 1, freqCamp -> text().toInt(), stereo -> checkState() == Qt::Checked, numeroCanali -> value());
-        std::cout << *app << std::endl;
-        biblioteca::add(app);
+        ptr = new audioD(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, baseDir.relativeFilePath(fd -> selectedFiles().first()), 1, freqCamp -> text().toInt(), stereo -> checkState() == Qt::Checked, numeroCanali -> value());
+        if(state != 1){
+            biblioteca::add(ptr);
+            emit(cancel_event());
+        }else{
+            emit(return_save_event());
+        }
+    }
+
+    /*buildFileAudio - costruisce il fileAudio*/
+    void AddContenutoView::buildFileAudio(){
+        QDir baseDir(biblioteca::projectPath());
+        vector<QString> aut;
+        for(auto a : autori -> text().split(",")){
+            if(a[0]==' '){
+                a.removeFirst();
+            }
+            aut.push_back(a);
+        }
+        int sec = (durata -> time().minute() * 60) + (durata -> time().second());
+        ptr = new fileAudio(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, baseDir.relativeFilePath(fd -> selectedFiles().first()), 1, freqCamp -> text().toInt(), stereo -> checkState() == Qt::Checked, numeroCanali -> value(), lossy -> checkState() == Qt::Checked, estensione -> text());
+        biblioteca::add(ptr);
         emit(cancel_event());
     }
 
+    /*buildVideoD - costruisce il videoD*/
+    void AddContenutoView::buildVideoD(){
+        QDir baseDir(biblioteca::projectPath());
+        vector<QString> aut;
+        for(auto a : autori -> text().split(",")){
+            if(a[0]==' '){
+                a.removeFirst();
+            }
+            aut.push_back(a);
+        }
+        int sec = (durata -> time().minute() * 60) + (durata -> time().second());
+        ptr = new videoD(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, baseDir.relativeFilePath(fd -> selectedFiles().first()), 1, fps -> value(), progressivo -> checkState() == Qt::Checked, risoluzione -> text());
+        if(state != 2){
+            biblioteca::add(ptr);
+            emit(cancel_event());
+        }else{
+            emit(return_save_event());
+        }
+    }
+
+    /*buildFileVideo - costruisce il fileVideo*/
+    void AddContenutoView::buildFileVideo(){
+        QDir baseDir(biblioteca::projectPath());
+        vector<QString> aut;
+        for(auto a : autori -> text().split(",")){
+            if(a[0]==' '){
+                a.removeFirst();
+            }
+            aut.push_back(a);
+        }
+        int sec = (durata -> time().minute() * 60) + (durata -> time().second());
+        ptr = new fileVideo(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, baseDir.relativeFilePath(fd -> selectedFiles().first()), 1, fps -> value(), progressivo -> checkState() == Qt::Checked, risoluzione -> text(), estensione -> text());
+        biblioteca::add(ptr);
+        emit(cancel_event());
+    }
+
+    /*getContenuto
+    @return il contenutoMultimediale appena costruito*/
+    contenutoMultimediale* AddContenutoView::getContenuto() const{
+        return ptr;
+    }
+
+    /*error - costruisce le messgebox di dialogo
+    @param s stringa da mostrare a schermo
+    @see QMessageBox*/
+    void AddContenutoView::error(QString s){
+        QMessageBox e; 
+        e.setText(s);
+        e.exec();
+    }
+
+    /*clearLayout - pulisce il layout rimuovendo ed eliminando i widget
+    @param layout layout da pulire*/
+    void AddContenutoView::clearLayout(QLayout* layout) {
+    if (!layout) return;
+    QLayoutItem *item;
+    while ((item = layout->takeAt(0)) != nullptr) {
+        if (item->widget()) {
+            item->widget()->deleteLater();   // elimina i widget figli
+        }
+        if (item->layout()) {
+            clearLayout(item->layout()); // ricorsivo
+        }
+        delete item; // elimina l’item del layout
+    }
+}

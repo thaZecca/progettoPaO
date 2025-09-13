@@ -2,6 +2,7 @@
 #define ADD_CONTENUTO_HPP
 
 #include <QWidget>
+#include <QDir>
 #include <QPushButton>
 #include <QFileDialog>
 #include <QLabel>
@@ -22,6 +23,8 @@
 class AddContenutoView: public QWidget{
     Q_OBJECT
 private:
+    contenutoMultimediale* ptr;
+    int state;
     QWidget* bottom;
     QVBoxLayout* mainLayout;
     QFileDialog* fd;
@@ -49,18 +52,25 @@ private:
     QLineEdit* risoluzione;
     bool check();
     void buildAudioD();
+    void buildFileAudio();
+    void buildVideoD();
+    void buildFileVideo();
+    void error(QString);
 public:
-    explicit AddContenutoView(QWidget* parent =nullptr);
+    explicit AddContenutoView(int s, QWidget* parent =nullptr);
     void bottomAudioD();
     void bottomFileAudio();
     void bottomVideoD();
     void bottomFileVideo();
+    contenutoMultimediale* getContenuto() const;
+    static void clearLayout(QLayout*);
 public slots:
     void type_event(QAbstractButton*);
     void save();
     void select_image();
 signals:
     void cancel_event();
+    void return_save_event();
 };
 
 #endif
