@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QWidget>
 #include <QMessageBox>
+#include <QLabel>
+#include <QDebug>
 #include "../../fileManager/include/biblioteca.hpp"
 #include "../../visitor/include/PreviewVisitor.hpp"
 #include "ItemView.hpp"
@@ -24,7 +26,11 @@ private:
     MainButtonView* buttons;
     FullPreview* fullprev;
     AddObjectView* addobject;
+    QLabel* status;
+    bool remove_activated;
     void prepareMainRightWindow();
+    void show_full_preview(int);
+    void remove(int);
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void prepareMainWindow();
@@ -33,10 +39,11 @@ signals:
 public slots:
     void save();
     void reload();
-    void show_full_preview(int ip);
+    void dispatcher(int);
     void back();
     void add_object();
     void add_back();
+    void set_remove();
 };
 
 #endif
