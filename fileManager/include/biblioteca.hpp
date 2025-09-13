@@ -5,6 +5,7 @@
 #include "../../model/include/contenutoMultimediale.hpp"
 #include "../../model/include/supportoMultimediale.hpp"
 #include "fileManager.hpp"
+#include "../../model/include/query.hpp"
 #include <QString>
 #include <QApplication>
 #include <QDir>
@@ -30,10 +31,11 @@ public:
     static void rientra(supportoMultimediale*);
     void save();
     void load();
-    static contenutoMultimediale* cSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s);
+    static contenutoMultimediale* cSearch(int pos, vector<contenutoMultimediale*>& c);
     static supportoMultimediale* sSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s);
     static void add(contenutoMultimediale*);
     static void add(supportoMultimediale*);
+    void remove(int, query*);
 };
 
 #endif

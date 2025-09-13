@@ -14,7 +14,7 @@ biblioteca::~biblioteca(){
 QDir biblioteca::projectPath(){
     QDir dir(QCoreApplication::applicationDirPath());
     #if defined(Q_OS_MAC) //direttiva per sistema operativo Apple macOS
-        dir.cdUp(); dir.cdUp(); dir.cdUp(); 
+        dir.cdUp(); dir.cdUp(); dir.cdUp();
     #else //direttiva per sistemi Linux e Microsoft Windows
         dir.cdUp();
     #endif
@@ -104,11 +104,10 @@ void biblioteca::load(){
 /*cSearch - ricerca tra i contenutiMultimediali alla posizione specificata
 @param pos posizione in cui cercare
 @param c vettore dei contenuti multimeidali
-@param s vettore dei supporti multimediali
 @return il contenutoMultimediale cercato se esiste, nullptr altrimenti*/
-contenutoMultimediale* biblioteca::cSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s){
+contenutoMultimediale* biblioteca::cSearch(int pos, vector<contenutoMultimediale*>& c){
     contenutoMultimediale* ret = nullptr;
-    if(pos>=0 && pos<c.size() && !c.empty()){
+    if(pos>=0 && pos<static_cast<int>(c.size()) && !c.empty()){
         ret = c[pos];
     }
     return ret;
@@ -122,7 +121,7 @@ contenutoMultimediale* biblioteca::cSearch(int pos, vector<contenutoMultimediale
 supportoMultimediale* biblioteca::sSearch(int pos, vector<contenutoMultimediale*>& c, vector<supportoMultimediale*>& s){
     supportoMultimediale* ret = nullptr;
     if(!c.empty()) pos -= (c.size());
-    if(pos>=0 && pos<s.size() && !s.empty()){
+    if(pos>=0 && pos<static_cast<int>(s.size()) && !s.empty()){
         ret = s[pos];
     }
     return ret;
@@ -138,4 +137,30 @@ void biblioteca::add(contenutoMultimediale* c){
 @param s supportoMultimediale da aggiungere alla biblioteca, se nullptr continue*/
 void biblioteca::add(supportoMultimediale* s){
     if(s) biblioteca::instance().getSupporti().push_back(s);
+}
+
+/*remove - rimuove l'oggetto corrispondente all'index position per la query specifica
+@param ip index position dell'oggetto corrispondente
+@param q query specifica dell'index position*/
+void biblioteca::remove(int ip, query* q){
+    vector<contenutoMultimediale*> cont = getContenuti();
+    vector<supportoMultimediale*> supp = getSupporti();
+    if(q) q -> filter(cont,supp);
+
+    contenutoMultimediale* c = cSearch(ip, cont);
+    supportoMultimediale* s = sSearch(ip, cont, supp);
+
+    if(c){
+        for(auto it = contenuti.begin(); it != contenuti.end();){
+            if(*it == c) contenuti.erase(it);
+            else it++;
+        }
+        delete c;
+    }else{
+        for(auto it = supporti.begin(); it != supporti.end();){
+            if(*it == s) supporti.erase(it);
+            else it++;
+        }
+        delete s;
+    }
 }
