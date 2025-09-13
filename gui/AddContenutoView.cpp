@@ -213,6 +213,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         }
         int sec = (durata -> time().minute() * 60) + (durata -> time().second());
         ptr = new audioD(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, baseDir.relativeFilePath(fd -> selectedFiles().first()), 1, freqCamp -> text().toInt(), stereo -> checkState() == Qt::Checked, numeroCanali -> value());
+        ptr -> setScaffale(scaffale -> text());
         if(state != 1){
             biblioteca::add(ptr);
             emit(cancel_event());
@@ -233,6 +234,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         }
         int sec = (durata -> time().minute() * 60) + (durata -> time().second());
         ptr = new fileAudio(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, baseDir.relativeFilePath(fd -> selectedFiles().first()), 1, freqCamp -> text().toInt(), stereo -> checkState() == Qt::Checked, numeroCanali -> value(), lossy -> checkState() == Qt::Checked, estensione -> text());
+        ptr -> setScaffale(scaffale -> text());
         biblioteca::add(ptr);
         emit(cancel_event());
     }
@@ -249,6 +251,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         }
         int sec = (durata -> time().minute() * 60) + (durata -> time().second());
         ptr = new videoD(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, baseDir.relativeFilePath(fd -> selectedFiles().first()), 1, fps -> value(), progressivo -> checkState() == Qt::Checked, risoluzione -> text());
+        ptr -> setScaffale(scaffale -> text());
         if(state != 2){
             biblioteca::add(ptr);
             emit(cancel_event());
@@ -269,6 +272,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         }
         int sec = (durata -> time().minute() * 60) + (durata -> time().second());
         ptr = new fileVideo(titolo -> text(), casaProd -> text(), aut, anno -> text().toInt(), sec, baseDir.relativeFilePath(fd -> selectedFiles().first()), 1, fps -> value(), progressivo -> checkState() == Qt::Checked, risoluzione -> text(), estensione -> text());
+        ptr -> setScaffale(scaffale -> text());
         biblioteca::add(ptr);
         emit(cancel_event());
     }
