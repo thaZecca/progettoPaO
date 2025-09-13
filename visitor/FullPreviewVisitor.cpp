@@ -18,6 +18,12 @@ void FullPreviewVisitor::prepare(){
         prodAnnoLayout -> addWidget(annoPubb);
         mainLayout -> addWidget(prodAnno);
     }
+    QHBoxLayout* scaffaleLayout = new QHBoxLayout();
+    scaffaleLayout -> addWidget(new QLabel("Scaffale:"));
+    scaffaleLayout -> addWidget(scaffale);
+
+    mainLayout -> addLayout(scaffaleLayout);
+
     QWidget* logoProprieta = new QWidget(fullPreview);
     QHBoxLayout* logoProprietaLayout = new QHBoxLayout(logoProprieta);
     logoProprietaLayout -> addWidget(logo);
@@ -46,6 +52,8 @@ void FullPreviewVisitor::visit(audioD* a){
     casaProd = new QLabel(a -> getCasaProduttrice());
 
     annoPubb = new QLabel(QString::number(a -> getAnnoDiPubblicazione()));
+
+    scaffale = new QLabel(a -> getScaffale());
 
     logo = new QLabel();
     QPixmap audioLogo(biblioteca::projectPath().filePath("src/audioD.png"));
@@ -77,6 +85,8 @@ void FullPreviewVisitor::visit(fileAudio* f){
     casaProd = new QLabel(f -> getCasaProduttrice());
 
     annoPubb = new QLabel(QString::number(f -> getAnnoDiPubblicazione()));
+    
+    scaffale = new QLabel(f -> getScaffale());
 
     logo = new QLabel();
     QPixmap audioLogo(biblioteca::projectPath().filePath("src/fileAudio.png"));
@@ -110,6 +120,8 @@ void FullPreviewVisitor::visit(cd* c){
     QVBoxLayout* mainWidgetLayout = new QVBoxLayout(mainWidgetScroll);
     QWidget* littlePreview;
     QHBoxLayout* littlePreviewLayout;
+
+    scaffale = new QLabel(c -> getScaffale());
 
     vector<contenutoMultimediale*> cont = c -> getTracce();
     for(auto it = cont.begin(); it != cont.end(); it++){
@@ -163,6 +175,8 @@ void FullPreviewVisitor::visit(videoD* v){
 
     annoPubb = new QLabel(QString::number(v -> getAnnoDiPubblicazione()));
 
+    scaffale = new QLabel(v -> getScaffale());
+
     logo = new QLabel();
     QPixmap audioLogo(biblioteca::projectPath().filePath("src/videoD.png"));
     logo -> setPixmap(audioLogo.scaled(100,50, Qt::KeepAspectRatio));
@@ -194,6 +208,8 @@ void FullPreviewVisitor::visit(fileVideo* f){
 
     annoPubb = new QLabel(QString::number(f -> getAnnoDiPubblicazione()));
 
+    scaffale = new QLabel(f -> getScaffale());
+
     logo = new QLabel();
     QPixmap audioLogo(biblioteca::projectPath().filePath("src/fileVideo.png"));
     logo -> setPixmap(audioLogo.scaled(100,50, Qt::KeepAspectRatio));
@@ -220,6 +236,8 @@ void FullPreviewVisitor::visit(dvd* v){
     pic -> setPixmap(image);
 
     titolo = new QLabel(v -> getTitolo());
+
+    scaffale = new QLabel(v -> getScaffale());
 
     tracce = new QScrollArea();
     QWidget* mainWidgetScroll = new QWidget();

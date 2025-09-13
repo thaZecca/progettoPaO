@@ -21,6 +21,7 @@ private:
     QLabel* artisti;
     QLabel* casaProd;
     QLabel* annoPubb;
+    QLabel* scaffale;
     QLabel* logo;
     QLabel* proprieta;
     QPushButton* action;
