@@ -42,6 +42,7 @@ template <> constexpr inline auto AddContenutoView::qt_create_metaobjectdata<qt_
         "AddContenutoView",
         "cancel_event",
         "",
+        "return_save_event",
         "type_event",
         "QAbstractButton*",
         "save",
@@ -51,14 +52,16 @@ template <> constexpr inline auto AddContenutoView::qt_create_metaobjectdata<qt_
     QtMocHelpers::UintData qt_methods {
         // Signal 'cancel_event'
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'return_save_event'
+        QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'type_event'
-        QtMocHelpers::SlotData<void(QAbstractButton *)>(3, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 4, 2 },
+        QtMocHelpers::SlotData<void(QAbstractButton *)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 5, 2 },
         }}),
         // Slot 'save'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'select_image'
         QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'select_image'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -83,16 +86,17 @@ void AddContenutoView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->cancel_event(); break;
-        case 1: _t->type_event((*reinterpret_cast< std::add_pointer_t<QAbstractButton*>>(_a[1]))); break;
-        case 2: _t->save(); break;
-        case 3: _t->select_image(); break;
+        case 1: _t->return_save_event(); break;
+        case 2: _t->type_event((*reinterpret_cast< std::add_pointer_t<QAbstractButton*>>(_a[1]))); break;
+        case 3: _t->save(); break;
+        case 4: _t->select_image(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 1:
+        case 2:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
@@ -103,6 +107,8 @@ void AddContenutoView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (AddContenutoView::*)()>(_a, &AddContenutoView::cancel_event, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (AddContenutoView::*)()>(_a, &AddContenutoView::return_save_event, 1))
             return;
     }
 }
@@ -126,14 +132,14 @@ int AddContenutoView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
@@ -142,5 +148,11 @@ int AddContenutoView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void AddContenutoView::cancel_event()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void AddContenutoView::return_save_event()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP
