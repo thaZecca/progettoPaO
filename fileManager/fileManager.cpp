@@ -105,6 +105,7 @@ audioD* fileManager::getAudioD(const QJsonObject& o){
                     num++;
                 }
                 ret = new audioD(o["titolo"].toString(), o["casaProduttrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), o["peso"].toDouble(), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt());
+                ret -> setScaffale(o["scaffale"].toString());
                 if(o["inPrestito"].toString()=="true"){
                     ret -> setInPrestito(true);
                     ret -> setDataPrestito(QDate::fromString(o["dataPrestito"].toString()));
@@ -132,6 +133,7 @@ fileAudio* fileManager::getFileAudio(const QJsonObject& o){
                     num++;
                 }
                 ret = new fileAudio(o["titolo"].toString(), o["casaProduttrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), o["peso"].toDouble(), o["frequenza"].toInt(), o["stereo"].toString().toStdString() == "true", o["canali"].toInt(), o["lossy"].toString().toStdString() == "true", o["estensione"].toString());
+                ret -> setScaffale(o["scaffale"].toString());
                 if(o["inPrestito"].toString()=="true"){
                     ret -> setInPrestito(true);
                     ret -> setDataPrestito(QDate::fromString(o["dataPrestito"].toString()));
@@ -159,6 +161,7 @@ videoD* fileManager::getVideoD(const QJsonObject& o){
                     num++;
                 }
                 ret = new videoD(o["titolo"].toString(), o["casaProduttrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), o["peso"].toDouble(), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString());
+                ret -> setScaffale(o["scaffale"].toString());
                 if(o["inPrestito"].toString()=="true"){
                     ret -> setInPrestito(true);
                     ret -> setDataPrestito(QDate::fromString(o["dataPrestito"].toString()));
@@ -186,6 +189,7 @@ fileVideo* fileManager::getFileVideo(const QJsonObject& o){
                     num++;
                 }
                 ret = new fileVideo(o["titolo"].toString(), o["casaProduttrice"].toString(), autori, o["pubblicazione"].toInt(), o["durata"].toInt(), o["picPath"].toString(), o["peso"].toDouble(), o["fps"].toInt(), o["progressivo"].toString().toStdString() == "true", o["risoluzione"].toString(), o["estensione"].toString());
+                ret -> setScaffale(o["scaffale"].toString());
                 if(o["inPrestito"].toString()=="true"){
                     ret -> setInPrestito(true);
                     ret -> setDataPrestito(QDate::fromString(o["dataPrestito"].toString()));
@@ -212,6 +216,7 @@ cd* fileManager::getCD(const QJsonObject& o){
             }
         }
         ret = new cd(tracceAudio, o["diametro"].toDouble(), o["scaffale"].toString(), o["titolo"].toString());
+        ret -> setScaffale(o["scaffale"].toString());
         if(o["inPrestito"].toString()=="true"){
             ret -> setInPrestito(true);
             ret -> setDataPrestito(QDate::fromString(o["dataPrestito"].toString()));
@@ -238,6 +243,7 @@ dvd* fileManager::getDVD(const QJsonObject& o){
             }
         }
         ret = new dvd(tracceVideo, o["diametro"].toDouble(), o["scaffale"].toString(), o["titolo"].toString());
+        ret -> setScaffale(o["scaffale"].toString());
         if(o["inPrestito"].toString()=="true"){
             ret -> setInPrestito(true);
             ret -> setDataPrestito(QDate::fromString(o["dataPrestito"].toString()));
