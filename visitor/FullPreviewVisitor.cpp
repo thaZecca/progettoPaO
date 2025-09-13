@@ -31,7 +31,7 @@ void FullPreviewVisitor::prepare(){
 void FullPreviewVisitor::visit(audioD* a){
     tracce = nullptr;
     pic = new QLabel();
-    QPixmap picture(biblioteca::projectPath().filePath("src/placeholder.png"));
+    QPixmap picture(biblioteca::projectPath().filePath(a -> getPicPath()));
     pic -> setPixmap(picture.scaled(200,100, Qt::KeepAspectRatio));
 
     titolo = new QLabel(a -> getTitolo());
@@ -62,7 +62,7 @@ void FullPreviewVisitor::visit(audioD* a){
 void FullPreviewVisitor::visit(fileAudio* f){
     tracce = nullptr;
     pic = new QLabel();
-    QPixmap picture(biblioteca::projectPath().filePath("src/placeholder.png"));
+    QPixmap picture(biblioteca::projectPath().filePath(f -> getPicPath()));
     pic -> setPixmap(picture.scaled(200,100, Qt::KeepAspectRatio));
 
     titolo = new QLabel(f -> getTitolo());
@@ -147,7 +147,7 @@ void FullPreviewVisitor::visit(cd* c){
 void FullPreviewVisitor::visit(videoD* v){
     tracce = nullptr;
     pic = new QLabel();
-    QPixmap picture(biblioteca::projectPath().filePath("src/placeholder.png"));
+    QPixmap picture(biblioteca::projectPath().filePath(v -> getPicPath()));
     pic -> setPixmap(picture.scaled(200,100, Qt::KeepAspectRatio));
 
     titolo = new QLabel(v -> getTitolo());
@@ -178,7 +178,7 @@ void FullPreviewVisitor::visit(videoD* v){
 void FullPreviewVisitor::visit(fileVideo* f){
     tracce = nullptr;
     pic = new QLabel();
-    QPixmap picture(biblioteca::projectPath().filePath("src/placeholder.png"));
+    QPixmap picture(biblioteca::projectPath().filePath(f -> getPicPath()));
     pic -> setPixmap(picture.scaled(200,100, Qt::KeepAspectRatio));
 
     titolo = new QLabel(f -> getTitolo());

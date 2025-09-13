@@ -26,7 +26,7 @@ void PreviewVisitor::prepare(){
 @param a oggetto audioD da visitare*/
 void PreviewVisitor::visit(audioD* a){
     pic = new QLabel();
-    QPixmap image(biblioteca::projectPath().filePath("src/placeholder.png"));
+    QPixmap image(biblioteca::projectPath().filePath(a -> getPicPath()));
     pic -> setPixmap(image.scaled(200, 100, Qt::KeepAspectRatio));
     titolo = new QLabel();
     titolo -> setText(a -> getTitolo());
@@ -41,16 +41,16 @@ void PreviewVisitor::visit(audioD* a){
     anno -> setText(QString::number(a -> getAnnoDiPubblicazione()));
     logo = new QLabel();
     QPixmap l(biblioteca::projectPath().filePath("src/audioD.png"));
-    logo -> setPixmap(l.scaled(200, 100, Qt::KeepAspectRatio));
+    logo -> setPixmap(l.scaled(50, 50, Qt::KeepAspectRatio));
     qualita = new QLabel();
-    qualita -> setText(QString::number(a -> getFrequenzaCampionamento()));
+    qualita -> setText(QString::number(a -> getFrequenzaCampionamento())+"Hz");
 }
 
 /*visit - design pattern per visitare il videoD
 @param v oggetto videoD da visitare*/
 void PreviewVisitor::visit(videoD* v){
     pic = new QLabel();
-    QPixmap image(biblioteca::projectPath().filePath("src/placeholder.png"));
+    QPixmap image(biblioteca::projectPath().filePath(v -> getPicPath()));
     pic -> setPixmap(image.scaled(200, 100, Qt::KeepAspectRatio));
     titolo = new QLabel();
     titolo -> setText(v -> getTitolo());
@@ -65,16 +65,16 @@ void PreviewVisitor::visit(videoD* v){
     anno -> setText(QString::number(v -> getAnnoDiPubblicazione()));
     logo = new QLabel();
     QPixmap l(biblioteca::projectPath().filePath("src/videoD.png"));
-    logo -> setPixmap(l.scaled(200, 100, Qt::KeepAspectRatio));
+    logo -> setPixmap(l.scaled(50, 50, Qt::KeepAspectRatio));
     qualita = new QLabel();
-    qualita -> setText(v -> getRisoluzione());
+    qualita -> setText(v -> getRisoluzione()+(v -> isProgressivo()?"p":"i"));
 }
 
 /*visit - design pattern per visitare il fileAudio
 @param f oggetto fileAudio da visitare*/
 void PreviewVisitor::visit(fileAudio* f){
     pic = new QLabel();
-    QPixmap image(biblioteca::projectPath().filePath("src/placeholder.png"));
+    QPixmap image(biblioteca::projectPath().filePath(f -> getPicPath()));
     pic -> setPixmap(image.scaled(200, 100, Qt::KeepAspectRatio));
     titolo = new QLabel();
     titolo -> setText(f -> getTitolo());
@@ -89,7 +89,7 @@ void PreviewVisitor::visit(fileAudio* f){
     anno -> setText(QString::number(f -> getAnnoDiPubblicazione()));
     logo = new QLabel();
     QPixmap l(biblioteca::projectPath().filePath("src/fileAudio.png"));
-    logo -> setPixmap(l.scaled(200, 100, Qt::KeepAspectRatio));
+    logo -> setPixmap(l.scaled(50, 50, Qt::KeepAspectRatio));
     qualita = new QLabel();
     qualita -> setText(f -> getEstensione());
 }
@@ -98,7 +98,7 @@ void PreviewVisitor::visit(fileAudio* f){
 @param f oggetto fileVideo da visitare*/
 void PreviewVisitor::visit(fileVideo* f){
     pic = new QLabel();
-    QPixmap image(biblioteca::projectPath().filePath("src/placeholder.png"));
+    QPixmap image(biblioteca::projectPath().filePath(f -> getPicPath()));
     pic -> setPixmap(image.scaled(200, 100, Qt::KeepAspectRatio));
     titolo = new QLabel();
     titolo -> setText(f -> getTitolo());
@@ -113,7 +113,7 @@ void PreviewVisitor::visit(fileVideo* f){
     anno -> setText(QString::number(f -> getAnnoDiPubblicazione()));
     logo = new QLabel();
     QPixmap l(biblioteca::projectPath().filePath("src/fileVideo.png"));
-    logo -> setPixmap(l.scaled(200, 100, Qt::KeepAspectRatio));
+    logo -> setPixmap(l.scaled(50, 50, Qt::KeepAspectRatio));
     qualita = new QLabel();
     qualita -> setText(f -> getEstensione());
 }
@@ -132,9 +132,9 @@ void PreviewVisitor::visit(cd* c){
     anno -> setText("");
     logo = new QLabel();
     QPixmap l(biblioteca::projectPath().filePath("src/cd.png"));
-    logo -> setPixmap(l.scaled(200, 100, Qt::KeepAspectRatio));
+    logo -> setPixmap(l.scaled(50, 50, Qt::KeepAspectRatio));
     qualita = new QLabel();
-    qualita -> setText(QString::number(c -> getDiametro()));
+    qualita -> setText(QString::number(c -> getDiametro())+"cm");
 }
 
 /*visit - design pattern per visitare il DVD
@@ -151,9 +151,9 @@ void PreviewVisitor::visit(dvd* d){
     anno -> setText("");
     logo = new QLabel();
     QPixmap l(biblioteca::projectPath().filePath("src/dvd.png"));
-    logo -> setPixmap(l.scaled(200, 100, Qt::KeepAspectRatio));
+    logo -> setPixmap(l.scaled(50, 50, Qt::KeepAspectRatio));
     qualita = new QLabel();
-    qualita -> setText(QString::number(d -> getDiametro()));
+    qualita -> setText(QString::number(d -> getDiametro())+"cm");
 }
 
 /*getPreview

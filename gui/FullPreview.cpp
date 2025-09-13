@@ -23,7 +23,7 @@ void FullPreview::prepare(int ip, query* q){
     vector<contenutoMultimediale*> c = biblioteca::instance().getContenuti();
     vector<supportoMultimediale*> s = biblioteca::instance().getSupporti();
     if(q) q -> filter(c,s);
-    contenutoMultimediale* objC = biblioteca::cSearch(ip,c,s);
+    contenutoMultimediale* objC = biblioteca::cSearch(ip,c);
     supportoMultimediale* objS = biblioteca::sSearch(ip,c,s);
 
     FullPreviewVisitor v;
