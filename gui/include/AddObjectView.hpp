@@ -11,12 +11,14 @@
 #include <QLayoutItem>
 #include "../../fileManager/include/biblioteca.hpp"
 #include "AddContenutoView.hpp"
+#include "AddSupportoView.hpp"
 
 class AddObjectView: public QWidget{
     Q_OBJECT
 private:
     QVBoxLayout* mainLayout;
     AddContenutoView* addContenuto;
+    AddSupportoView* addSupporto;
     QPushButton* selectContenuto;
     QPushButton* selectSupporto;
     QPushButton* indietro;
@@ -26,6 +28,7 @@ signals:
     void back_event();
 public slots:
     void add_contenuto();
+    void add_supporto();
 };
 
 #endif

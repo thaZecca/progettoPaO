@@ -25,17 +25,21 @@ AddObjectView::AddObjectView(QWidget* parent): QWidget(parent), addContenuto(nul
 
     connect(indietro, &QPushButton::clicked, this, &AddObjectView::back_event);
     connect(selectContenuto, &QPushButton::clicked, this, &AddObjectView::add_contenuto);
+    connect(selectSupporto, &QPushButton::clicked, this, &AddObjectView::add_supporto);
 }
 
 void AddObjectView::add_contenuto(){
-    QLayoutItem* item;
-    while ((item = mainLayout->takeAt(0)) != nullptr) {
-        if (QWidget* widget = item->widget()) {
-            delete widget;  // distrugge il widget
-        }
-        delete item;
-    }
-    addContenuto = new AddContenutoView();
+    AddContenutoView::clearLayout(mainLayout);
+
+    addContenuto = new AddContenutoView(0);
     mainLayout -> addWidget(addContenuto);
     connect(addContenuto, &AddContenutoView::cancel_event, this, &AddObjectView::back_event);
+}
+
+void AddObjectView::add_supporto(){
+    AddContenutoView::clearLayout(mainLayout);
+
+    addSupporto = new AddSupportoView();
+    mainLayout -> addWidget(addSupporto);
+    connect(addSupporto, &AddSupportoView::cancel_event, this, &AddObjectView::back_event);
 }
