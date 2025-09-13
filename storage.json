@@ -13,7 +13,7 @@
             "peso": 100,
             "picPath": "src/placeholder.png",
             "pubblicazione": 1978,
-            "scaffale": "",
+            "scaffale": "A013",
             "stereo": "true",
             "tipo": "audioD",
             "titolo": "Sultans of Swing"
@@ -34,7 +34,7 @@
             "progressivo": "true",
             "pubblicazione": 1977,
             "risoluzione": "1920",
-            "scaffale": "",
+            "scaffale": "A014",
             "tipo": "videoD",
             "titolo": "Message in a bottle - Video"
         },
@@ -56,7 +56,7 @@
             "progressivo": "true",
             "pubblicazione": 1967,
             "risoluzione": "1920",
-            "scaffale": "",
+            "scaffale": "A015",
             "tipo": "fileVideo",
             "titolo": "Strawberry fields forever - Video"
         },
@@ -73,7 +73,7 @@
             "peso": 1,
             "picPath": "src/contenutoMultimediale.png",
             "pubblicazione": 1969,
-            "scaffale": "",
+            "scaffale": "A016",
             "stereo": "true",
             "tipo": "audioD",
             "titolo": "The End"
@@ -91,7 +91,7 @@
             "peso": 1,
             "picPath": "src/cd.png",
             "pubblicazione": 1980,
-            "scaffale": "",
+            "scaffale": "A017",
             "stereo": "true",
             "tipo": "audioD",
             "titolo": "Nebraska"
@@ -111,7 +111,7 @@
             "peso": 1,
             "picPath": "src/placeholder.png",
             "pubblicazione": 1990,
-            "scaffale": "",
+            "scaffale": "A018",
             "stereo": "true",
             "tipo": "fileAudio",
             "titolo": "Scrivimi"
@@ -131,7 +131,7 @@
             "progressivo": "true",
             "pubblicazione": 1973,
             "risoluzione": "720",
-            "scaffale": "",
+            "scaffale": "A020",
             "tipo": "videoD",
             "titolo": "I'll have to say I love tou in a song - Live"
         },
@@ -151,7 +151,7 @@
             "progressivo": "true",
             "pubblicazione": 2003,
             "risoluzione": "1980",
-            "scaffale": "",
+            "scaffale": "A013",
             "tipo": "fileVideo",
             "titolo": "In Trattoria - Live"
         },
@@ -170,7 +170,7 @@
             "peso": 1,
             "picPath": "src/placeholder.png",
             "pubblicazione": 1984,
-            "scaffale": "",
+            "scaffale": "A012",
             "stereo": "true",
             "tipo": "fileAudio",
             "titolo": "Sexy Tango - Live"
@@ -190,7 +190,7 @@
             "progressivo": "false",
             "pubblicazione": 1991,
             "risoluzione": "480",
-            "scaffale": "",
+            "scaffale": "A024",
             "tipo": "fileVideo",
             "titolo": "Speriamo che piova"
         },
@@ -209,7 +209,7 @@
             "peso": 1,
             "picPath": "src/placeholder.png",
             "pubblicazione": 1999,
-            "scaffale": "",
+            "scaffale": "A020",
             "stereo": "true",
             "tipo": "fileAudio",
             "titolo": "M'innamoro davvero"
