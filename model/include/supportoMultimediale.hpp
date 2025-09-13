@@ -19,6 +19,7 @@ private:
     QString nomePrestito;
 public:
     supportoMultimediale(const QString& s, const QString& t);
+    virtual ~supportoMultimediale() = default;
     virtual vector<contenutoMultimediale*> getTracce() const = 0;
     virtual void setTracce(const vector<contenutoMultimediale*>&) = 0;
     virtual void accept(visitorCMultimediale&) = 0;
