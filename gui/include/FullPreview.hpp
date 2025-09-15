@@ -14,6 +14,7 @@
 class FullPreview: public QWidget{
     Q_OBJECT
 private:
+    int i;
     QWidget* multimedia;
     QPushButton* back;
     QPushButton* modifica;
@@ -22,6 +23,9 @@ public:
     explicit FullPreview(int ip, query* q, QWidget* parent =nullptr);
 signals:
     void back_event();
+    void modifica_event(int ip);
+public slots:
+    void modifica_bounce();
 };
 
 #endif

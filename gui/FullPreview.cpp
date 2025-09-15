@@ -1,6 +1,10 @@
 #include "include/FullPreview.hpp"
 
-FullPreview::FullPreview(int ip, query* q, QWidget* parent): QWidget(parent) {
+/*Costruttore parametrico di FullPreview
+@param ip indexposition dell'oggetto da mostrare
+@param q ultima query effettuata
+@param parent QWidget parent*/
+FullPreview::FullPreview(int ip, query* q, QWidget* parent): QWidget(parent), i(ip){
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     prepare(ip,q);
     mainLayout -> addWidget(multimedia);
@@ -14,6 +18,7 @@ FullPreview::FullPreview(int ip, query* q, QWidget* parent): QWidget(parent) {
     setMaximumWidth(320);
 
     connect(back, &QPushButton::clicked, this, &FullPreview::back_event);
+    connect(modifica, &QPushButton::clicked, this, &FullPreview::modifica_bounce);
 }
 
 /*prepare - prepara la fullpreview
@@ -35,4 +40,10 @@ void FullPreview::prepare(int ip, query* q){
         objS -> accept(v);
         multimedia = v.getFullPreview();
     }
+
+}
+
+/*modifica_bounce - slot che effettua il bounce del segnale di modifica e integra l'index position*/
+void FullPreview::modifica_bounce(){
+    emit(modifica_event(i));
 }
