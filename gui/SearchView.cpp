@@ -1,6 +1,7 @@
 #include "include/SearchView.hpp"
 
-/*Costruttore parametrico di SearchView*/
+/*Costruttore parametrico di SearchView
+@param parent QWidget parent*/
 SearchView::SearchView(QWidget* parent): QGroupBox("Cerca",parent){
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     src = new QLineEdit();
