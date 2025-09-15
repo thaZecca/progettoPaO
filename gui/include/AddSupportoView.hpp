@@ -43,9 +43,9 @@ private:
     void prepare();
     void prepareScrollable();
     void error(QString);
-    static void saveLayout(QLayout*);
 public:
     explicit AddSupportoView(QWidget* parent =nullptr);
+    static void saveLayout(QLayout*);
 signals:
     void cancel_event();
 public slots:

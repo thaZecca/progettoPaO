@@ -6,8 +6,9 @@ AddSupportoView::AddSupportoView(QWidget* parent): QWidget(parent), aC(nullptr),
     mainLayout = new QVBoxLayout(this);
     scrollTracce = new QScrollArea(this);
     scrollTracce -> setWidgetResizable(true);
-    prepare();
+    areaTracce = new QWidget();
     layoutScrollable = new QVBoxLayout(areaTracce);
+    prepare();
     scrollTracce -> setWidget(areaTracce);
     connect(cancel, &QPushButton::clicked, this, &AddSupportoView::cancel_event);
     connect(add, &QPushButton::clicked, this, &AddSupportoView::addTracce);
