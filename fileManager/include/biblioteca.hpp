@@ -12,6 +12,7 @@
 
 class biblioteca{
 private:
+    static biblioteca* _instance;
     biblioteca(QString path);
     ~biblioteca();
     biblioteca(const biblioteca&) = delete;
@@ -20,15 +21,13 @@ private:
     vector<contenutoMultimediale*> contenuti;
     vector<supportoMultimediale*> supporti;
     fileManager fM;
+    static QString storage_path;
 public:
     static biblioteca& instance();  
+    static void init(const QString& path);
     static QDir projectPath();
     vector<contenutoMultimediale*>& getContenuti();
     vector<supportoMultimediale*>& getSupporti();
-    static void presta(contenutoMultimediale*, QString, QDate, int);
-    static void presta(supportoMultimediale*, QString, QDate, int);
-    static void rientra(contenutoMultimediale*);
-    static void rientra(supportoMultimediale*);
     void save();
     void load();
     static contenutoMultimediale* cSearch(int pos, vector<contenutoMultimediale*>& c);
@@ -36,6 +35,7 @@ public:
     static void add(contenutoMultimediale*);
     static void add(supportoMultimediale*);
     void remove(int, query*);
+    static QString getStoragePath();
 };
 
 #endif

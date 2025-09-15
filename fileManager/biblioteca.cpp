@@ -1,13 +1,25 @@
 #include "./include/biblioteca.hpp"
 
+//istanziazione della variabile del singleton pattern
+biblioteca* biblioteca::_instance = nullptr;
+
 /*Costruttore parametrico
 @param path percorso per il fileManager*/
 biblioteca::biblioteca(QString path): fM(path){
     load();
 }
 
+/*Distruttore - salva la biblioteca prima di distruggere l'oggetto*/
 biblioteca::~biblioteca(){
     save();
+}
+
+/*init - inizializza il singleton
+@param path percorso in cui si trova il file di storage della biblioteca*/
+void biblioteca::init(const QString& path) {
+    if (_instance == nullptr) {
+         _instance = new biblioteca(path);
+    }
 }
 
 /*projectPath - ritorna il percorso della cartella del progetto tramite direttive cross-platform*/
@@ -30,9 +42,10 @@ fileManager& biblioteca::getFileManager(){
 /*instance
 @return il singleton di biblioteca*/
 biblioteca& biblioteca::instance(){
-    QString path = biblioteca::projectPath().filePath("storage.json");
-    static biblioteca b(path);
-    return b;
+    if(_instance == nullptr){
+        throw QString("Nessuno storage selezionato!");
+    }
+    return *_instance;
 }
 
 /*getContenuti
@@ -45,48 +58,6 @@ vector<contenutoMultimediale*>& biblioteca::getContenuti(){
 @return il riferimento ai supporti multimediali*/
 vector<supportoMultimediale*>& biblioteca::getSupporti(){
     return supporti;
-}
-
-/*presta - presta il contenuto multimediale c
-@param c contenutoMultimediale da prestare
-@param nome nome della persona che prende in presito il contenuto
-@param data data in cui il contenuto viene preso in prestito
-@param giorni durata in giorni del prestito*/
-void biblioteca::presta(contenutoMultimediale* c, QString nome, QDate data, int giorni){
-    c -> setInPrestito(true);
-    c -> setNomePrestito(nome);
-    c -> setDataPrestito(data);
-    c -> setDurataPrestito(giorni);
-}
-
-/*presta - presta il supporto multimediale s
-@param s supportoMultimediale da prestare
-@param nome nome della persona che prende in presito il supporto
-@param data data in cui il supporto viene preso in prestito
-@param giorni durata in giorni del prestito*/
-void biblioteca::presta(supportoMultimediale* s, QString nome, QDate data, int giorni){
-    s -> setInPrestito(true);
-    s -> setNomePrestito(nome);
-    s -> setDataPrestito(data);
-    s -> setDurataPrestito(giorni);
-}
-
-/*rientra - rientro del contenuto multimediale preso in prestito
-@param c contenuto da rientrare*/
-void biblioteca::rientra(contenutoMultimediale* c){
-    c -> setInPrestito(false);
-    c -> setNomePrestito("");
-    c -> setDataPrestito(QDate());
-    c -> setDurataPrestito(0);
-}
-
-/*rientra - rientro del supporto multimediale preso in prestito
-@param s supporto da rientrare*/
-void biblioteca::rientra(supportoMultimediale* s){
-    s -> setInPrestito(false);
-    s -> setNomePrestito("");
-    s -> setDataPrestito(QDate());
-    s -> setDurataPrestito(0);
 }
 
 /*save - salva nel file di storage lo stato dei contenuti e dei supporti*/
