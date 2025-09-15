@@ -183,7 +183,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         }
     }
 
-    /*checl - controllo primario sui campi di contenutoMultimediale*/
+    /*check - controllo primario sui campi di contenutoMultimediale*/
     bool AddContenutoView::check(){
         bool a;
         anno -> text().toInt(&a);

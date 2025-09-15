@@ -55,13 +55,13 @@ private:
     void buildFileAudio();
     void buildVideoD();
     void buildFileVideo();
-    void error(QString);
-public:
-    explicit AddContenutoView(int s, QWidget* parent =nullptr);
     void bottomAudioD();
     void bottomFileAudio();
     void bottomVideoD();
     void bottomFileVideo();
+    void error(QString);
+public:
+    explicit AddContenutoView(int s, QWidget* parent =nullptr);
     contenutoMultimediale* getContenuto() const;
     static void clearLayout(QLayout*);
 public slots:
