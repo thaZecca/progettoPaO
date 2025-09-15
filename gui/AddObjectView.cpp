@@ -1,5 +1,7 @@
 #include "include/AddObjectView.hpp"
 
+/*Costruttore parametrico di AddObjectView
+@param parent QWidget parent*/
 AddObjectView::AddObjectView(QWidget* parent): QWidget(parent), addContenuto(nullptr){
     mainLayout = new QVBoxLayout(this);
 
@@ -28,6 +30,7 @@ AddObjectView::AddObjectView(QWidget* parent): QWidget(parent), addContenuto(nul
     connect(selectSupporto, &QPushButton::clicked, this, &AddObjectView::add_supporto);
 }
 
+/*add_contenuto - slot che riceve il segnale dal pulsante per aggiungere il contenuto*/
 void AddObjectView::add_contenuto(){
     AddContenutoView::clearLayout(mainLayout);
 
@@ -36,6 +39,7 @@ void AddObjectView::add_contenuto(){
     connect(addContenuto, &AddContenutoView::cancel_event, this, &AddObjectView::back_event);
 }
 
+/*add_supporto - slot che rieve il segnale dal pulsante per aggiungere il contenuto*/
 void AddObjectView::add_supporto(){
     AddContenutoView::clearLayout(mainLayout);
 
