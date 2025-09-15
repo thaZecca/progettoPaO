@@ -1,5 +1,7 @@
 #include "include/MainButtonView.hpp"
 
+/*Costruttore parametrico di MainButtonView
+@param parent QWidget parent*/
 MainButtonView::MainButtonView(QWidget* parent): QWidget(parent){
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
     add = new QPushButton();
