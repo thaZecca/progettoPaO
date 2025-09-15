@@ -23,10 +23,6 @@ void JSONvisitor::toJsonCM(const contenutoMultimediale* cm){
     jsonMedia["durata"] = static_cast<int>(cm -> getDurataSecondi());
     jsonMedia["picPath"] = (cm -> getPicPath());
     jsonMedia["scaffale"] = cm -> getScaffale();
-    jsonMedia["inPrestito"] = (cm -> isInPrestito()?"true":"false");
-    jsonMedia["dataPrestito"] = cm -> getDataPrestito().toString();
-    jsonMedia["durataPrestito"] = cm -> getDurataPrestito();
-    jsonMedia["nomePrestito"] = cm -> getNomePrestito();
 }
 
 /*toJsonDig - trasforma il sottooggetto digitale in Json
@@ -48,10 +44,6 @@ void JSONvisitor::toJsonSM(const supportoMultimediale* sm){
     }
     jsonMedia = QJsonObject();
     jsonMedia["tracce"] = root;
-    jsonMedia["inPrestito"] = (sm -> isInPrestito()?"true":"false");
-    jsonMedia["dataPrestito"] = (sm -> getDataPrestito()).toString();
-    jsonMedia["durataPrestito"] = sm -> getDurataPrestito();
-    jsonMedia["nomePrestito"] = sm -> getNomePrestito();
     jsonMedia["scaffale"] = sm -> getScaffale();
     jsonMedia["titolo"] = sm -> getTitolo();
 }
