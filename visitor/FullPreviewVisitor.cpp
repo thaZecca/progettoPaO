@@ -29,7 +29,6 @@ void FullPreviewVisitor::prepare(){
     logoProprietaLayout -> addWidget(logo);
     logoProprietaLayout -> addWidget(proprieta);
     mainLayout -> addWidget(logoProprieta);
-    mainLayout -> addWidget(action);
 }
 
 /*visit - design pattern per visitare l'audioD
@@ -38,7 +37,7 @@ void FullPreviewVisitor::visit(audioD* a){
     tracce = nullptr;
     pic = new QLabel();
     QPixmap picture(biblioteca::projectPath().filePath(a -> getPicPath()));
-    pic -> setPixmap(picture.scaled(200,100, Qt::KeepAspectRatio));
+    pic -> setPixmap(picture.scaled(200,200, Qt::KeepAspectRatio));
 
     titolo = new QLabel(a -> getTitolo());
     
@@ -60,9 +59,6 @@ void FullPreviewVisitor::visit(audioD* a){
     logo -> setPixmap(audioLogo.scaled(100,50, Qt::KeepAspectRatio));
 
     proprieta = new QLabel(QString::number(a -> getFrequenzaCampionamento())+"Hz");
-
-    if(a -> isInPrestito()) action = new QPushButton("Rientra");
-    else action = new QPushButton("Presta");
 }
 
 /*visit- design pattern per visitare il fileAudio
@@ -71,7 +67,7 @@ void FullPreviewVisitor::visit(fileAudio* f){
     tracce = nullptr;
     pic = new QLabel();
     QPixmap picture(biblioteca::projectPath().filePath(f -> getPicPath()));
-    pic -> setPixmap(picture.scaled(200,100, Qt::KeepAspectRatio));
+    pic -> setPixmap(picture.scaled(200,200, Qt::KeepAspectRatio));
 
     titolo = new QLabel(f -> getTitolo());
     
@@ -94,8 +90,6 @@ void FullPreviewVisitor::visit(fileAudio* f){
 
     proprieta = new QLabel(f -> getEstensione());
 
-    if(f -> isInPrestito()) action = new QPushButton("Rientra");
-    else action = new QPushButton("Presta");
 }
 
 /*visit - degisn pattern per visitare il cd
@@ -149,9 +143,6 @@ void FullPreviewVisitor::visit(cd* c){
     logo -> setPixmap(audioLogo.scaled(100,50, Qt::KeepAspectRatio));
 
     proprieta = new QLabel(QString::number(c -> getDiametro())+"cm");
-
-    if(c -> isInPrestito()) action = new QPushButton("Rientra");
-    else action = new QPushButton("Presta");
 }
 
 /*visit - design pattern per visitare il videoD
@@ -160,7 +151,7 @@ void FullPreviewVisitor::visit(videoD* v){
     tracce = nullptr;
     pic = new QLabel();
     QPixmap picture(biblioteca::projectPath().filePath(v -> getPicPath()));
-    pic -> setPixmap(picture.scaled(200,100, Qt::KeepAspectRatio));
+    pic -> setPixmap(picture.scaled(200,200, Qt::KeepAspectRatio));
 
     titolo = new QLabel(v -> getTitolo());
     
@@ -183,8 +174,6 @@ void FullPreviewVisitor::visit(videoD* v){
 
     proprieta = new QLabel(v -> getRisoluzione()+(v->isProgressivo()?"p":"i"));
 
-    if(v -> isInPrestito()) action = new QPushButton("Rientra");
-    else action = new QPushButton("Presta");
 }
 
 /*visit - design pattern per visitare il fileVideo
@@ -193,7 +182,7 @@ void FullPreviewVisitor::visit(fileVideo* f){
     tracce = nullptr;
     pic = new QLabel();
     QPixmap picture(biblioteca::projectPath().filePath(f -> getPicPath()));
-    pic -> setPixmap(picture.scaled(200,100, Qt::KeepAspectRatio));
+    pic -> setPixmap(picture.scaled(200,200, Qt::KeepAspectRatio));
 
     titolo = new QLabel(f -> getTitolo());
     
@@ -216,8 +205,6 @@ void FullPreviewVisitor::visit(fileVideo* f){
 
     proprieta = new QLabel(f -> getEstensione());
 
-    if(f -> isInPrestito()) action = new QPushButton("Rientra");
-    else action = new QPushButton("Presta");
 }
 
 /*visit - design pattern per visitare dvd
@@ -269,9 +256,6 @@ void FullPreviewVisitor::visit(dvd* v){
     logo -> setPixmap(audioLogo.scaled(100,50, Qt::KeepAspectRatio));
 
     proprieta = new QLabel(QString::number(v -> getDiametro())+"cm");
-
-    if(v -> isInPrestito()) action = new QPushButton("Rientra");
-    else action = new QPushButton("Presta");
 }
 
 /*getFullPreview

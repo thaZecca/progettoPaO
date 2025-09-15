@@ -24,7 +24,6 @@ private:
     QLabel* scaffale;
     QLabel* logo;
     QLabel* proprieta;
-    QPushButton* action;
     QScrollArea* tracce;
     void prepare();
 public:
