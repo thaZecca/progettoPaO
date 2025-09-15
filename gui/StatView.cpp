@@ -1,6 +1,7 @@
 #include "./include/StatView.hpp"
 
-/*Costruttore parmetrico di StatView*/
+/*Costruttore parmetrico di StatView
+@param parent QWidget parent*/
 StatView::StatView(QWidget* parent): QGroupBox("Statistiche",parent){
     //inizializzo le Qlabel altrimenti senza un "aggancio rimangono nullptr"
     tot = new QLabel(this);
@@ -10,7 +11,6 @@ StatView::StatView(QWidget* parent): QGroupBox("Statistiche",parent){
     totFA = new QLabel(this);
     totD = new QLabel(this);
     totFV = new QLabel(this);
-    totPres = new QLabel(this);
     mainLayout = new QGridLayout(this);
 
     repaint();
@@ -37,9 +37,6 @@ StatView::StatView(QWidget* parent): QGroupBox("Statistiche",parent){
     QLabel* sette = new QLabel();
     sette -> setText("DVD:");
     mainLayout -> addWidget(sette,6,0);
-    QLabel* otto = new QLabel();
-    otto -> setText("In prestito:");
-    mainLayout -> addWidget(otto,7,0);
 }
 
 /*repaint - "ripittura" l'interfaccia*/
@@ -52,13 +49,12 @@ void StatView::repaint(){
     mainLayout -> addWidget(totFA,4,1);
     mainLayout -> addWidget(totFV,5,1);
     mainLayout -> addWidget(totD,6,1);
-    mainLayout -> addWidget(totPres,7,1);
 }
 
 /*prepare - prepare le statistiche da mostrare nella view*/
 void StatView::prepare(){
-    int total, fA, fV, aD, vD, c, d, prestito;
-    total = fA = fV = aD = vD = c = d = prestito = 0;
+    int total, fA, fV, aD, vD, c, d;
+    total = fA = fV = aD = vD = c = d = 0;
     biblioteca& b = biblioteca::instance();
     total = b.getContenuti().size() + b.getSupporti().size();
     for(auto& c : b.getContenuti()){
@@ -67,13 +63,10 @@ void StatView::prepare(){
         else if(dynamic_cast<audioD*>(c)) aD++;
         else if(dynamic_cast<videoD*>(c)) vD++;
 
-        if(c->isInPrestito()) prestito++;
     }
     for(auto& s : b.getSupporti()){
         if(dynamic_cast<cd*>(s)) c++;
         else if(dynamic_cast<dvd*>(s)) d++;
-
-        if(s->isInPrestito()) prestito++;
     }
 
     tot -> setText(QString::number(total));
@@ -83,6 +76,5 @@ void StatView::prepare(){
     totFA -> setText(QString::number(fA));
     totFV -> setText(QString::number(fV));
     totVD -> setText(QString::number(vD));
-    totPres -> setText(QString::number(prestito));
 }
 

@@ -24,7 +24,6 @@ private:
     QLabel* totFA;
     QLabel* totD;
     QLabel* totFV;
-    QLabel* totPres;
     void prepare();
 public:
     explicit StatView(QWidget* parent =nullptr);
