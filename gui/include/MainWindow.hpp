@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QWidget>
 #include <QMessageBox>
+#include <QFileDialog>
 #include <QLabel>
 #include <QDebug>
 #include "../../fileManager/include/biblioteca.hpp"
@@ -14,6 +15,8 @@
 #include "SearchView.hpp"
 #include "FullPreview.hpp"
 #include "AddObjectView.hpp"
+#include "ModificaContenutoView.hpp"
+#include "ModificaSupportoView.hpp"
 
 class MainWindow: public QWidget{
     Q_OBJECT
@@ -26,6 +29,8 @@ private:
     MainButtonView* buttons;
     FullPreview* fullprev;
     AddObjectView* addobject;
+    ModificaContenutoView* modificaC;
+    ModificaSupportoView* modificaS;
     QLabel* status;
     bool remove_activated;
     void prepareMainRightWindow();
@@ -44,6 +49,8 @@ public slots:
     void add_object();
     void add_back();
     void set_remove();
+    void start_modifica(int ip);
+    void cancel_modifica();
 };
 
 #endif

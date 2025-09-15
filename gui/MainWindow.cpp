@@ -1,10 +1,18 @@
 #include "include/MainWindow.hpp"
 
-/*Costruttore parametrico di MainWindow*/
-MainWindow::MainWindow(QWidget* parent): QWidget(parent), mainLayout(nullptr), right(nullptr), previews(nullptr), statistics(nullptr), search(nullptr), buttons(nullptr), fullprev(nullptr), status(nullptr), remove_activated(false){
+/*Costruttore parametrico di MainWindow
+@param parent QWidget parent*/
+MainWindow::MainWindow(QWidget* parent): QWidget(parent), mainLayout(nullptr), right(nullptr), previews(nullptr), statistics(nullptr), search(nullptr), buttons(nullptr), fullprev(nullptr), modificaC(nullptr), modificaS(nullptr), status(nullptr), remove_activated(false){
     resize(1050, 700); // Imposta la dimensione iniziale della finestra
     setMinimumSize(600, 400); // Imposta la dimensione minima
     mainLayout = new QHBoxLayout(this);
+    QString file = QFileDialog::getOpenFileName(nullptr, "Seleziona archivio JSON", biblioteca::projectPath().absolutePath()+"/src/storage", "*.json");
+    try{
+        biblioteca::init(file);
+    }catch(QString m){
+        QMessageBox::critical(nullptr, "Errore", "File JSON non valido!");
+        QCoreApplication::exit(EXIT_FAILURE);
+    }
     prepareMainWindow();
 } 
 
@@ -106,6 +114,7 @@ void MainWindow::show_full_preview(int ip){
     fullprev = new FullPreview(ip, previews->getLastQuery());
     mainLayout -> addWidget(fullprev);
     connect(fullprev, &FullPreview::back_event, this, &MainWindow::back);
+    connect(fullprev, &FullPreview::modifica_event, this, &MainWindow::start_modifica);
 }
 
 /*add_back - slot che riceve il segnale di "back" (o indietro) dalla fullpreview e ricostruisce l'interfaccia di default*/
@@ -161,4 +170,44 @@ void MainWindow::remove(int ip){
         default:
             break;
     }
+}
+
+/*start_modifica - slot che riceve il segnale dal pulsante di modifica
+@param ip indexposition dell'oggetto da modificare*/
+void MainWindow::start_modifica(int ip){
+    fullprev -> deleteLater();
+    fullprev = nullptr;
+    query* q = previews -> getLastQuery();
+    previews -> deleteLater();
+    previews = nullptr;
+    
+    vector<contenutoMultimediale*> cm = biblioteca::instance().getContenuti();
+    vector<supportoMultimediale*> sm = biblioteca::instance().getSupporti();
+
+    if(q) q -> filter(cm,sm);
+
+    contenutoMultimediale* cont = biblioteca::cSearch(ip,cm);
+    supportoMultimediale* supp = biblioteca::sSearch(ip,cm,sm);
+
+    if(cont){
+        modificaC = new ModificaContenutoView(cont);
+        mainLayout -> addWidget(modificaC);
+        connect(modificaC, &ModificaContenutoView::cancel_event, this, &MainWindow::cancel_modifica);
+    }else{
+        modificaS = new ModificaSupportoView(supp);
+        mainLayout -> addWidget(modificaS);
+        connect(modificaS, &ModificaSupportoView::cancel_event, this, &MainWindow::cancel_modifica);
+    }
+}
+
+/*cancel_modifica - slot che riceve il segnale di ritorno dalla modifica*/
+void MainWindow::cancel_modifica(){
+    if(modificaC){ 
+        modificaC -> deleteLater();
+        modificaC = nullptr;
+    }else{
+        modificaS -> deleteLater();
+        modificaS = nullptr;
+    }
+    prepareMainWindow();
 }
