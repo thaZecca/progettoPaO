@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = progetto
+TARGET = biblioteca
 INCLUDEPATH += .
 QT += widgets
 

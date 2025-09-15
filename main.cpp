@@ -6,7 +6,7 @@ int main(int argc, char* argv[]){
     QApplication app(argc,argv);
 
     MainWindow mw;
-    mw.setWindowTitle("Prova Biblioteca");
+    mw.setWindowTitle("Biblioteca");
     mw.show();
 
     return app.exec();
