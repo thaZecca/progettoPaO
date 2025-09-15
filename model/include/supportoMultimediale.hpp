@@ -13,10 +13,6 @@ class supportoMultimediale{
 private:
     QString titolo;
     QString scaffale;
-    bool inPrestito;
-    QDate dataPrestito;
-    int durataPrestito;
-    QString nomePrestito;
 public:
     supportoMultimediale(const QString& s, const QString& t);
     virtual ~supportoMultimediale() = default;
@@ -27,17 +23,8 @@ public:
     void setTitolo(const QString& t);
     virtual vector<QString> getAutori() const = 0;
     virtual vector<int> getAnno() const = 0;
-    
-    //sistema bibliotecario
-
-    bool isInPrestito() const;
-    void setInPrestito(bool);
-    QDate getDataPrestito() const;
-    void setDataPrestito(const QDate&);
-    int getDurataPrestito() const;
-    void setDurataPrestito(int);
-    QString getNomePrestito() const;
-    void setNomePrestito(const QString&);
+    virtual int getDiametro() const = 0;
+    virtual void setDiametro(int) = 0;
     QString getScaffale() const;
     void setScaffale(const QString&);
 };

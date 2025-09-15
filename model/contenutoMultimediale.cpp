@@ -9,7 +9,7 @@
 @param d durata espress in secondi
 @param pP percorso dell'immagine
 @param s scaffale del contenutoMultimendiale*/
-contenutoMultimediale::contenutoMultimediale(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP, QString s): titolo(t), casaProduttrice(cP), autori(a), annoDiPubblicazione(aDPubb), durataSecondi(d), picPath(pP), scaffale(s), inPrestito(false) {}
+contenutoMultimediale::contenutoMultimediale(QString t, QString cP, vector<QString> a, unsigned int aDPubb, unsigned int d, QString pP, QString s): titolo(t), casaProduttrice(cP), autori(a), annoDiPubblicazione(aDPubb), durataSecondi(d), picPath(pP), scaffale(s) {}
 
 /*Distruttore per evitare undefined symbols*/
 contenutoMultimediale::~contenutoMultimediale() {}
@@ -94,54 +94,6 @@ void contenutoMultimediale::setPicPath(const QString& pP){
     picPath=pP;
 }
 
-/*isInPrestito
-@return true se in prestito, false altrimenti*/
-bool contenutoMultimediale::isInPrestito() const{
-    return inPrestito;
-}
-
-/*setInprestito
-@param p valore da impostare al prestito, true se in prestito, false altrimenti*/
-void contenutoMultimediale::setInPrestito(bool p){
-    inPrestito = p;
-}
-
-/*getDataPrestito
-@return data del prestito*/
-QDate contenutoMultimediale::getDataPrestito() const{
-    return dataPrestito;
-}
-
-/*setDataPrestito
-@param d data da impostare al prestito*/
-void contenutoMultimediale::setDataPrestito(const QDate& data){
-    dataPrestito = data;
-}
-
-/*getDurataPrestito
-@return la durata del prestito*/
-int contenutoMultimediale::getDurataPrestito() const{
-    return durataPrestito;
-}
-
-/*setDurataPrestito
-@param d durata del prestito*/
-void contenutoMultimediale::setDurataPrestito(int d){
-    durataPrestito = d;
-}
-
-/*getNomePrestito
-@return nome della persona che ha preso in prestito il contenuto*/
-QString contenutoMultimediale::getNomePrestito() const{
-    return nomePrestito;
-}
-
-/*setNomePrestito
-@param nP nome della persona che ha preso in prestito il contenuto*/
-void contenutoMultimediale::setNomePrestito(const QString& nP){
-    nomePrestito = nP;
-}
-
 /*getScaffale
 @return il codice dello scaffale del contenutoMultimediale*/
 QString contenutoMultimediale::getScaffale() const{
@@ -167,8 +119,5 @@ ostream& operator<<(ostream& os, const contenutoMultimediale& c){
     unsigned int min = static_cast<unsigned int>(c.durataSecondi / 60);
     unsigned int sec = c.durataSecondi % 60;
     os << "\n" << "Durata: " << std::to_string(min) << " min " << std::to_string(sec) << " sec" << "\n" << "Pp: " << c.picPath.toStdString();
-    if(c.inPrestito){
-        os << "\n" << "Contenuto preso in prestito da " << c.nomePrestito.toStdString() << " il giorno " << c.dataPrestito.toString().toStdString() << ", restituzione prevista tra " << c.durataPrestito << " giorni.";
-    }else os << "\n" << "Contenuto non in prestito!";
     return os;
 }

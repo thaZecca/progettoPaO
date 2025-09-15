@@ -12,13 +12,13 @@ class dvd: public supportoMultimediale{
     friend ostream& operator<<(ostream&, const dvd&);
 private:
     vector<videoD*> tracceVideo;
-    float diametro;
+    int diametro;
 public:
-    dvd(vector<videoD*>, float, QString, QString);
+    dvd(vector<videoD*>, int, QString, QString);
     vector<contenutoMultimediale*> getTracce() const override; 
-    float getDiametro() const;
+    int getDiametro() const override;
     void setTracce(const vector<contenutoMultimediale*>&) override;
-    void setDiametro(float d); 
+    void setDiametro(int) override; 
     virtual void accept(visitorCMultimediale&) override;
     virtual vector<QString> getAutori() const override;
     virtual vector<int> getAnno() const override;

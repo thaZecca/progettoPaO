@@ -5,7 +5,7 @@
 @param s scaffale del DVD
 @param d diametro del DVD
 @param t titolo del DVD*/
-dvd::dvd(vector<videoD*> tV, float d, QString s, QString t): supportoMultimediale(s,t), tracceVideo(tV), diametro(d) {}
+dvd::dvd(vector<videoD*> tV, int d, QString s, QString t): supportoMultimediale(s,t), tracceVideo(tV), diametro(d) {}
 
 /*getTracceVideo
 @return le tracce video masterizzate nel DVD*/
@@ -19,13 +19,16 @@ vector<contenutoMultimediale*> dvd::getTracce() const{
 
 /*getDiametro
 @return il diametro del DVD*/
-float dvd::getDiametro() const{
+int dvd::getDiametro() const{
     return diametro;
 }
 
 /*setTracceVideo
 @param tV tracce video da masterizzare nel DVD*/
 void dvd::setTracce(const vector<contenutoMultimediale*>& tV){
+    for(auto it = tracceVideo.begin(); it != tracceVideo.end();){
+        tracceVideo.erase(it);
+    }
     for(auto it = tV.begin(); it != tV.end(); it++){
         videoD* v = dynamic_cast<videoD*>(*it);
         if(v) tracceVideo.push_back(v);
@@ -34,7 +37,7 @@ void dvd::setTracce(const vector<contenutoMultimediale*>& tV){
 
 /*setDiametro
 @param d diametro da impostare al DVD*/
-void dvd::setDiametro(float d){
+void dvd::setDiametro(int d){
     diametro = d;
 }
 

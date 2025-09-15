@@ -12,13 +12,13 @@ class cd: public supportoMultimediale{
     friend ostream& operator<<(ostream&, const cd&);
 private:
     vector<audioD*> tracceAudio;
-    float diametro;
+    int diametro;
 public:
-    cd(vector<audioD*>, float, QString, QString);
+    cd(vector<audioD*>, int, QString, QString);
     vector<contenutoMultimediale*> getTracce() const override;
-    float getDiametro() const;
+    int getDiametro() const override;
     void setTracce(const vector<contenutoMultimediale*>&) override;
-    void setDiametro(float);
+    void setDiametro(int) override;
     virtual void accept(visitorCMultimediale&) override;
     virtual vector<QString> getAutori() const override;
     virtual vector<int> getAnno() const override;

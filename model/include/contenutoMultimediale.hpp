@@ -20,12 +20,8 @@ private:
     unsigned int annoDiPubblicazione;
     unsigned int durataSecondi;
     QString picPath;
-    //sistema bibliotecario
     QString scaffale;
-    bool inPrestito;
-    QDate dataPrestito;
-    int durataPrestito;
-    QString nomePrestito;
+
 public:
     contenutoMultimediale(QString, QString, vector<QString>, unsigned int, unsigned int, QString, QString);
     virtual ~contenutoMultimediale() = 0;
@@ -43,17 +39,6 @@ public:
     void setDurataSecondi(unsigned int d);
     void setPicPath(const QString& pP);
     virtual void accept(visitorCMultimediale& v) = 0;
-
-    //sistema bibliotecario
-
-    bool isInPrestito() const;
-    void setInPrestito(bool);
-    QDate getDataPrestito() const;
-    void setDataPrestito(const QDate&);
-    int getDurataPrestito() const;
-    void setDurataPrestito(int);
-    QString getNomePrestito() const;
-    void setNomePrestito(const QString&);
     QString getScaffale() const;
     void setScaffale(const QString&);
 };
