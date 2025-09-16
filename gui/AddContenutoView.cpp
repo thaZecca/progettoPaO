@@ -207,7 +207,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         vector<QString> aut;
         for(auto a : autori -> text().split(",")){
             if(a[0]==' '){
-                a.removeFirst();
+                a.remove(0,1);
             }
             aut.push_back(a);
         }
@@ -228,7 +228,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         vector<QString> aut;
         for(auto a : autori -> text().split(",")){
             if(a[0]==' '){
-                a.removeFirst();
+                a.remove(0,1);
             }
             aut.push_back(a);
         }
@@ -245,7 +245,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         vector<QString> aut;
         for(auto a : autori -> text().split(",")){
             if(a[0]==' '){
-                a.removeFirst();
+                a.remove(0,1);
             }
             aut.push_back(a);
         }
@@ -266,7 +266,7 @@ AddContenutoView::AddContenutoView(int s, QWidget* parent):
         vector<QString> aut;
         for(auto a : autori -> text().split(",")){
             if(a[0]==' '){
-                a.removeFirst();
+                a.remove(0,1);
             }
             aut.push_back(a);
         }

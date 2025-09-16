@@ -27,7 +27,7 @@ ModificaContenutoView::ModificaContenutoView(contenutoMultimediale* c, QWidget* 
         for(auto i : c->getAutori()){
             a += i +", ";
         }
-        a.removeLast(); a.removeLast();
+        a.chop(); a.chop();
         autori -> setText(a);
         autori -> setPlaceholderText(", per separare gli autori");
         infoLayout -> addWidget(autori,1,1);
@@ -175,7 +175,7 @@ void ModificaContenutoView::modifyAudioD(){
     vector<QString> aut;
     for(auto a : autori -> text().split(",")){
         if(a[0]==' '){
-            a.removeFirst();
+            a.remove(0,1);
         }
         aut.push_back(a);
     }
@@ -217,7 +217,7 @@ void ModificaContenutoView::modifyVideoD(){
     vector<QString> aut;
     for(auto a : autori -> text().split(",")){
         if(a[0]==' '){
-            a.removeFirst();
+            a.remove(0,1);
         }
         aut.push_back(a);
     }
