@@ -22,19 +22,13 @@ void biblioteca::init(const QString& path) {
     }
 }
 
-/*projectPath - ritorna il percorso della cartella del progetto tramite direttive cross-platform*/
+/*projectPath - ritorna il percorso della cartella del progetto + direttive per Apple macOs*/
 QDir biblioteca::projectPath(){
     QDir dir(QCoreApplication::applicationDirPath());
     #if defined(Q_OS_MAC) //direttiva per sistema operativo Apple macOS
         dir.cdUp(); dir.cdUp(); dir.cdUp();
     #endif
     return dir;
-}
-
-/*getFileManager
-@return il file manager della biblioteca*/
-fileManager& biblioteca::getFileManager(){
-    return fM;
 }
 
 /*instance

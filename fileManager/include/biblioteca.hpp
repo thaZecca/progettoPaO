@@ -17,11 +17,9 @@ private:
     ~biblioteca();
     biblioteca(const biblioteca&) = delete;
     biblioteca& operator=(const biblioteca&) = delete;
-    fileManager& getFileManager();
     vector<contenutoMultimediale*> contenuti;
     vector<supportoMultimediale*> supporti;
     fileManager fM;
-    static QString storage_path;
 public:
     static biblioteca& instance();  
     static void init(const QString& path);
@@ -35,7 +33,6 @@ public:
     static void add(contenutoMultimediale*);
     static void add(supportoMultimediale*);
     void remove(int, query*);
-    static QString getStoragePath();
 };
 
 #endif
