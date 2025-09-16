@@ -2,7 +2,7 @@
 
 /*Costruttore parametrico di classe AddSupportoView
 @param parent QWidget parent*/
-AddSupportoView::AddSupportoView(QWidget* parent): QWidget(parent), aC(nullptr), ti(nullptr), s(nullptr), trc(nullptr), di(nullptr), titolo(nullptr), scaffale(nullptr), diametro(nullptr), tipo(nullptr), add(nullptr), cancel(nullptr), save(nullptr), areaTracce(nullptr){
+AddSupportoView::AddSupportoView(QWidget* parent): QWidget(parent), aC(nullptr), mainLayout(nullptr), ti(nullptr), s(nullptr), trc(nullptr), di(nullptr), titolo(nullptr), scaffale(nullptr), diametro(nullptr), c(nullptr), d(nullptr), tipo(nullptr), add(nullptr), cancel(nullptr), save(nullptr), areaTracce(nullptr), layoutScrollable(nullptr), scrollTracce(nullptr){
     mainLayout = new QVBoxLayout(this);
     scrollTracce = new QScrollArea(this);
     scrollTracce -> setWidgetResizable(true);
@@ -38,14 +38,14 @@ void AddSupportoView::prepare(){
     mainLayout -> addLayout(etichetteLayout);
 
     QHBoxLayout* tipoLayout = new QHBoxLayout();
-    if(c==nullptr) c = new QRadioButton("CD");
+    if(c==nullptr) c = new QRadioButton("CD", this);
     tipoLayout -> addWidget(c);
 
-    if(d==nullptr) d = new QRadioButton("DVD");
+    if(d==nullptr) d = new QRadioButton("DVD", this);
     tipoLayout -> addWidget(d);
 
     if(tipo==nullptr){
-        tipo = new QButtonGroup();
+        tipo = new QButtonGroup(this);
         tipo -> addButton(c);
         tipo -> addButton(d);
     } 
