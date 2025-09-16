@@ -27,8 +27,6 @@ QDir biblioteca::projectPath(){
     QDir dir(QCoreApplication::applicationDirPath());
     #if defined(Q_OS_MAC) //direttiva per sistema operativo Apple macOS
         dir.cdUp(); dir.cdUp(); dir.cdUp();
-    #else //direttiva per sistemi Linux e Microsoft Windows
-        dir.cdUp();
     #endif
     return dir;
 }
