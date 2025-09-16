@@ -27,7 +27,7 @@ ModificaContenutoView::ModificaContenutoView(contenutoMultimediale* c, QWidget* 
         for(auto i : c->getAutori()){
             a += i +", ";
         }
-        a.chop(); a.chop();
+        a.chop(1); a.chop(1);
         autori -> setText(a);
         autori -> setPlaceholderText(", per separare gli autori");
         infoLayout -> addWidget(autori,1,1);
