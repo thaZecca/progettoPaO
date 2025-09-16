@@ -264,6 +264,6 @@ void ModificaContenutoView::choose_picture(){
     fd = new QFileDialog(this);
     fd -> setFileMode(QFileDialog::ExistingFile); //il file deve esistere e deve essere unico
     fd -> setNameFilter(tr("Images (*.png *.xpm *.jpg)")); //il file deve essere di tipo immagine
-    fd -> setDirectory(biblioteca::projectPath()); //deve cercarlo dove si trova il progetto
+    fd -> setDirectory(biblioteca::projectPath().absolutePath()+"/src/copertine"); //deve cercarlo dove si trova il progetto
     fd -> exec();
 }
