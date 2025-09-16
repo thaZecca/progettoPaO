@@ -3,7 +3,11 @@
 #include "fileManager/include/biblioteca.hpp"
 
 int main(int argc, char* argv[]){
-    qputenv("QT_QPA_PLATFORM", "xcb"); //per evitare warning a causa dell'ambiente grafico 
+    #if defined(Q_OS_MAC) //direttiva per sistema operativo Apple macOS
+        qputenv("QT_QPA_PLATFORM", "cocoa");
+    #else
+        qputenv("QT_QPA_PLATFORM", "wayland"); //per evitare warning a causa dell'ambiente grafico 
+    #endif
     QApplication app(argc,argv);
 
     MainWindow mw;
